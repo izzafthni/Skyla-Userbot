@@ -1,6 +1,6 @@
 <p align="center">
-    <a href="https://github.com/Kayzyu/Kayzu-Ubot/commits/Kayzu-Ubot"><img src="https://img.shields.io/github/last-commit/Kayzyu/Kayzu-Ubot?color=ff69b4&logo=github&logoColor=ff69b4&style=for-the-badge" /></a>
-    <a href="https://github.com/Kayzyu/Kayzu-Ubot"> <img src="https://img.shields.io/github/repo-size/Kayzyu/Kayzu-Ubot?logo=github&style=for-the-badge" /></a>
+    <a href="https://github.com/SkylaIND/Skyla-Userbot/commits/Skyla-Userbot"><img src="https://img.shields.io/github/last-commit/SkylaIND/Skyla-Userbot?color=ff69b4&logo=github&logoColor=ff69b4&style=for-the-badge" /></a>
+    <a href="https://github.com/SkylaIND/Skyla-Userbot"> <img src="https://img.shields.io/github/repo-size/SkylaIND/Skyla-Userbot?logo=github&style=for-the-badge" /></a>
     <a href="https://pypi.org/project/Telethon/"><img src="https://img.shields.io/pypi/v/telethon?color=important&label=telethon&logo=python&logoColor=brightgreen&style=for-the-badge" /></a>
     <img alt="PYTHON" src="https://img.shields.io/badge/PYTHON-v3.9.6-purple?style=for-the-badge&logo=appveyor"/>
     </p>
@@ -9,7 +9,7 @@
 </h2>
 
 <p align="center">
-  <img src="https://telegra.ph/file/d257ba98dbd40a7f6fa04.jpg">
+  <img src="https://telegra.ph/file/0970dd27e9141599aaccf.jpg">
 </p>
 
 <h3 align="center">Klik Tombol di Bawah ini untuk Deploy di Heroku :</h3>
@@ -31,7 +31,7 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 
 
 ### Support & Updates 
-<a href="https://t.me/KayzuSupport"><img src="https://img.shields.io/badge/Join-Group%20Support-red.svg?style=for-the-badge&logo=Telegram"></a> <a href="https://t.me/kayzuchannel"><img src="https://img.shields.io/badge/Join-Updates%20Channel-white.svg?style=for-the-badge&logo=Telegram"></a>
+<a href="https://t.me/skylasupport"><img src="https://img.shields.io/badge/Join-Group%20Support-red.svg?style=for-the-badge&logo=Telegram"></a> <a href="https://t.me/SkylaIND"><img src="https://img.shields.io/badge/Join-Updates%20Channel-orange.svg?style=for-the-badge&logo=Telegram"></a>
 
 ## Credits
 
