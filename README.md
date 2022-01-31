@@ -19,7 +19,8 @@
 <p align="center"><a href="https://telegram.dog/XTZ_HerokuBot?start=U2t5bGFJTkQvU2t5bGFNdXNpYyBtYWlu"><img src="https://img.shields.io/badge/Deploy%20Via%20Telegram-blue?style=for-the-badge&logo=telegram" width="250""/</a>  
 
 
-## Disclaimer
+
+### Disclaimer
 
 ```
 Saya tidak bertanggung jawab atas penyalahgunaan bot ini.
