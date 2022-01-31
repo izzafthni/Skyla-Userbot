@@ -22,6 +22,13 @@
 
 ## Disclaimer
 
+</details>
+
+<details>
+<summary><b> KLIK </b></summary>
+<br>
+
+
 ```
 Saya tidak bertanggung jawab atas penyalahgunaan bot ini.
 Bot ini dimaksudkan untuk bersenang-senang sekaligus membantu Anda
