@@ -46,8 +46,8 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 
 *   [Vicky](https://github.com/vckyou/Geez-Userbot)  Geez-Userbot
 *   [Sendi](https://github.com/SendiAp/Rose-Userbot)   Rose-Userbot
-*   [Skyzu](https://github.com/Skyzu/skyzu-userbot)   Skyzu-userbot
-*   [Skyla](https://github.com/SkylaIND/skyla-Userbot)   Skyla-userbot
+*   [Skyzu](https://github.com/Skyzu/skyzu-userbot)   skyzu-userbot
+*   [Skyla](https://github.com/SkylaIND/Skyla-Userbot)   Skyla-Userbot
 *   [Kayzu](https://github.com/Kayzyu/Kayzu-Ubot)   Kayzu-Ubot
 *   [Risman](https://github.com/mrismanaziz/Man-Userbot)  Man-Userbot
 *   [Kyy](https://github.com/muhammadrizky16/Kyy-Userbot)   Kyy - Userbot
