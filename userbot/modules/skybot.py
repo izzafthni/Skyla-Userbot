@@ -1,7 +1,7 @@
 # Copyright (C) 2021 Kyy - Userbot
 # Created by Kyy
 # Jangan hapus credit Anj!!!
-# Recode by Kayzu
+# Recode by Skyla
 
 
 from time import sleep
