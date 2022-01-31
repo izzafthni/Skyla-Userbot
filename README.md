@@ -40,7 +40,7 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 </details>
 
 <details>
-<summary><b> TAP </b></summary>
+<summary><b> KLIK </b></summary>
 <br>
 
 
@@ -51,5 +51,5 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 *   [Kayzu](https://github.com/Kayzyu/Kayzu-Ubot)   Kayzu-Ubot
 *   [Risman](https://github.com/mrismanaziz/Man-Userbot)  Man-Userbot
 *   [Kyy](https://github.com/muhammadrizky16/Kyy-Userbot)   Kyy - Userbot
-*   DAN TERIMAKASIH KEPADA USERBOT LAINNYA
+*   DAN TERIMAKASIH KEPADA USERBOT LAINNYA🙏
 
