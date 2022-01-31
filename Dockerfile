@@ -4,7 +4,7 @@ FROM vckyouuu/geezprojects:buster
 #━━━━━ By Skyzuu-Userbot ━━━━━
 #━━━━━ Ex Kayzu-Ubot ━━━━━
 
-RUN git clone -b Kayzu-Ubot https://github.com/SkylaIND/Skyla-Userbot /root/userbot
+RUN git clone -b Skyla-Userbot https://github.com/SkylaIND/Skyla-Userbot /root/userbot
 RUN mkdir /root/userbot/.bin
 RUN pip install --upgrade pip setuptools
 WORKDIR /root/userbot
