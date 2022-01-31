@@ -20,6 +20,8 @@
 </p>
 
 # Generate String Session
+
+<p align="center">
 <a href="https://t.me/StringSkylaBot"><img src="https://img.shields.io/badge/Generate%20Gen%20Bot-blueviolet?style=for-the-badge&logo=appveyor" width="245""/></a>
  </p> 
 
