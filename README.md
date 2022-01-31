@@ -14,7 +14,7 @@
 
 <h3 align="center">Klik Tombol di Bawah ini untuk Deploy di Heroku :</h3>
 
-<p align="center"><a href="https://heroku.com/deploy?template=https://github.com/SkylaIND/SkylaIND-Deploy-Template"> <img src="https://img.shields.io/badge/Deploy%20To%20Heroku-pink?style=flat&logo=heroku" width="250" height="40.00" /></a></p>
+<p align="center"><a href="https://heroku.com/deploy?template=https://github.com/SkylaIND/Skyla-Userbot"> <img src="https://img.shields.io/badge/Deploy%20To%20Heroku-pink?style=flat&logo=heroku" width="250" height="40.00" /></a></p>
 
 <p align="center"><a href="https://telegram.dog/XTZ_HerokuBot?start=S2F5enl1L0theXp1LVVib3QgS2F5enUtVWJvdA"><img src="https://img.shields.io/badge/Deploy%20Via%20Telegram-pink?style=for-the-badge&logo=telegram" width="250""/</a>  </p>
 
