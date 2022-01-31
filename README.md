@@ -44,26 +44,12 @@ Gunakan bot ini dengan risiko Anda sendiri, dan gunakan dengan bijak.
 <br>
 
 
-*   [Kyy](https://github.com/muhammadrizky16/Kyy-Userbot)   Kyy - Userbot
+*   [Vicky](https://github.com/vckyou/Geez-Userbot)  Geez-Userbot
 *   [Sendi](https://github.com/SendiAp/Rose-Userbot)   Rose-Userbot
-*   [Skyzu](https://github.com/Skyzu/skyzu-userbot)   skyzu-userbot
+*   [Skyzu](https://github.com/Skyzu/skyzu-userbot)   Skyzu-userbot
+*   [Skyla](https://github.com/SkylaIND/skyla-Userbot)   Skyla-userbot
 *   [Kayzu](https://github.com/Kayzyu/Kayzu-Ubot)   Kayzu-Ubot
 *   [Risman](https://github.com/mrismanaziz/Man-Userbot)  Man-Userbot
-*   [Vicky](https://github.com/vckyou/Geez-Userbot)  Geez-Userbot
+*   [Kyy](https://github.com/muhammadrizky16/Kyy-Userbot)   Kyy - Userbot
 *   DAN TERIMAKASIH KEPADA USERBOT LAINNYA
-
-## 
-🔥 **MY FRIEND**
-
-<a href="https://t.me/mrismanaziz"><img src="https://img.shields.io/badge/Risman-%230088cc.svg?&style=for-the-badge&logo=telegram&logoColor=white" /></br> 
-<a href="https://t.me/skijuu"><img src="https://img.shields.io/badge/Skyzu-%230088cc.svg?&style=for-the-badge&logo=telegram&logoColor=white" /></br> 
-<a href="https://t.me/Kayzuuuuu"><img src="https://img.shields.io/badge/Kayzu-%230088cc.svg?&style=for-the-badge&logo=telegram&logoColor=white" /></br> 
-<a href="https://t.me/pikyus1"><img src="https://img.shields.io/badge/Sendi-%230088cc.svg?&style=for-the-badge&logo=telegram&logoColor=white" /></br> 
-<a href="https://t.me/zxcskyy"><img src="https://img.shields.io/badge/Kyy-%230088cc.svg?&style=for-the-badge&logo=telegram&logoColor=white" /></br> 
-<a href="https://t.me/SilenceSpe4ks"><img src="https://img.shields.io/badge/Ari-%230088cc.svg?&style=for-the-badge&logo=telegram&logoColor=white" /></br> 
-_______________________________
-
-
-
-
 
