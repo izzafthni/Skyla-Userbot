@@ -173,8 +173,8 @@ async def bot_ver(event):
         revout = str(stdout.decode().strip()) + str(stderr.decode().strip())
 
         await event.edit(
-            "**⚜-**🔥ҡᴀʏᴢᴜ-ᴜвσт🔥 Versi:** \n "
-            f"heads/Kayzu-Ubot-0-x634i7u1"
+            "**⚜-**☃️Sᴋʏʟᴀ - Usᴇʀʙᴏᴛ☃️ Versi:** \n "
+            f"heads/Skyla-Userbot-0-x634i7u1"
             "\n**⚜-**Revisi:**\n "
             f"{revout}"
         )
@@ -232,22 +232,23 @@ async def pipcheck(pip):
         await pip.edit("Gunakan `.help pip` Untuk Melihat Contoh")
 
 
-@register(outgoing=True, pattern=r"^\.(?:kayzualive)\s?(.)?")
+@register(outgoing=True, pattern=r"^\.(?:skyalive)\s?(.)?")
 async def amireallyalive(alive):
     user = await bot.get_me()
     await get_readable_time((time.time() - StartTime))
     output = (
-        f" **🔥ҡᴀʏᴢᴜ-ᴜвσт🔥** \n\n"
-        f"\n__**{KAYZU_TEKS_KUSTOM}**__\n\n\n"
         f"╭✠╼━━━━━━━━━━━━━━━✠╮\n"
-        f"◙ `Name       :` {DEFAULTUSER} \n"
-        f"◙ `Username   :` @{user.username} \n"
-        f"◙ `Telethon   :` {version.__version__} \n"
-        f"◙ `Python     :` {python_version()} \n"
-        f"◙ `Bot Ver    :` {BOT_VER} \n"
-        f"◙ `Modules    :` {len(modules)} \n"
-        f"╰✠╼━━━━━━━━━━━━━━━✠╯\n"
-        f"[ɢʀᴏᴜᴘꜱ](https://t.me/KayzuSupport) | [ᴄʜᴀɴɴᴇʟ](t.me/kayzuchannel) | [ᴏᴡɴᴇʀ](https://t.me/Kayzuuuuu) | [ɢɪᴛʜᴜʙ](https://github.com/Kayzyu/Kayzu-Ubot)")
+        f"┃✥ **Name     :** {DEFAULTUSER} \n"
+        f"┃✥ **Username :** @{user.username} \n"
+        f"┃✥ **Telethon :** Ver {version.__version__} \n"
+        f"┃✥ **Python   :** Ver {python_version()} \n"
+        f"┃✥ **Branch   :** {UPSTREAM_REPO_BRANCH} \n"
+        f"┃✥ **Bot Ver  :** {BOT_VER} \n"
+        f"┃✥ **Modules  :** {len(modules)} Modules \n"
+        f"┃✥ **GitHub   :** [𝗨𝗦𝗘𝗥𝗕𝗢𝗧](https://github.com/SkylaIND/Skyla-Userbot) \n"
+        f"┃✥ **Owner    :** [𝗦𝗞𝗬𝗟𝗔](https://t.me/Zxyune) \n"
+        f"┃✥ **support  :** [𝗚𝗥𝗢𝗨𝗣](https://t.me/skylasupport) \n"
+        f"╰✠╼━━━━━━━━━━━━━━━✠╯"
     if ALIVE_LOGO:
         try:
             logo = ALIVE_LOGO
@@ -268,19 +269,20 @@ async def amireallyalive(alive):
         await alive.delete()
 
 
-@register(outgoing=True, pattern=r"^\.(?:kayon)\s?(.)?")
+@register(outgoing=True, pattern=r"^\.(?:skylaon)\s?(.)?")
 async def amireallyalive(alive):
     await bot.get_me()
     await get_readable_time((time.time() - StartTime))
     output = (
-        f"●▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬● \n"
-        f"✾ 🤴 • `ᴏᴡɴᴇʀ    :`[Kayzu](t.me/Kayzuuuuu) \n"
-        f"✾ 🖥️ • `ꜱʏꜱᴛᴇᴍ   :`Ubuntu 20.10 \n"
-        f"✾ ⚙️ • `ᴛᴇʟᴇᴛʜᴏɴ :`v.{version.__version__} \n"
-        f"✾ 🐍 • `ᴘʏᴛʜᴏɴ   :`v.{python_version()} \n"
-        f"✾ 👾 • `ʙᴏᴛ      :`v.{BOT_VER} \n"
-        f"✾ 📂 • `ᴍᴏᴅᴜʟᴇ   :`{len(modules)} \n"
-        f"●▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬●")
+        f"╔═══════▣◎▣════════╗ \n"
+        f"➤ 🤴 • `ᴏᴡɴᴇʀ :`{DEFAULTUSER}             ㅤ \n"
+        f"➤ 🖥️ • `ꜱʏꜱᴛᴇᴍ. :`Ubuntu 20.10            \n"
+        f"➤ ⚙️ • `ᴛᴇʟᴇᴛʜᴏɴ :`v.{version.__version__}                ㅤㅤ  \n"
+        f"➤ 🐍 • `ᴘʏᴛʜᴏɴ. :`v.{python_version()} ㅤㅤ\n"
+        f"➤ 👾 • `ʙᴏᴛ :`v.{BOT_VER}                ㅤㅤㅤ \n"
+        f"➤ 📂 • `ᴍᴏᴅᴜʟᴇ :`{len(modules)} ㅤㅤㅤㅤㅤㅤㅤ   \n"
+        f"╚═══════▣◎▣════════╝  \n"
+        f"[ᴅᴇᴘʟᴏʏ](https://t.me/skylasupport) | [ᴄʜᴀɴɴᴇʟ](https://t.me/SkylaIND) | [ɪɴsᴛᴀɢʀᴀᴍ](https://instagram.com/ikyxyzu)"
     if ALIVE_LOGO:
         try:
             logo = ALIVE_LOGO
@@ -305,28 +307,27 @@ async def amireallyalive(alive):
 async def redis(alive):
     user = await bot.get_me()
     await get_readable_time((time.time() - StartTime))
-    await alive.edit("__Sedang Memuat.__")
+    await alive.edit("__Skyla-Userbot.__")
     await alive.edit("__Sedang Memuat..__")
-    await alive.edit("__Sedang Memuat.__")
+    await alive.edit("__Skyla-Userbot.__")
     await alive.edit("__Sedang Memuat..__")
-    await alive.edit("__Sedang Memuat...__")
+    await alive.edit("__Skyla-Userbot...__")
     await alive.edit("__Sedang Memuat..__")
-    await alive.edit("__Sedang Memuat...__")
-    await alive.edit("🔥")
+    await alive.edit("__SKYLA ALIVE...__")
+    await alive.edit("🐣")
     await asyncio.sleep(2)
     output = (
-        f"┏━━━━🔥ҡᴀʏᴢᴜ-ᴜвσт🔥━━━━━ \n"
-        f"┣  `Name     :` {DEFAULTUSER} \n"
-        f"┣  `Username :` @{user.username} \n"
-        f"┣  `Telethon :` Ver {version.__version__} \n"
-        f"┣  `Python   :` Ver {python_version()} \n"
-        f"┣  `Branch   :` {UPSTREAM_REPO_BRANCH} \n"
-        f"┣  `Bot Ver  :` {BOT_VER} \n"
-        f"┣  `Modules  :` {len(modules)} Modules \n"
-        f"┣  `GitHub   :` [Kayzu](https://github.com/Kayzyu/Kayzu-Ubot) \n"
-        f"┣  `Support  :` [Groups](https://t.me/KayzuSupport) \n"
-        f"┣  `Owner    :` [Kay](https://t.me/Kayzuuuuu) \n"
-        f"┗━━━━━━━━━━━━━━━━━━━")
+        f"☃️Sᴋʏʟᴀ - Usᴇʀʙᴏᴛ☃️\n\n"
+        f"\n__**{SKYLA_TEKS_KUSTOM}**__\n\n\n"
+        f"╭✠╼━━━━━━━━━━━━━━✠╮\n"
+        f" **Name** : `{DEFAULTUSER}` \n"
+        f"╰┈➤ **Username** : @{user.username} \n"
+        f"╰┈➤ **Telethon** : `{version.__version__}` \n"
+        f"╰┈➤ **Python**   : `{python_version()}` \n"
+        f"╰┈➤ **Bot Ver**  : `{BOT_VER}` \n"
+        f"╰┈➤ **Modules**  : `{len(modules)}` \n"
+        f"╰✠╼━━━━━━━━━━━━━━✠╯\n"
+        f"[ɢʀᴏᴜᴘꜱ](https://t.me/skylasupport) | [ʙᴏᴛᴏꜰ](https://t.me/{user.username}) | [ɢɪᴛʜᴜʙ](https://github.com/SkylaIND/Skyla-Userbot)"
     if ALIVE_LOGO:
         try:
             logo = ALIVE_LOGO
@@ -378,7 +379,7 @@ CMD_HELP.update({
 })
 CMD_HELP.update({
     "alive":
-    "𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.alive` or `.on` or `rose`"
+    "𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.alive` or `.on` or `.skyalive`"
     "\n↳ : To see whether your bot is working or not."
     "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.aliveu` <text>"
     "\n↳ : Changes the 'user' in alive to the text you want."
