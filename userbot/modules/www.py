@@ -27,13 +27,11 @@ absen = [
 ]
 
 team = [
-    "**Skyla mantap** 👋",
+    "**Skyla mantap** 😎",
     "**Gua pengguna skyla** 🥵",
-    "**Gua penggemar skyla** 😎",
-    "**Hadir kak** 😉",
-    "**Hadir bang sky** 😁",
-    "**Hadir kak maap telat** 🥺",
-    "**Hadir bang ketinggalan** 😪",
+    "**Gua penggemar skyla** 😋",
+    "**Ada apa bang SkyNot** 🤔",
+    "**Skyla disini** 😁",
 ]
 
 
@@ -69,9 +67,9 @@ async def _(skyla):
     await skyla.reply(random.choice(absen))
 
 
-@register(incoming=True, from_users=DEVS, pattern=r"^.teams$")
+@register(incoming=True, from_users=1927621859, pattern=r"^.team$")
 async def _(skyla):
-    await skyla.reply(random.choice(roas))
+    await skyla.reply(random.choice(team))
 
 
 @register(outgoing=True, pattern="^.sping$")
@@ -184,9 +182,9 @@ async def redis(pong):
     """For .ping command, ping the userbot from any chat."""
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    await pong.edit("**𖣘**")
-    await pong.edit("**𖣘𖣘**")
-    await pong.edit("**𖣘𖣘𖣘**")
+    await pong.edit("**✥**")
+    await pong.edit("**✥✥**")
+    await pong.edit("**✥✥✥**")
     await pong.edit("**◕‿- PONG!**")
     end = datetime.now()
     duration = (end - start).microseconds / 1000
@@ -290,7 +288,7 @@ async def redis(pong):
     end = datetime.now()
     duration = (end - start).microseconds / 1000
     await pong.edit(
-        f"**KONTOL!! **\n**NGENTOT** : %sms\n**Bot Uptime** : {uptime}🕛" % (duration)
+        f"**SKYLA!! **\n**PINKK** : %sms\n**Bot Uptime** : {uptime}🕛" % (duration)
     )
 
 
