@@ -26,6 +26,7 @@ from userbot import (
     BOT_VER,
     CMD_HELP,
     UPSTREAM_REPO_BRANCH,
+    SKYLA_TEKS_KUSTOM,
     StartTime,
     bot,
 )
