@@ -31,12 +31,28 @@ async def typewriter(typew):
     await typew.edit("𝐀𝐒𝐓𝐀𝐆𝐇𝐅𝐈𝐑𝐔𝐋𝐋𝐀𝐇......")
 
 
+@register(outgoing=True, pattern='^S(?: |$)(.*)')
+async def typewriter(typew):
+    typew.pattern_match.group(1)
+    await typew.edit("BISMILLAH SLEEPCALL...😁")
+
+
+@register(outgoing=True, pattern='^D(?: |$)(.*)')
+async def typewriter(typew):
+    typew.pattern_match.group(1)
+    await typew.edit("BISMILLAH DAPET KAMU..")
+
+
 CMD_HELP.update({
     "salam":
     "P\
 \nUsage: Untuk Memberi salam.\
 \n\nL\
-\nUsage: Untuk Menjawab Salam."
+\nUsage: Untuk Menjawab Salam.\
+\n\nS\
+\nUsage: Cari Sleepcall.\
+\n\nD\
+\nUsage: Dapet Kamu."
 })
 
 
