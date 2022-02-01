@@ -1,4 +1,3 @@
-
 # Sky Not
 # by @Zxyune
 # FROM Skyla-Userbot <https://github.com/SkylaIND/Skyla-Userbot>
