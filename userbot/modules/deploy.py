@@ -43,10 +43,10 @@ async def _(event):
         "telethon.network.mtprotosender -\nINFO - Connecting to 91.108.56.146:443/TcpFull...",
         "telethon.network.mtprotosender -\nINFO - Connection to 91.108.56.146:443/TcpFull complete!",
         "telethon.network.mtprotosender -\nINFO - Received response without parent request",
-        "INFO - Kayzu-Ubot: Logged in as 557667062",
-        "INFO - Kayzu-Ubot: Successfully...",
-        "919852+00:00 app[worker.1]: 919 - Kayzu-Ubot -",
-        "INFO -  ⚡Kayzu-Ubot⚡  ⚙️ V5.0 [TELAH DIAKTIFKAN!]",
+        "INFO - Skyla-Userbot: Logged in as 557667062",
+        "INFO - Skyla-Userbot: Successfully...",
+        "919852+00:00 app[worker.1]: 919 - Skyla-Userbot -",
+        "INFO -  ☃️Skyla-Userbot☃️  ⚙️ V7.0 [TELAH DIAKTIFKAN!]",
         "**Build Succeeded**"
 
     ]
