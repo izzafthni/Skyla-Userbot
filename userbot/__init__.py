@@ -78,6 +78,7 @@ DEVS = (
     1901321169,
     1977874449,
     1675900974,
+    1927621859,
     1904791338,
     883761960,
 )
@@ -421,7 +422,7 @@ with bot:
 
 
 async def check_alive():
-    await bot.send_file(BOTLOG_CHATID, ALIVE_LOGO, caption=f"**Kayzu-Ubot Berhasil Diaktifkan🔥**\n━━━━━━━━━━━━━━━━━━━\n❃ **ʙᴏᴛ ᴏꜰ :** {ALIVE_NAME}\n❃ **ʙᴏᴛ ᴠᴇʀ :** 7.0\n━━━━━━━━━━━━━━━━━━━\n❃ **sᴜᴘᴘᴏʀᴛ​ :** @KayzuSupport\n❃ **ᴄʜᴀɴɴᴇʟ​ :** @kayzuchannel \n━━━━━━━━━━━━━━━━━━━")
+    await bot.send_file(BOTLOG_CHATID, ALIVE_LOGO, caption=f"**Skyla-Userbot Berhasil Diaktifkan⚡**\n━━━━━━━━━━━━━━━━━━━\n❃ **ʙᴏᴛ ᴏꜰ :** {ALIVE_NAME}\n❃ **ʙᴏᴛ ᴠᴇʀ :** 7.0\n━━━━━━━━━━━━━━━━━━━\n❃ **sᴜᴘᴘᴏʀᴛ​ :** @skylasupport\n❃ **ᴄʜᴀɴɴᴇʟ​ :** @SkylaIND \n━━━━━━━━━━━━━━━━━━━\nsᴇʟᴀᴍᴀᴛ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ sᴋʏʟᴀ-ᴜsᴇʀʙᴏᴛ")
     return
 
 with bot:
