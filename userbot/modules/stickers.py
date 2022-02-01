@@ -25,8 +25,8 @@ from userbot import bot
 from userbot.events import register
 
 KANGING_STR = [
-    "Aku minta tikel mu ya 😙",
-    "Tikel siapa si ini emeusssshh aku minta ya 🥺",
+    "Sticker nya terlalu bagus",
+    "Untuk aku yang mudah candu, minta yaa😝",
 ]
 
 
@@ -176,7 +176,7 @@ async def kang(args):
                         return await args.edit(
                             "`Sticker telah dibuat ke pack baru !"
                             "\nIni Pack Yang Baru Saja Anda Buat !"
-                            f"\nTekan [⚡Klik Disini⚡](t.me/addstickers/{packname}) Untuk Melihat Sticker Anda",
+                            f"\nTekan [☃️Klik Disini☃️](t.me/addstickers/{packname}) Untuk Melihat Sticker Anda",
                             parse_mode="md",
                         )
                 if is_anim:
@@ -243,7 +243,7 @@ async def kang(args):
                 await bot.send_read_acknowledge(conv.chat_id)
 
         await args.edit(
-            f"**Sticker Berhasil Ditambahkan**\n      **>>> [Tekan Disini](t.me/addstickers/{packname}) <<<**\n**Untuk Melihat Sticker Anda**",
+            f"**Sticker Berhasil Ditambahkan**\n      **>>> [☃️Tekan Disini☃️](t.me/addstickers/{packname}) <<<**\n**Untuk Melihat Sticker Anda**",
             parse_mode="md",
         )
 
