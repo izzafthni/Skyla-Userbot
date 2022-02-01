@@ -248,13 +248,12 @@ async def amireallyalive(alive):
         f"┃✥ **GitHub   :** [𝗨𝗦𝗘𝗥𝗕𝗢𝗧](https://github.com/SkylaIND/Skyla-Userbot) \n"
         f"┃✥ **Owner    :** [𝗦𝗞𝗬𝗟𝗔](https://t.me/Zxyune) \n"
         f"┃✥ **support  :** [𝗚𝗥𝗢𝗨𝗣](https://t.me/skylasupport) \n"
-        f"╰✠╼━━━━━━━━━━━━━━━✠╯"
-        )
+        f"╰✠╼━━━━━━━━━━━━━━━✠╯")
     if ALIVE_LOGO:
         try:
-            logo=ALIVE_LOGO
+            logo = ALIVE_LOGO
             await alive.delete()
-            msg=await bot.send_file(alive.chat_id, logo, caption=output)
+            msg = await bot.send_file(alive.chat_id, logo, caption=output)
             await asyncio.sleep(200)
             await msg.delete()
         except BaseException:
@@ -274,7 +273,7 @@ async def amireallyalive(alive):
 async def amireallyalive(alive):
     await bot.get_me()
     await get_readable_time((time.time() - StartTime))
-    output=(
+    output = (
         f"╔═══════▣◎▣════════╗ \n"
         f"➤ 🤴 • `ᴏᴡɴᴇʀ :`{DEFAULTUSER}             ㅤ \n"
         f"➤ 🖥️ • `ꜱʏꜱᴛᴇᴍ. :`Ubuntu 20.10            \n"
@@ -284,12 +283,12 @@ async def amireallyalive(alive):
         f"➤ 📂 • `ᴍᴏᴅᴜʟᴇ :`{len(modules)} ㅤㅤㅤㅤㅤㅤㅤ   \n"
         f"╚═══════▣◎▣════════╝  \n"
         f"[ᴅᴇᴘʟᴏʏ](https://t.me/skylasupport) | [ᴄʜᴀɴɴᴇʟ](https://t.me/SkylaIND) | [ɪɴsᴛᴀɢʀᴀᴍ](https://instagram.com/ikyxyzu)"
-        )
+    )
     if ALIVE_LOGO:
         try:
-            logo=ALIVE_LOGO
+            logo = ALIVE_LOGO
             await alive.delete()
-            msg=await bot.send_file(alive.chat_id, logo, caption=output)
+            msg = await bot.send_file(alive.chat_id, logo, caption=output)
             await asyncio.sleep(200)
             await msg.delete()
         except BaseException:
@@ -307,7 +306,7 @@ async def amireallyalive(alive):
 
 @ register(outgoing=True, pattern=r"^\.(?:alive|on)\s?(.)?")
 async def redis(alive):
-    user=await bot.get_me()
+    user = await bot.get_me()
     await get_readable_time((time.time() - StartTime))
     await alive.edit("__Skyla-Userbot.__")
     await alive.edit("__Sedang Memuat..__")
@@ -318,7 +317,7 @@ async def redis(alive):
     await alive.edit("__SKYLA ALIVE...__")
     await alive.edit("🐣")
     await asyncio.sleep(2)
-    output=(
+    output = (
         f"☃️Sᴋʏʟᴀ - Usᴇʀʙᴏᴛ☃️\n\n"
         f"\n__**{SKYLA_TEKS_KUSTOM}**__\n\n\n"
         f"╭✠╼━━━━━━━━━━━━━━✠╮\n"
@@ -330,12 +329,12 @@ async def redis(alive):
         f"╰┈➤ **Modules**  : `{len(modules)}` \n"
         f"╰✠╼━━━━━━━━━━━━━━✠╯\n"
         f"[ɢʀᴏᴜᴘꜱ](https://t.me/skylasupport) | [ʙᴏᴛᴏꜰ](https://t.me/{user.username}) | [ɢɪᴛʜᴜʙ](https://github.com/SkylaIND/Skyla-Userbot)"
-        )
+    )
     if ALIVE_LOGO:
         try:
-            logo=ALIVE_LOGO
+            logo = ALIVE_LOGO
             await alive.delete()
-            msg=await bot.send_file(alive.chat_id, logo, caption=output)
+            msg = await bot.send_file(alive.chat_id, logo, caption=output)
             await asyncio.sleep(500)
             await msg.delete()
         except BaseException:
@@ -354,20 +353,20 @@ async def redis(alive):
 @ register(outgoing=True, pattern="^.aliveu")
 async def amireallyaliveuser(username):
     """ For .aliveu command, change the username in the .alive command. """
-    message=username.text
-    output=".aliveu [new username] tidak boleh kosong"
+    message = username.text
+    output = ".aliveu [new username] tidak boleh kosong"
     if not (message == ".aliveu" and message[7:8] != " "):
-        newuser=message[8:]
+        newuser = message[8:]
         global DEFAULTUSER  # global statement
-        DEFAULTUSER=username
-        output="Successfully changed user to " + newuser + "!"
+        DEFAULTUSER = username
+        output = "Successfully changed user to " + newuser + "!"
     await username.edit("`" f"{output}" "`")
 
 
 @ register(outgoing=True, pattern=r"^\.resetalive$")
 async def amireallyalivereset(ureset):
     global DEFAULTUSER  # global statement
-    DEFAULTUSER=str(ALIVE_NAME) if ALIVE_NAME else uname().node
+    DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
     await ureset.edit("`" "Successfully reset user for alive!" "`")
 
 
