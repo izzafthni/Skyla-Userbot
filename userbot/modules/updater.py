@@ -2,9 +2,9 @@
 This module updates the userbot based on upstream revision
 """
 
-from os import remove, execle, path, environ
 import asyncio
 import sys
+from os import environ, execle, path, remove
 
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
@@ -15,12 +15,14 @@ from userbot import (
     CMD_HELP,
     HEROKU_API_KEY,
     HEROKU_APP_NAME,
+    UPSTREAM_REPO_BRANCH,
     UPSTREAM_REPO_URL,
-    UPSTREAM_REPO_BRANCH)
+)
 from userbot.events import register
 
 requirements_path = path.join(
-    path.dirname(path.dirname(path.dirname(__file__))), 'requirements.txt')
+    path.dirname(path.dirname(path.dirname(__file__))), "requirements.txt"
+)
 
 
 async def gen_chlog(repo, diff):
@@ -57,7 +59,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         if HEROKU_APP_NAME is None:
             await event.edit(
                 "`[HEROKU]: Harap Siapkan Variabel` **HEROKU_APP_NAME** `"
-                " untuk dapat deploy perubahan terbaru dari 🔥ҡᴀʏᴢᴜ-ᴜвσт🔥.`"
+                " untuk dapat deploy perubahan terbaru dari ☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️`"
             )
             repo.__del__()
             return
@@ -67,11 +69,11 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
                 break
         if heroku_app is None:
             await event.edit(
-                f"{txt}\n`Kredensial Heroku tidak valid untuk deploy ⚡ᴋᴀʏᴢᴜ-ᴜʙᴏᴛ⚡ dyno.`"
+                f"{txt}\n`Kredensial Heroku tidak valid untuk deploy ☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️ dyno.`"
             )
             return repo.__del__()
         await event.edit(
-            "`Heroku :` `Sedang MengUpdate`" "\n`Mohon Menunggu 5-7 Menit`"
+            "`Heroku : Sedang MengUpdate`" "\nMohon Mohon Menunggu 5-7 Menit"
         )
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
@@ -97,14 +99,14 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             return await event.delete()
         else:
             await event.edit(
-                "`🔥ҡᴀʏᴢᴜ-ᴜвσт🔥 Berhasil DiUpdate🛃,Restart Tunggu Sebentar`"
+                "`Sᴋʏʟᴀ - Usᴇʀʙᴏᴛ Berhasil DiUpdate,Restart Tunggu Sebentar`"
             )
             await asyncio.sleep(15)
             await event.delete()
 
         if BOTLOG:
             await event.client.send_message(
-                BOTLOG_CHATID, "#BOT \n" "`🔥ҡᴀʏᴢᴜ-ᴜвσт🔥 Berhasil Di Update`"
+                BOTLOG_CHATID, "#BOT \n" "`☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️ Berhasil Di Update`"
             )
 
     else:
@@ -122,9 +124,9 @@ async def update(event, repo, ups_rem, ac_br):
     except GitCommandError:
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
-    await event.edit("**🔥ҡᴀʏᴢᴜ-ᴜвσт🔥** `Berhasil Di Update!`")
+    await event.edit("**☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️** `Berhasil Di Update!`")
     await asyncio.sleep(1)
-    await event.edit("**🔥ҡᴀʏᴢᴜ-ᴜвσт🔥** `Di Restart....`")
+    await event.edit("**☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️** `Di Restart....`")
     await asyncio.sleep(1)
     await event.edit("`Mohon Menunggu Beberapa Detik.`")
     await asyncio.sleep(10)
@@ -132,7 +134,7 @@ async def update(event, repo, ups_rem, ac_br):
 
     if BOTLOG:
         await event.client.send_message(
-            BOTLOG_CHATID, "#BOT \n" "**🔥ҡᴀʏᴢᴜ-ᴜвσт🔥 Telah Di Perbarui.**"
+            BOTLOG_CHATID, "#BOT \n" "**☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️ Telah Di Perbarui.**"
         )
         await asyncio.sleep(100)
         await event.delete()
@@ -143,7 +145,7 @@ async def update(event, repo, ups_rem, ac_br):
     return
 
 
-@register(outgoing=True, pattern=r"^\.update(?: |$)(now|deploy)?")
+@register(outgoing=True, pattern=r"^.update(?: |$)(now|deploy)?")
 async def upstream(event):
     "For .update command, check if the bot is up to date, update if specified"
     await event.edit("**Mengecek Pembaruan, Silakan Menunggu....**")
@@ -195,17 +197,13 @@ async def upstream(event):
     changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
 
     if changelog == "" and force_update is False:
-        await event.edit(
-            f"\n🔥ҡᴀʏᴢᴜ-ᴜвσт🔥 Sudah Versi Terbaru || Tunggu Update Terbaru\n"
-        )
+        await event.edit(f"\n**☃️Sᴋʏʟᴀ - Usᴇʀʙᴏᴛ☃️ Sudah Versi Terbaru**\n")
         await asyncio.sleep(15)
         await event.delete()
         return repo.__del__()
 
     if conf is None and force_update is False:
-        changelog_str = (
-            f"**Pembaruan Untuk ⚡ᴋᴀʏᴢᴜ-ᴜʙᴏᴛ⚡ :\n\n⚒️ Pembaruan Data :**\n`{changelog}`"
-        )
+        changelog_str = f"**Pembaruan Untuk ☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️ :\n\n⚒️ Pembaruan Data :**\n`{changelog}`"
         if len(changelog_str) > 4096:
             await event.edit("`Changelog Terlalu Besar, Lihat File Untuk Melihatnya.`")
             file = open("output.txt", "w+")
@@ -220,7 +218,7 @@ async def upstream(event):
         else:
             await event.edit(changelog_str)
         return await event.respond(
-            "**Perintah Untuk Update, Sebagai Berikut.**\n🔰 𝘾𝙤𝙢𝙢𝙖𝙣𝙙: >`.update now` (Sementara)\n🔰 𝘾𝙤𝙢𝙢𝙖𝙣𝙙: >`.update deploy` (Permanen)\n\n__Untuk Meng Update Fitur Terbaru Dari ⚡ᴋᴀʏᴢᴜ-ᴜʙᴏᴛ⚡.__"
+            "**Perintah Untuk Update, Sebagai Berikut.**\n 𝘾𝙤𝙢𝙢𝙖𝙣𝙙: >`.update now`\n 𝘾𝙤𝙢𝙢𝙖𝙣𝙙: >`.update deploy`\n\nUntuk Meng Update Fitur Terbaru Dari **☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️**"
         )
 
     if force_update:
@@ -228,13 +226,13 @@ async def upstream(event):
             "`Sinkronisasi Paksa Ke Kode Userbot Stabil Terbaru, Harap Tunggu .....`"
         )
     else:
-        await event.edit("` Proses Update 🔥ҡᴀʏᴢᴜ-ᴜвσт🔥, Loading....1%`")
-        await event.edit("` Proses Update 🔥ҡᴀʏᴢᴜ-ᴜвσт🔥, Loading....20%`")
-        await event.edit("` Proses Update 🔥ҡᴀʏᴢᴜ-ᴜвσт🔥, Loading....35%`")
-        await event.edit("` Proses Update 🔥ҡᴀʏᴢᴜ-ᴜвσт🔥, Loading....77%`")
-        await event.edit("` Proses Update 🔥ҡᴀʏᴢᴜ-ᴜвσт🔥, Updating...90%`")
+        await event.edit("` Proses Update ☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️, Loading....1%`")
+        await event.edit("` Proses Update ☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️, Loading....20%`")
+        await event.edit("` Proses Update ☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️, Loading....35%`")
+        await event.edit("` Proses Update ☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️, Loading....77%`")
+        await event.edit("` Proses Update ☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️, Updating...90%`")
         await event.edit(
-            "` Proses Update 🔥ҡᴀʏᴢᴜ-ᴜвσт🔥, Mohon Tunggu Sebentar....100%`"
+            "` Proses Update ☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️, Mohon Tunggu Sebentar....100%`"
         )
 
     if conf == "now":
@@ -250,11 +248,11 @@ async def upstream(event):
 
 CMD_HELP.update(
     {
-        "update": "𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `Update`"
-        "\n• : Untuk Melihat Pembaruan Terbaru Kayzu-Ubot."
-        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `Update now`"
-        "\n• : Memperbarui Kayzu-Ubot."
-        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `Update deploy`"
-        "\n• : Memperbarui Kayzu-Ubot Dengan Cara Men-Deploy Ulang."
+        "update": "𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.update`"
+        "\n• : Untuk Melihat Pembaruan Terbaru Skyla-Userbot."
+        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.update now`"
+        "\n• : Memperbarui Skyla-Userbot."
+        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.update deploy`"
+        "\n• : Memperbarui Skyla-Userbot Dengan Cara Men-Deploy Ulang."
     }
 )
