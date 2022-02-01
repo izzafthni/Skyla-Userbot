@@ -27,7 +27,7 @@ async def typewriter(typew):
     await typew.edit("**jika cowo nya aku, cewe nya kamu**")
 
 
-#gombal
+# gombal
 
 
 @register(outgoing=True, pattern="^.jk(?: |$)(.*)")
@@ -46,7 +46,6 @@ async def typewriter(typew):
     sleep(1)
     await typew.edit("**Eaaaaa bisaa aja kamuuu...**")
 
-    
 
 # Create by myself @localheart
 
