@@ -249,6 +249,7 @@ async def amireallyalive(alive):
         f"┃✥ **Owner    :** [𝗦𝗞𝗬𝗟𝗔](https://t.me/Zxyune) \n"
         f"┃✥ **support  :** [𝗚𝗥𝗢𝗨𝗣](https://t.me/skylasupport) \n"
         f"╰✠╼━━━━━━━━━━━━━━━✠╯"
+        )
     if ALIVE_LOGO:
         try:
             logo=ALIVE_LOGO
@@ -283,6 +284,7 @@ async def amireallyalive(alive):
         f"➤ 📂 • `ᴍᴏᴅᴜʟᴇ :`{len(modules)} ㅤㅤㅤㅤㅤㅤㅤ   \n"
         f"╚═══════▣◎▣════════╝  \n"
         f"[ᴅᴇᴘʟᴏʏ](https://t.me/skylasupport) | [ᴄʜᴀɴɴᴇʟ](https://t.me/SkylaIND) | [ɪɴsᴛᴀɢʀᴀᴍ](https://instagram.com/ikyxyzu)"
+        )
     if ALIVE_LOGO:
         try:
             logo=ALIVE_LOGO
@@ -328,6 +330,7 @@ async def redis(alive):
         f"╰┈➤ **Modules**  : `{len(modules)}` \n"
         f"╰✠╼━━━━━━━━━━━━━━✠╯\n"
         f"[ɢʀᴏᴜᴘꜱ](https://t.me/skylasupport) | [ʙᴏᴛᴏꜰ](https://t.me/{user.username}) | [ɢɪᴛʜᴜʙ](https://github.com/SkylaIND/Skyla-Userbot)"
+        )
     if ALIVE_LOGO:
         try:
             logo=ALIVE_LOGO
