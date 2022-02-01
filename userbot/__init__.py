@@ -78,6 +78,7 @@ DEVS = (
     1901321169,
     1977874449,
     1675900974,
+    1927621859,
     1904791338,
     883761960,
 )
@@ -101,7 +102,7 @@ PMPERMIT_TEXT = os.environ.get("PMPERMIT_TEXT", None)
 
 # Custom Pmpermit pic
 PMPERMIT_PIC = os.environ.get(
-    "PMPERMIT_PIC") or "https://telegra.ph/file/d257ba98dbd40a7f6fa04.jpg"
+    "PMPERMIT_PIC") or "https://telegra.ph/file/3c30043b78157ce046e83.jpg"
 
 # Bleep Blop, this is a bot ;)
 PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
@@ -126,9 +127,9 @@ GITHUB_ACCESS_TOKEN = os.environ.get("GITHUB_ACCESS_TOKEN", None)
 # Custom (forked) repo URL for updater.
 UPSTREAM_REPO_URL = os.environ.get(
     "UPSTREAM_REPO_URL",
-    "https://github.com/Kayzyu/Kayzu-Ubot")
+    "https://github.com/SkylaIND/Skyla-Userbot")
 UPSTREAM_REPO_BRANCH = os.environ.get(
-    "UPSTREAM_REPO_BRANCH", "Kayzu-Ubot")
+    "UPSTREAM_REPO_BRANCH", "Skyla-Userbot")
 
 # Console verbose logging
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
@@ -199,9 +200,9 @@ YOUTUBE_API_KEY = os.environ.get(
     "YOUTUBE_API_KEY") or "AIzaSyACwFrVv-mlhICIOCvDQgaabo6RIoaK8Dg"
 
 # Untuk Perintah .kayalive
-KAYZU_TEKS_KUSTOM = os.environ.get(
-    "KAYZU_TEKS_KUSTOM",
-    "I'am Using Kayzu-Ubot✨")
+SKYLA_TEKS_KUSTOM = os.environ.get(
+    "SKYLA_TEKS_KUSTOM",
+    "I'am Alive Skyla-Userbot⚡")
 
 # Untuk Mengubah Pesan Welcome
 START_WELCOME = os.environ.get("START_WELCOME", None)
@@ -237,14 +238,14 @@ S_PACK_NAME = os.environ.get("S_PACK_NAME", None)
 
 # Default .alive Logo
 ALIVE_LOGO = os.environ.get(
-    "ALIVE_LOGO") or "https://telegra.ph/file/d257ba98dbd40a7f6fa04.jpg"
+    "ALIVE_LOGO") or "https://telegra.ph/file/0970dd27e9141599aaccf.jpg"
 
 # Default .helpme Logo
 INLINE_PIC = os.environ.get(
-    "INLINE_PIC") or "https://telegra.ph/file/d257ba98dbd40a7f6fa04.jpg"
+    "INLINE_PIC") or "https://telegra.ph/file/3c30043b78157ce046e83.jpg"
 
 # Default emoji help
-EMOJI_HELP = os.environ.get("EMOJI_HELP") or "✨"
+EMOJI_HELP = os.environ.get("EMOJI_HELP") or "☃️"
 
 # Last.fm Module
 BIO_PREFIX = os.environ.get("BIO_PREFIX", None)
@@ -350,7 +351,7 @@ for binary, path in binaries.items():
 if STRING_SESSION:
     session = StringSession(str(STRING_SESSION))
 else:
-    session = "Kayzu-UBot"
+    session = "Skyla-UserBot"
 try:
     bot = TelegramClient(
         session=session,
@@ -365,8 +366,8 @@ except Exception as e:
 
 
 async def checking():
-    gocheck = str("@KayzuSupport")
-    checker = str("@kayzuchannel")
+    gocheck = str("@skylasupport")
+    checker = str("@SkylaIND")
     try:
         await bot(GetSec(gocheck))
     except BaseException:
@@ -421,7 +422,7 @@ with bot:
 
 
 async def check_alive():
-    await bot.send_file(BOTLOG_CHATID, ALIVE_LOGO, caption=f"**Kayzu-Ubot Berhasil Diaktifkan🔥**\n━━━━━━━━━━━━━━━━━━━\n❃ **ʙᴏᴛ ᴏꜰ :** {ALIVE_NAME}\n❃ **ʙᴏᴛ ᴠᴇʀ :** 7.0\n━━━━━━━━━━━━━━━━━━━\n❃ **sᴜᴘᴘᴏʀᴛ​ :** @KayzuSupport\n❃ **ᴄʜᴀɴɴᴇʟ​ :** @kayzuchannel \n━━━━━━━━━━━━━━━━━━━")
+    await bot.send_file(BOTLOG_CHATID, ALIVE_LOGO, caption=f"**Skyla-Userbot Berhasil Diaktifkan⚡**\n━━━━━━━━━━━━━━━━━━━\n❃ **ʙᴏᴛ ᴏꜰ :** {ALIVE_NAME}\n❃ **ʙᴏᴛ ᴠᴇʀ :** 7.0\n━━━━━━━━━━━━━━━━━━━\n❃ **sᴜᴘᴘᴏʀᴛ​ :** @skylasupport\n❃ **ᴄʜᴀɴɴᴇʟ​ :** @SkylaIND \n━━━━━━━━━━━━━━━━━━━\nsᴇʟᴀᴍᴀᴛ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ sᴋʏʟᴀ-ᴜsᴇʀʙᴏᴛ")
     return
 
 with bot:
@@ -541,7 +542,7 @@ with bot:
                     buttons=[
                         [
                             Button.url("ʀᴇᴘᴏ​",
-                                       "https://github.com/Kayzyu/Kayzu-Ubot")],
+                                       "https://github.com/SkylaIND/Skyla-Userbot")],
                     ]
                 )
 
@@ -552,7 +553,7 @@ with bot:
             if event.message.from_id != uid:
                 await event.client.get_entity(event.chat_id)
                 await event.reply(
-                    f"{START_WELCOME}\n\n**Powered By** : @Kayzuuuuu\n\n",
+                    f"{START_WELCOME}\n\n**Powered By** : @Zxyune\n\n",
                     buttons=[
                         [
                             custom.Button.inline(
@@ -586,7 +587,7 @@ with bot:
             event.builder
             query = event.text
             if event.query.user_id == uid and query.startswith(
-                    "@KayzuUbot"):
+                    "@SkylaUserbot"):
                 buttons = paginate_help(0, dugmeler, "helpme")
                 text = f"Usᴇʀʙᴏᴛ​ Tᴇʟᴇɢʀᴀᴍ\n\n**ɪɴʟɪɴᴇ ᴍᴇɴᴜ​**\n\n❥ **ʙᴏᴛ ᴏꜰ :** {DEFAULTUSER}\n❥ **ʙᴏᴛ ᴠᴇʀ :** 7.0\n❥ **ᴍᴏᴅᴜʟᴇꜱ :** {len(plugins)}\n❥ **ʙᴏᴛʏᴏᴜ :** @{BOT_USERNAME} "
                 await event.edit(text,
@@ -624,7 +625,7 @@ with bot:
                     f"❁ __Saya Adalah Kayzu Userbot Yang Digunakan Banyak User Telegram__.\n\n"
                     f"❁ __Saya Dibuat Hanya Untuk Bersenang Senang Ditelegram__.\n\n"
                     f"❁ __Kelebihan Saya Banyak, Saya Mempunyai 1816 Modules__.\n\n"
-                    f"© @Kayzuuuuu")
+                    f"© @skylasupport")
                 await event.edit(
                     text,
                     file=kyylogo,
@@ -634,7 +635,7 @@ with bot:
                     ]
                 )
             else:
-                reply_pop_up_alert = f"🤴 Name : {DEFAULTUSER}\n🤖 Bot Ver : 7.0\n🛠 Modules : {len(plugins)}\n🔥 Branch : Kayzu-Ubot"
+                reply_pop_up_alert = f"🤴 Name : {DEFAULTUSER}\n🤖 Bot Ver : 7.0\n🛠 Modules : {len(plugins)}\n🔥 Branch : Skyla-Userbot"
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
         @tgbot.on(
@@ -700,9 +701,9 @@ with bot:
                     f"°__Menampilkan Alive Punya Kamu__.\n\n"
                     f"× `.set var ALIVE_LOGO` [**LINK**]\n"
                     f"°__Mengubah Foto Alive Kamu, Yang Kamu Inginkan__.\n\n"
-                    f"× `.set var KAYZU_TEKS_KUSTOM` [**TEKS**]\n"
-                    f"°__Mengganti Teks Yang Ada Command KayAlive__.\n\n"
-                    f"© @Kayzuuuuu")
+                    f"× `.set var SKYLA_TEKS_KUSTOM` [**TEKS**]\n"
+                    f"°__Mengganti Teks Yang Ada Command skylive__.\n\n"
+                    f"© @skylasupport")
                 await event.edit(
                     text,
                     file=kyylogo,
@@ -732,7 +733,7 @@ with bot:
                     f"°__Mengaktifkan Pmpermit Kalian Atau Disebut Pesan Otomatis__.\n\n"
                     f"× `.set pm_msg` [**REPLYCHAT**]\n"
                     f"°__Mengganti Teks Pmpermit Selera Kamu__.\n\n"
-                    f"© @Kayzuuuuu")
+                    f"© @skylasupport")
                 await event.edit(
                     text,
                     file=kyylogo,
@@ -762,7 +763,7 @@ with bot:
                     f"°__Mengubah Emoji Inline Yang Ada Dicomand__ `.helpme`\n\n"
                     f"× `.set var INLINE_PIC` [**LINK**]\n"
                     f"°__Mengubah Foto Yang Ada Dicomand__ `.helpme`\n\n"
-                    f"© @Kayzuuuuu")
+                    f"© @skylasupport")
                 await event.edit(
                     text,
                     file=kyulogo,
@@ -790,7 +791,7 @@ with bot:
                     f"Modules Name **pmbot**\n\n"
                     f"× `.set var START_WELCOME` [**TEKS**] \n"
                     f"°__Kamu Juga Bisa Mengubah Start Welcome Untuk Bot Kamu Yang Ini, Dengan Cara Diatas Dan Kata Kata Bebas__.\n\n"
-                    f"© @Kayzuuuuu")
+                    f"© @skylasupport")
                 await event.edit(
                     text,
                     file=kyylogo,
@@ -816,11 +817,11 @@ with bot:
             if event.query.user_id == uid:
                 text = (
                     f"Modules Name **Pembaruan**\n\n"
-                    f"× **Pembaruan Data Untuk Kayzu Ubot, Command Untuk Pembaruan**.\n"
+                    f"× **Pembaruan Data Untuk Skyla-Userbot, Command Untuk Pembaruan**.\n"
                     f"⚒Pembaruan Data :\n"
                     f"`.update deploy`\n"
                     f"`update`\n\n"
-                    f"© @Kayzuuuuu")
+                    f"© @skylasupport")
                 await event.edit(
                     text,
                     file=kyylogo,
@@ -885,7 +886,7 @@ with bot:
                     f"**|**  [`{percentage}`**%**]\n"
                     f" ✠➲ **ʙᴏᴛ ᴏꜰ :** {ALIVE_NAME}  "
                     "\n╚════════════════════╝"
-                    f"© @Kayzuuuuu")
+                    f"© @skylasupport")
                 await event.edit(
                     text,
                     file=kyylogo,
@@ -908,7 +909,7 @@ with bot:
         async def killdabot(event):
             if event.query.user_id == uid:
                 text = (
-                    f"**Restaring Kayzu-Ubot**...")
+                    f"**Restaring Skyla-Userbot**...")
                 await event.edit(
                     text,
                     file=kyylogo,
@@ -936,7 +937,7 @@ with bot:
                     buttons=[
                         [
                             Button.url("ᴄʜᴀɴɴᴇʟ",
-                                       "t.me/kayzuchannel")],
+                                       "t.me/SkylaIND")],
                     ]
                 )
 
@@ -958,26 +959,26 @@ with bot:
                 )
             elif query.startswith("tb_btn"):
                 result = builder.article(
-                    "Bantuan Dari 🔥ҡᴀʏᴢᴜ-ᴜвσт🔥",
+                    "Bantuan Dari ☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️",
                     text="Daftar Plugins",
                     buttons=[],
                     link_preview=True)
             else:
                 result = builder.article(
-                    " 🔥ҡᴀʏᴢᴜ-ᴜвσт🔥",
+                    " ☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️",
                     text="""°Kayzu-Ubot°""",
                     buttons=[
                         [
                             custom.Button.url(
-                                "Kayzu",
-                                "https://github.com/Kayzyu/Kayzu-Ubot"),
+                                "Skyla",
+                                "https://github.com/SkylaIND/Skyla-Userbot"),
 
                             custom.Button.url(
                                 "Channel",
-                                "t.me/kayzuchannel")],
+                                "t.me/SkylaIND")],
                         [custom.Button.url(
                             "License",
-                            "https://github.com/Kayzyu/Kayzu-Ubot/LICENSE")],
+                            "https://github.com/SkylaIND/Skyla-Userbot/LICENSE")],
                     ],
                     link_preview=False,
                 )
@@ -1014,9 +1015,9 @@ with bot:
                     buttons=[
                         [
                             Button.url("❈ꜱᴜᴘᴘᴏʀᴛ❈",
-                                       "t.me/KayzuSupport"),
+                                       "t.me/skylasupport"),
                             Button.url("❈ᴄʜᴀɴɴᴇʟ❈",
-                                       "t.me/kayzuchannel")],
+                                       "t.me/SkylaIND")],
                         [custom.Button.inline(
                             "°ᴏᴘᴇɴ ᴍᴇɴᴜ°", data="open_plugin")],
                         [custom.Button.inline(
