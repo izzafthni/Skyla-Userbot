@@ -76,6 +76,10 @@
     "BOT_USERNAME": {
       "description": "Username Bot Kamu Di @BotFather, Tanpa @",
       "required": false
+    },
+    "S_PACK_NAME": {
+      "description": "Sesuaikan nama pack sticker mu",
+      "required": false
     }
   },
   "addons": [
