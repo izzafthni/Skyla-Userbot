@@ -7,26 +7,26 @@
 
 
 import asyncio
-from asyncio import create_subprocess_exec as asyncrunapp
-from asyncio.subprocess import PIPE as asyncPIPE
-from platform import python_version, uname
-from shutil import which
-
-from os import remove
-from telethon import __version__, version
 import platform
 import sys
 import time
+from asyncio import create_subprocess_exec as asyncrunapp
+from asyncio.subprocess import PIPE as asyncPIPE
 from datetime import datetime
+from os import remove
+from platform import python_version, uname
+from shutil import which
+
 import psutil
+from telethon import __version__, version
 
 from userbot import (
     ALIVE_LOGO,
     ALIVE_NAME,
     BOT_VER,
     CMD_HELP,
-    StartTime,
     UPSTREAM_REPO_BRANCH,
+    StartTime,
     bot,
 )
 from userbot.events import register
@@ -47,9 +47,7 @@ async def get_readable_time(seconds: int) -> str:
 
     while count < 4:
         count += 1
-        remainder, result = divmod(
-            seconds, 60) if count < 3 else divmod(
-            seconds, 24)
+        remainder, result = divmod(seconds, 60) if count < 3 else divmod(seconds, 24)
         if seconds == 0 and remainder == 0:
             break
         time_list.append(int(result))
@@ -81,10 +79,8 @@ async def psu(event):
     softw += f"`Waktu Hidup: {bt.day}/{bt.month}/{bt.year}  {bt.hour}:{bt.minute}:{bt.second}`\n"
     # CPU Cores
     cpuu = "**Informasi CPU**\n"
-    cpuu += "`Physical cores   : " + \
-        str(psutil.cpu_count(logical=False)) + "`\n"
-    cpuu += "`Total cores      : " + \
-        str(psutil.cpu_count(logical=True)) + "`\n"
+    cpuu += "`Physical cores   : " + str(psutil.cpu_count(logical=False)) + "`\n"
+    cpuu += "`Total cores      : " + str(psutil.cpu_count(logical=True)) + "`\n"
     # CPU frequencies
     cpufreq = psutil.cpu_freq()
     cpuu += f"`Max Frequency    : {cpufreq.max:.2f}Mhz`\n"
@@ -137,8 +133,7 @@ async def sysdetails(sysd):
             )
 
             stdout, stderr = await fetch.communicate()
-            result = str(stdout.decode().strip()) + \
-                str(stderr.decode().strip())
+            result = str(stdout.decode().strip()) + str(stderr.decode().strip())
 
             await sysd.edit("`" + result + "`")
         except FileNotFoundError:
@@ -173,8 +168,8 @@ async def bot_ver(event):
         revout = str(stdout.decode().strip()) + str(stderr.decode().strip())
 
         await event.edit(
-            "**⚜-**🔥ҡᴀʏᴢᴜ-ᴜвσт🔥 Versi:** \n "
-            f"heads/Kayzu-Ubot-0-x634i7u1"
+            "**⚜-**☃️Skyla-Userbot☃️ Versi:** \n "
+            f"heads/Skyla-Userbot-0-x634i7u1"
             "\n**⚜-**Revisi:**\n "
             f"{revout}"
         )
@@ -232,22 +227,23 @@ async def pipcheck(pip):
         await pip.edit("Gunakan `.help pip` Untuk Melihat Contoh")
 
 
-@register(outgoing=True, pattern=r"^\.(?:kayzualive)\s?(.)?")
+@register(outgoing=True, pattern=r"^\.(?:skyalive|on)\s?(.)?")
 async def amireallyalive(alive):
     user = await bot.get_me()
     await get_readable_time((time.time() - StartTime))
     output = (
-        f" **🔥ҡᴀʏᴢᴜ-ᴜвσт🔥** \n\n"
-        f"\n__**{KAYZU_TEKS_KUSTOM}**__\n\n\n"
-        f"╭✠╼━━━━━━━━━━━━━━━✠╮\n"
-        f"◙ `Name       :` {DEFAULTUSER} \n"
-        f"◙ `Username   :` @{user.username} \n"
-        f"◙ `Telethon   :` {version.__version__} \n"
-        f"◙ `Python     :` {python_version()} \n"
-        f"◙ `Bot Ver    :` {BOT_VER} \n"
-        f"◙ `Modules    :` {len(modules)} \n"
-        f"╰✠╼━━━━━━━━━━━━━━━✠╯\n"
-        f"[ɢʀᴏᴜᴘꜱ](https://t.me/KayzuSupport) | [ᴄʜᴀɴɴᴇʟ](t.me/kayzuchannel) | [ᴏᴡɴᴇʀ](https://t.me/Kayzuuuuu) | [ɢɪᴛʜᴜʙ](https://github.com/Kayzyu/Kayzu-Ubot)")
+        f"☃️Sᴋʏʟᴀ - Usᴇʀʙᴏᴛ☃️\n\n"
+        f"\n__**{SKYLA_TEKS_KUSTOM}**__\n\n\n"
+        f"╭✠╼━━━━━━━━━━━━━━✠╮\n"
+        f" **Name** : `{DEFAULTUSER}` \n"
+        f"╰┈➤ **Username** : @{user.username} \n"
+        f"╰┈➤ **Telethon** : `{version.__version__}` \n"
+        f"╰┈➤ **Python**   : `{python_version()}` \n"
+        f"╰┈➤ **Bot Ver**  : `{BOT_VER}` \n"
+        f"╰┈➤ **Modules**  : `{len(modules)}` \n"
+        f"╰✠╼━━━━━━━━━━━━━━✠╯\n"
+        f"[ɢʀᴏᴜᴘꜱ](https://t.me/skylasupport) | [ʙᴏᴛᴏꜰ](https://t.me/{user.username}) | [ɢɪᴛʜᴜʙ](https://github.com/Cangcimenn/Skyla-Userbot)"
+    )
     if ALIVE_LOGO:
         try:
             logo = ALIVE_LOGO
@@ -268,19 +264,20 @@ async def amireallyalive(alive):
         await alive.delete()
 
 
-@register(outgoing=True, pattern=r"^\.(?:kayon)\s?(.)?")
+@register(outgoing=True, pattern=r"^\.(?:skylaon)\s?(.)?")
 async def amireallyalive(alive):
     await bot.get_me()
     await get_readable_time((time.time() - StartTime))
     output = (
-        f"●▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬● \n"
-        f"✾ 🤴 • `ᴏᴡɴᴇʀ    :`[Kayzu](t.me/Kayzuuuuu) \n"
-        f"✾ 🖥️ • `ꜱʏꜱᴛᴇᴍ   :`Ubuntu 20.10 \n"
-        f"✾ ⚙️ • `ᴛᴇʟᴇᴛʜᴏɴ :`v.{version.__version__} \n"
-        f"✾ 🐍 • `ᴘʏᴛʜᴏɴ   :`v.{python_version()} \n"
-        f"✾ 👾 • `ʙᴏᴛ      :`v.{BOT_VER} \n"
-        f"✾ 📂 • `ᴍᴏᴅᴜʟᴇ   :`{len(modules)} \n"
-        f"●▬▬▬▬▬▬ஜ۩۞۩ஜ▬▬▬▬▬▬●")
+        f"╔═══════▣◎▣════════╗ \n"
+        f"➤ 🤴 • `ᴏᴡɴᴇʀ :`{DEFAULTUSER}             ㅤ \n"
+        f"➤ 🖥️ • `ꜱʏꜱᴛᴇᴍ. :`Ubuntu 20.10            \n"
+        f"➤ ⚙️ • `ᴛᴇʟᴇᴛʜᴏɴ :`v.{version.__version__}                ㅤㅤ  \n"
+        f"➤ 🐍 • `ᴘʏᴛʜᴏɴ. :`v.{python_version()} ㅤㅤ\n"
+        f"➤ 👾 • `ʙᴏᴛ :`v.{BOT_VER}                ㅤㅤㅤ \n"
+        f"➤ 📂 • `ᴍᴏᴅᴜʟᴇ :`{len(modules)} ㅤㅤㅤㅤㅤㅤㅤ   \n"
+        f"╚═══════▣◎▣════════╝"
+    )
     if ALIVE_LOGO:
         try:
             logo = ALIVE_LOGO
@@ -305,28 +302,29 @@ async def amireallyalive(alive):
 async def redis(alive):
     user = await bot.get_me()
     await get_readable_time((time.time() - StartTime))
-    await alive.edit("__Sedang Memuat.__")
+    await alive.edit("__Skyla Userbot.__")
     await alive.edit("__Sedang Memuat..__")
-    await alive.edit("__Sedang Memuat.__")
+    await alive.edit("__Skyla Userbot.__")
     await alive.edit("__Sedang Memuat..__")
-    await alive.edit("__Sedang Memuat...__")
+    await alive.edit("__Skyla Userbot...__")
     await alive.edit("__Sedang Memuat..__")
-    await alive.edit("__Sedang Memuat...__")
-    await alive.edit("🔥")
+    await alive.edit("__Duuaaarrrrr...__")
+    await alive.edit("🐣")
     await asyncio.sleep(2)
     output = (
-        f"┏━━━━🔥ҡᴀʏᴢᴜ-ᴜвσт🔥━━━━━ \n"
-        f"┣  `Name     :` {DEFAULTUSER} \n"
-        f"┣  `Username :` @{user.username} \n"
-        f"┣  `Telethon :` Ver {version.__version__} \n"
-        f"┣  `Python   :` Ver {python_version()} \n"
-        f"┣  `Branch   :` {UPSTREAM_REPO_BRANCH} \n"
-        f"┣  `Bot Ver  :` {BOT_VER} \n"
-        f"┣  `Modules  :` {len(modules)} Modules \n"
-        f"┣  `GitHub   :` [Kayzu](https://github.com/Kayzyu/Kayzu-Ubot) \n"
-        f"┣  `Support  :` [Groups](https://t.me/KayzuSupport) \n"
-        f"┣  `Owner    :` [Kay](https://t.me/Kayzuuuuu) \n"
-        f"┗━━━━━━━━━━━━━━━━━━━")
+        f"╭✠╼━━━━━━━━━━━━━━━✠╮\n"
+        f"┃✥ **Name     :** {DEFAULTUSER} \n"
+        f"┃✥ **Username :** @{user.username} \n"
+        f"┃✥ **Telethon :** Ver {version.__version__} \n"
+        f"┃✥ **Python   :** Ver {python_version()} \n"
+        f"┃✥ **Branch   :** {UPSTREAM_REPO_BRANCH} \n"
+        f"┃✥ **Bot Ver  :** {BOT_VER} \n"
+        f"┃✥ **Modules  :** {len(modules)} Modules \n"
+        f"┃✥ **GitHub   :** [UserBot](https://github.com/Cangcimenn/Skyla-Userbot) \n"
+        f"┃✥ **Owner    :** [Skyla](https://t.me/Zxyune) \n"
+        f"┃✥ **support  :** [groups](https://t.me/skylasupport) \n"
+        f"╰✠╼━━━━━━━━━━━━━━━✠╯"
+    )
     if ALIVE_LOGO:
         try:
             logo = ALIVE_LOGO
@@ -349,7 +347,7 @@ async def redis(alive):
 
 @register(outgoing=True, pattern="^.aliveu")
 async def amireallyaliveuser(username):
-    """ For .aliveu command, change the username in the .alive command. """
+    """For .aliveu command, change the username in the .alive command."""
     message = username.text
     output = ".aliveu [new username] tidak boleh kosong"
     if not (message == ".aliveu" and message[7:8] != " "):
@@ -367,29 +365,31 @@ async def amireallyalivereset(ureset):
     await ureset.edit("`" "Successfully reset user for alive!" "`")
 
 
-CMD_HELP.update({
-    "system":
-    "𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.sysd`"
-    "\n↳ : Shows system information using neofetch."
-    "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.db`"
-    "\n↳ : Shows database related info."
-    "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.spc`"
-    "\n↳ : Show system specification."
-})
-CMD_HELP.update({
-    "alive":
-    "𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.alive` or `.on` or `rose`"
-    "\n↳ : To see whether your bot is working or not."
-    "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.aliveu` <text>"
-    "\n↳ : Changes the 'user' in alive to the text you want."
-    "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.restalive`"
-    "\n↳ : Resets the user to default."
-})
 CMD_HELP.update(
     {
-        "botversion":
-        "𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.botver`"
+        "system": "𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.sysd`"
+        "\n↳ : Shows system information using neofetch."
+        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.db`"
+        "\n↳ : Shows database related info."
+        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.spc`"
+        "\n↳ : Show system specification."
+    }
+)
+CMD_HELP.update(
+    {
+        "alive": "𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.alive` or `.on` or `.sky`"
+        "\n↳ : To see whether your bot is working or not."
+        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.aliveu` <text>"
+        "\n↳ : Changes the 'user' in alive to the text you want."
+        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.restalive`"
+        "\n↳ : Resets the user to default."
+    }
+)
+CMD_HELP.update(
+    {
+        "botversion": "𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.botver`"
         "\n↳ : Shows the userbot version."
         "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.pip` <module(s)>"
         "\n↳ : Does a search of pip modules(s)."
-    })
+    }
+)
