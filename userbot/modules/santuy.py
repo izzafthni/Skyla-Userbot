@@ -1,6 +1,6 @@
-# ported by Skyla
-# https://github.com/SkylaIND/Skyla-Userbot
-# Hidup itu Asikin ajee gausa banyak tingkah
+# Sky Not
+# by @Zxyune
+# FROM Skyla-Userbot <https://github.com/SkylaIND/Skyla-Userbot>
 
 
 from platform import uname
