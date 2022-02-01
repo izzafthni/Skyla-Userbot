@@ -196,7 +196,8 @@ ANTI_SPAMBOT_SHOUT = sb(os.environ.get("ANTI_SPAMBOT_SHOUT", "False"))
 YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
 
 # Untuk Perintah .rosealive
-SKYLA_TEKS_KUSTOM = os.environ.get("SKYLA_TEKS_KUSTOM") or "**Hi Iam Alive...**"
+SKYLA_TEKS_KUSTOM = os.environ.get(
+    "SKYLA_TEKS_KUSTOM") or "**Hi Iam Alive...**"
 
 # Default .alive Name
 ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
