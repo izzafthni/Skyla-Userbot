@@ -73,8 +73,6 @@ async def typewriter(typew):
                      "────────────────────▓▒\n")
 
 
-
-
 @register(outgoing=True, pattern='^.lope(?: |$)(.*)')
 async def typewriter(typew):
     typew.pattern_match.group(1)
