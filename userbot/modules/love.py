@@ -6,38 +6,26 @@ from userbot import CMD_HELP
 from userbot.events import register
 
 
-@register(outgoing=True, pattern='^.skull(?: |$)(.*)')
+@register(outgoing=True, pattern='^.heart(?: |$)(.*)')
 async def typewriter(typew):
     typew.pattern_match.group(1)
-    await typew.edit("███████████████████████████\n"
-                     "███████▀▀▀░░░░░░░▀▀▀███████\n"
-                     "████▀░░░░░░░░░░░░░░░░░▀████\n"
-                     "███│░░░░░░░░░░░░░░░░░░░│███\n"
-                     "██▌│░░░░░░░░░░░░░░░░░░░│▐██\n"
-                     "██░└┐░░░░░░░░░░░░░░░░░┌┘░██\n"
-                     "██░░└┐░░░░░░░░░░░░░░░┌┘░░██\n"
-                     "██░░┌┘▄▄▄▄▄░░░░░▄▄▄▄▄└┐░░██\n"
-                     "██▌░│██████▌░░░▐██████│░▐██\n"
-                     "███░│▐███▀▀░░▄░░▀▀███▌│░███\n"
-                     "██▀─┘░░░░░░░▐█▌░░░░░░░└─▀██\n"
-                     "██▄░░░▄▄▄▓░░▀█▀░░▓▄▄▄░░░▄██\n"
-                     "████▄─┘██▌░░░░░░░▐██└─▄████\n"
-                     "█████░░▐█─┬┬┬┬┬┬┬─█▌░░█████\n"
-                     "████▌░░░▀┬┼┼┼┼┼┼┼┬▀░░░▐████\n"
-                     "█████▄░░░└┴┴┴┴┴┴┴┘░░░▄█████\n"
-                     "███████▄░░░░░░░░░░░▄███████\n"
-                     "██████████▄▄▄▄▄▄▄██████████\n"
-                     "███████████████████████████\n")
+    await typew.edit("_♥__♥_____♥__♥___ Put This\n"
+                     "_♥_____♥_♥_____♥__ Heart\n"
+                     "_♥______♥______♥__ On Your\n"
+                     "__♥_____/______♥__ Page If\n"
+                     "___♥____\_____♥___ You Had\n"
+                     "____♥___/___♥_____ Your Heart\n"
+                     "______♥_\_♥_______ Broken\n"
+                     "________♥_________…………….\n")
 
 
-@register(outgoing=True, pattern='^.wlc(?: |$)(.*)')
+@register(outgoing=True, pattern='^.lve(?: |$)(.*)')
 async def typewriter(typew):
     typew.pattern_match.group(1)
-    await typew.edit("█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\n"
-                     "█░░╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗░░█\n"
-                     "█░░║║║╠─║─║─║║║║║╠─░░█\n"
-                     "█░░╚╩╝╚╝╚╝╚╝╚╝╩─╩╚╝░░█\n"
-                     "█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\n")
+    await typew.edit("▀██▀─▄███▄─▀██─██▀██▀▀█\n"
+                     "─██─███─███─██─██─██▄█\n"
+                     "─██─▀██▄██▀─▀█▄█▀─██▀█\n"
+                     "▄██▄▄█▀▀▀─────▀──▄██▄▄█\n")
 
 
 @register(outgoing=True, pattern='^.dblove(?: |$)(.*)')
@@ -97,5 +85,5 @@ async def typewriter(typew):
 
 
 CMD_HELP.update({"animasi8":
-                 "`.skull` ; `.wlc` ; `.dblove` ; `.lope`\
+                 "`.heart` ; `.lve` ; `.dblove` ; `.lope`\
                  \nUsage: Coba Aja."})
