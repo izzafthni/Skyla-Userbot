@@ -1,7 +1,5 @@
 """ Userbot initialization. """
 
-# Ported By Sendi
-
 import logging
 import os
 import time
@@ -128,7 +126,7 @@ GITHUB_ACCESS_TOKEN = os.environ.get("GITHUB_ACCESS_TOKEN", None)
 # Custom (forked) repo URL for updater.
 UPSTREAM_REPO_URL = os.environ.get(
     "UPSTREAM_REPO_URL",
-    "https://github.com/Cangcimenn/Skyla-Userbot")
+    "https://github.com/SkylaIND/Skyla-Userbot")
 UPSTREAM_REPO_BRANCH = os.environ.get(
     "UPSTREAM_REPO_BRANCH", "Skyla-Userbot")
 
@@ -219,7 +217,7 @@ BITLY_TOKEN = os.environ.get("BITLY_TOKEN", None)
 TERM_ALIAS = os.environ.get("TERM_ALIAS", "Rose-Userboot")
 
 # Bot Version
-BOT_VER = os.environ.get("BOT_VER", "5.0")
+BOT_VER = os.environ.get("BOT_VER", "7.0")
 
 # Default .alive Username
 ALIVE_USERNAME = os.environ.get("ALIVE_USERNAME", None)
@@ -588,13 +586,13 @@ with bot:
             if event.message.from_id != uid:
                 await event.client.get_entity(event.chat_id)
                 await event.reply(
-                    f"☃️Sᴋʏʟᴀ - Usᴇʀʙᴏᴛ☃️\n",
+                    f"☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️\n",
                     buttons=[
                         [
                             Button.url("ʀᴇᴘᴏ",
-                                       "https://github.com/Cangcimenn/Skyla-Userbot"),
+                                       "https://github.com/SkylaIND/Skyla-Userbot"),
                             Button.url("ʟɪᴄᴇɴꜱᴇ",
-                                       "https://github.com/Cangcimenn/Skyla-Userbot/blob/Skyla-Userbot/LICENSE")],
+                                       "https://github.com/SkylaIND/Skyla-Userbot/blob/Skyla-Userbot/LICENSE")],
                         [Button.url("ɢʀᴏᴜᴘꜱ",
                                     "t.me/skylasupport")],
                     ]
@@ -610,7 +608,7 @@ with bot:
         async def on_plug_in_callback_query_handler(event):
             if event.query.user_id == uid:
                 buttons = paginate_help(0, dugmeler, "helpme")
-                text = f"☃️Sᴋʏʟᴀ - Usᴇʀʙᴏᴛ☃️\n\n**🄼🄰🄸🄽 🄼🄴🄽🅄**\n\n❥ **Bᴏᴛ Oғ :** {DEFAULTUSER}\n❥ **ʙᴏᴛ ᴠᴇʀ :** 5.0\n❥ **ᴍᴏᴅᴜʟᴇꜱ :** {len(plugins)} "
+                text = f"☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️\n\n**🄼🄰🄸🄽 🄼🄴🄽🅄**\n\n❥ **Bᴏᴛ Oғ :** {DEFAULTUSER}\n❥ **ʙᴏᴛ ᴠᴇʀ :** 5.0\n❥ **ᴍᴏᴅᴜʟᴇꜱ :** {len(plugins)} "
                 await event.edit(text,
                                  file=roselogo,
                                  buttons=buttons,
@@ -874,7 +872,7 @@ with bot:
                     f"**{SKYLA_TEKS_KUSTOM}**\n\n"
                     f"┏━━━━━━━━━━━━━━━━━━━━━\n"
                     f"┣ **Pemilik** - `{DEFAULTUSER}`\n"
-                    f"┣ **Versi** - `5.0`\n"
+                    f"┣ **Versi** - `7.0`\n"
                     f"┣ **Groups** - @skylasupport\n"
                     f"┣ **Bahasa** - `Python`\n"
                     f"┣ **Branch** - `Skyla-Userbot`\n"
@@ -978,7 +976,7 @@ with bot:
                 result = builder.photo(
                     file=roselogo,
                     link_preview=False,
-                    text=f"☃️Sᴋʏʟᴀ - Usᴇʀʙᴏᴛ☃️\n\n**🄼🄰🄸🄽 🄼🄴🄽🅄**\n\n❥ **Bᴏᴛ Oғ :** {DEFAULTUSER}\n❥ **ʙᴏᴛ ᴠᴇʀ :** 5.0\n❥ **ᴍᴏᴅᴜʟᴇꜱ :** {len(plugins)}".format(
+                    text=f"☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️\n\n**🄼🄰🄸🄽 🄼🄴🄽🅄**\n\n❥ **Bᴏᴛ Oғ :** {DEFAULTUSER}\n❥ **ʙᴏᴛ ᴠᴇʀ :** 5.0\n❥ **ᴍᴏᴅᴜʟᴇꜱ :** {len(plugins)}".format(
                         len(dugmeler),
                     ),
                     buttons=buttons,
@@ -997,13 +995,13 @@ with bot:
                         [
                             custom.Button.url(
                                 "SKYLA",
-                                "https://github.com/Cangcimenn/Skyla-Userbot"),
+                                "https://github.com/SkylaIND/Skyla-Userbot"),
                             custom.Button.url(
                                 "SUPPORT",
                                 "t.me/skylasupport")],
                         [custom.Button.url(
                             "LICENSE",
-                            "https://github.com/Cangcimenn/Skyla-Userbot/blob/Skyla-Userbot/LICENSE")],
+                            "https://github.com/SkylaIND/Skyla-Userbot/blob/Skyla-Userbot/LICENSE")],
                     ],
                     link_preview=False,
                 )
@@ -1042,7 +1040,7 @@ with bot:
                             Button.url(f"{EMOJI_HELP} ɢʀᴏᴜᴘꜱ {EMOJI_HELP} ",
                                        "t.me/skylasupport"),
                             Button.url(f"{EMOJI_HELP} ᴄʜᴀɴɴᴇʟ {EMOJI_HELP} ",
-                                       "t.me/Takichanbot")],
+                                       "t.me/SkylaIND")],
                         [Button.url(f"{EMOJI_HELP} ᴅᴇᴘʟᴏʏ sᴋʏʟᴀ {EMOJI_HELP} ",
                                     f"https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FCangcimenn%2FSkyla-Userbot&template=https%3A%2F%2Fgithub.com%2FCangcimenn%2FSkyla-Userbot"),
                             Button.url(f"{EMOJI_HELP} ɪɴꜱᴛᴀɢʀᴀᴍ {EMOJI_HELP} ",
