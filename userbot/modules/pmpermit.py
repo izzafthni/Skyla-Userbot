@@ -41,15 +41,17 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
 CUSTOM_TEXT = str(
     PMPERMIT_TEXT) if PMPERMIT_TEXT else f"__Halo kawan, saya bot yang menjaga room chat Cɪʟɪᴋ Uꜱᴇʀʙᴏᴛ {DEFAULTUSER} di mohon jangan melakukan spam , kalau anda melakukan itu OTOMATIS saya akan memblockir anda!__ \n"
 DEF_UNAPPROVED_MSG = (
-    "╔════════════════════╗\n"
-    "  ⛔ ᴀᴛᴛᴇɴᴛɪᴏɴ ᴘʟᴇᴀꜱᴇ ⛔\n"
-    "╚════════════════════╝\n"
-    "• Saya belum menyetujui anda untuk PM.\n"
-    "• Tunggu sampai saya menyetujui PM anda.\n"
-    "• Jangan Spam Chat atau anda akan otomatis diblokir.\n"
-    "╔════════════════════╗\n"
-    "  ᴀᴜᴛᴏ ᴍᴇssᴀɢᴇ ʙʏ ҡᴀʏᴢᴜ\n"
-    "╚════════════════════╝\n")
+    "╭┈──────────────────────\n"
+    "  ⚡ 𝗔𝗨𝗧𝗢𝗠𝗔𝗧𝗜𝗖 𝗠𝗘𝗦𝗦𝗔𝗚𝗘𝗦 ⚡\n"
+    "├┈────────────────────\n"
+    "│• HARAP SABAR JIKA INGIN DI BALES\n"
+    "│• JANGAN MELAKUKAN SPAM,\n"
+    "│• KARENA SAYA AKAN OTOMATIS\n"
+    "│• MEMBLOKIR KAMU.\n"
+    "├┈────────────────────\n"
+    "│○›Support : @skylasupport\n"
+    "│○›ᗷy : ☃️Sᴋʏʟᴀ - Usᴇʀʙᴏᴛ☃️\n"
+    "╰┈─────────────────\n")
 # =================================================================
 
 
