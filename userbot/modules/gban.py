@@ -145,8 +145,12 @@ async def gben(userbot):
     except BaseException:
         pass
     return await dark.edit(
-        f"**Perintah:** `{ALIVE_NAME}`\n**Pengguna:** [{user.first_name}](tg://user?id={user.id})\n**Aksi:** `Global Banned`"
-    )
+         f"╭┈─────────────━\n"
+         f"││➢ **Tuan:** `{ALIVE_NAME}` \n" 
+         f"││➢ **Pengguna:** [{user.first_name}](tg://user?id={user.id}) \n" 
+         f"││➢ **Aksi:** `Global Banned` \n"
+         f"╰┈─────────────━\n\n"
+         f"➽ __Gbanned by ☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️__")
 
 
 @register(outgoing=True, pattern="^.ungban(?: |$)(.*)")
@@ -216,8 +220,12 @@ async def gunben(userbot):
     except BaseException:
         pass
     return await dark.edit(
-        f"**Perintah :** `{ALIVE_NAME}`\n**Pengguna:** [{user.first_name}](tg://user?id={user.id})\n**Aksi:** `Membatalkan Global Banned`"
-    )
+         f"╭┈─────────────━\n"
+         f"││➢ **Tuan:** `{ALIVE_NAME}` \n" 
+         f"││➢ **Pengguna:** [{user.first_name}](tg://user?id={user.id}) \n" 
+         f"││➢ **Aksi:** `Global Banned` \n"
+         f"╰┈─────────────━\n\n"
+         f"➽ __Gbanned by ☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️__")        
 
 
 CMD_HELP.update(
