@@ -238,8 +238,10 @@ async def amireallyalive(alive):
     user = await bot.get_me()
     await get_readable_time((time.time() - StartTime))
     output = (
-        f"☃️𝗦𝗞𝗬𝗟𝗔-𝗨𝗦𝗘𝗥𝗕𝗢𝗧☃️\n\n"
-        f"\n__**{SKYLA_TEKS_KUSTOM}**__\n\n\n"
+        f"╭┈─────────────────\n"
+        f"├ ☃️𝗦𝗞𝗬𝗟𝗔-𝗨𝗦𝗘𝗥𝗕𝗢𝗧☃️\n"
+        f"╰┈────────────────\n"
+        f"\n__**{SKYLA_TEKS_KUSTOM}**__\n\n"
         f"╭✠╼━━━━━━━━━━━━━━✠╮\n"
         f"├➤ **Name** : `{DEFAULTUSER}` \n"
         f"├➤ **Username** : @{user.username} \n"
@@ -248,7 +250,7 @@ async def amireallyalive(alive):
         f"├➤ **Bot Ver**  : `{BOT_VER}` \n"
         f"├➤ **Modules**  : `{len(modules)}` \n"
         f"╰✠╼━━━━━━━━━━━━━━✠╯\n"
-        f"[𝗚𝗥𝗢𝗨𝗣](https://t.me/skylasupport) | [ʙᴏᴛᴏꜰ](https://t.me/{user.username}) | [𝗥𝗘𝗣𝗢](https://github.com/Cangcimenn/Skyla-Userbot)"
+        f"[𝗚𝗥𝗢𝗨𝗣](https://t.me/skylasupport) | [𝗕𝗢𝗧𝗢𝗙](https://t.me/{user.username}) | [𝗥𝗘𝗣𝗢](https://github.com/Cangcimenn/Skyla-Userbot)"
     )
     if ALIVE_LOGO:
         try:
@@ -318,6 +320,7 @@ async def redis(alive):
     await alive.edit("🐣")
     await asyncio.sleep(2)
     output = (
+        f"☃️𝗦𝗞𝗬𝗟𝗔-𝗨𝗦𝗘𝗥𝗕𝗢𝗧☃️\n"
         f"╭✠╼━━━━━━━━━━━━━━━✠╮\n"
         f"┃✥ **Name     :** {DEFAULTUSER} \n"
         f"┃✥ **Username :** @{user.username} \n"
@@ -326,10 +329,9 @@ async def redis(alive):
         f"┃✥ **Branch   :** {UPSTREAM_REPO_BRANCH} \n"
         f"┃✥ **Bot Ver  :** {BOT_VER} \n"
         f"┃✥ **Modules  :** {len(modules)} Modules \n"
-        f"┃✥ **GitHub   :** [UserBot](https://github.com/SkylaIND/Skyla-Userbot) \n"
-        f"┃✥ **Owner    :** [Skyla](https://t.me/Zxyune) \n"
-        f"┃✥ **support  :** [groups](https://t.me/skylasupport) \n"
         f"╰✠╼━━━━━━━━━━━━━━━✠╯")
+        f"[𝗖𝗛𝗔𝗡𝗡𝗘𝗟](https://t.me/SkylaIND) | [𝗜𝗡𝗦𝗧𝗔𝗚𝗥𝗔𝗠](https://instagram.com/ikyxyzu)"
+    )
     if ALIVE_LOGO:
         try:
             logo = ALIVE_LOGO
