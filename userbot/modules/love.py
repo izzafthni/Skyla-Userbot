@@ -86,4 +86,4 @@ async def typewriter(typew):
 
 CMD_HELP.update({"animasi8":
                  "`.heart` ; `.lve` ; `.dblove` ; `.lope`\
-                 \nUsage: Coba Aja."})
+                 \nUsage: Sebuah bentuk love."})
