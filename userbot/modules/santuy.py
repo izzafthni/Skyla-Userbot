@@ -48,6 +48,15 @@ async def typewriter(typew):
     await typew.edit("GAMOOD HEHEHE..")
 
 
+@register(outgoing=True, pattern='^.lope(?: |$)(.*)')
+async def typewriter(typew):
+    typew.pattern_match.group(1)
+    await typew.edit("▀██▀─▄███▄─▀██─██▀██▀▀█\n"
+                     "─██─███─███─██─██─██▄█\n"
+                     "─██─▀██▄██▀─▀█▄█▀─██▀█\n"
+                     "▄██▄▄█▀▀▀─────▀──▄██▄▄█\n")
+
+
 CMD_HELP.update({
     "santuy":
     ".to\
@@ -66,5 +75,7 @@ CMD_HELP.update({
     ".sm\
 \nUsage: Lu Sasimo.\
 \n\n.ga\
-\nUsage: Aku Gamood."
+\nUsage: Aku Gamood.\
+\n\n.lope\
+\nUsage: Kata Love."
 })
