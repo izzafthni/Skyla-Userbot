@@ -217,7 +217,7 @@ async def dyno_usage(dyno):
                 f"  ➽  `{hours}`**ᴊᴀᴍ**  `{minutes}`**ᴍᴇɴɪᴛ**\n"
                 f"**|**  [`{percentage}`**%**]\n"
                 f" ✠➲ **ʙᴏᴛ ᴏꜰ :** {ALIVE_NAME}\n"
-                "╚════════════════════╝\n")
+                "╚════════════════════╝\n"
             )
             await asyncio.sleep(20)
             await event.delete()
