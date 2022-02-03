@@ -329,7 +329,7 @@ async def redis(alive):
         f"┃✥ **Branch   :** {UPSTREAM_REPO_BRANCH} \n"
         f"┃✥ **Bot Ver  :** {BOT_VER} \n"
         f"┃✥ **Modules  :** {len(modules)} Modules \n"
-        f"╰✠╼━━━━━━━━━━━━━━━✠╯")
+        f"╰✠╼━━━━━━━━━━━━━━━✠╯\n"
         f"[𝗖𝗛𝗔𝗡𝗡𝗘𝗟](https://t.me/SkylaIND) | [𝗜𝗡𝗦𝗧𝗔𝗚𝗥𝗔𝗠](https://instagram.com/ikyxyzu)"
     )
     if ALIVE_LOGO:
