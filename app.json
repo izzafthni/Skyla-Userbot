@@ -77,7 +77,7 @@
       "description": "Username Bot Kamu Di @BotFather, Tanpa @",
       "required": false
     },
-    "SKYLA_TEKS_KUSTOM": {
+    "DEFAULT_BIO": {
       "description": "Default bio mu, akan muncul pada perintah .skyalive",
       "required": false
     },
