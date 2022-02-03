@@ -57,6 +57,10 @@
       "description": "Nama untuk menunjukan pesan .alive",
       "required": true
     },
+    "S_PACK_NAME": {
+      "description": "isi nama pack sticker mu contohnya by @Zxyune",
+      "required": true
+    },
     "LOGSPAMMER": {
       "description": "Set this to True in case you want the error logs to be stored in the userbot log group, instead of spitting out the file in the current chat, requires a valid BOTLOG_CHATID to be set.",
       "value": "True",
