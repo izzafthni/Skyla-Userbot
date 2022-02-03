@@ -224,11 +224,11 @@ async def dyno_usage(dyno):
             return True
 
 
-@register(outgoing=True, pattern=r"^\.logs")
+@ register(outgoing = True, pattern = r"^\.logs")
 async def _(dyno):
     try:
-        Heroku = heroku3.from_key(HEROKU_API_KEY)
-        app = Heroku.app(HEROKU_APP_NAME)
+        Heroku=heroku3.from_key(HEROKU_API_KEY)
+        app=Heroku.app(HEROKU_APP_NAME)
     except BaseException:
         return await dyno.reply(
             "`Please make sure your Heroku API Key, Your App name are configured correctly in the heroku var.`"
@@ -241,8 +241,8 @@ async def _(dyno):
     await dyno.delete()
     await dyno.client.send_file(
         dyno.chat_id,
-        file="logs.txt",
-        caption="`Ini Logs Heroku anda`",
+        file = "logs.txt",
+        caption = "`Ini Logs Heroku anda`",
     )
     return os.remove("logs.txt")
 
