@@ -14,7 +14,7 @@
   <img src="https://telegra.ph/file/0970dd27e9141599aaccf.jpg">
 </p>
 
-<h3 align="center">Klik Tombol di Bawah ini untuk Deploy di Heroku :</h3>
+<h3 align="center">Klik Tombol di Bawah ini untuk Deploy Skyla-Userbot :</h3>
 
 <p align="center"><a href="https://dashboard.heroku.com/new?template=https://github.com/SkylaIND/Skyla-Userbot"><img src="https://img.shields.io/badge/Deploy%20To%20Heroku-blueviolet?style=for-the-badge&logo=heroku" width="250""/</a>  
 
