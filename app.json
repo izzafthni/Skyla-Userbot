@@ -77,12 +77,8 @@
       "description": "Username Bot Kamu Di @BotFather, Tanpa @",
       "required": false
     },
-    "DEFAULT_BIO": {
-      "description": "Default bio mu, akan muncul pada perintah .skyalive",
-      "required": false
-    },
     "S_PACK_NAME": {
-      "description": "Sesuaikan nama pack sticker mu (contohnya by @SkylaUserbot)",
+      "description": "Sesuaikan nama pack sticker mu",
       "required": false
     }
   },
