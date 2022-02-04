@@ -145,6 +145,9 @@ async def gben(userbot):
     except BaseException:
         pass
     return await dark.edit(
+        f"╭─━━━━━━━━━━━━━─╮\n"
+        f" ⚡𝗔𝗞𝗦𝗜 𝗚𝗕𝗔𝗡𝗡𝗘𝗗⚡\n"
+        f"╰─━━━━━━━━━━━━━─╯\n"
         f"╭┈─────────────━\n"
         f"││➢ **Tuan:** `{ALIVE_NAME}` \n"
         f"││➢ **Pengguna:** [{user.first_name}](tg://user?id={user.id}) \n"
@@ -220,6 +223,9 @@ async def gunben(userbot):
     except BaseException:
         pass
     return await dark.edit(
+        f"╭─━━━━━━━━━━━━━─╮\n"
+        f" ⚡𝗔𝗞𝗦𝗜 𝗚𝗕𝗔𝗡𝗡𝗘𝗗⚡\n"
+        f"╰─━━━━━━━━━━━━━─╯\n"
         f"╭┈─────────────━\n"
         f"││➢ **Tuan:** `{ALIVE_NAME}` \n"
         f"││➢ **Pengguna:** [{user.first_name}](tg://user?id={user.id}) \n"
