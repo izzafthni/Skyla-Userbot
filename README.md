@@ -1,11 +1,11 @@
 <p align="center">
-    <a href="https://github.com/SkylaIND/Skyla-Userbot"> <img src="https://img.shields.io/github/repo-size/noob-kittu/YoneRobot?color=orange&logo=github&logoColor=green&style=for-the-badge" /></a>
-    <a href="https://github.com/SkylaIND/Skyla-Userbot/commits"> <img src="https://img.shields.io/github/last-commit/noob-kittu/YoneRobot?color=blue&logo=github&logoColor=green&style=for-the-badge" /></a>
-    <a href="https://github.com/SkylaIND/Skyla-Userbot/issues"> <img src="https://img.shields.io/github/issues/noob-kittu/YoneRobot?color=blueviolet&logo=github&logoColor=green&style=for-the-badge" /></a>
-    <a href="https://github.com/SkylaIND/Skyla-Userbot/network/members"> <img src="https://img.shields.io/github/forks/noob-kittu/YoneRobot?color=red&logo=github&logoColor=green&style=for-the-badge" /></a>  
+    <a href="https://github.com/SkylaIND/Skyla-Userbot"> <img src="https://img.shields.io/github/repo-size/SkylaIND/Skyla-Userbot?color=orange&logo=github&logoColor=green&style=for-the-badge" /></a>
+    <a href="https://github.com/SkylaIND/Skyla-Userbot/commits"> <img src="https://img.shields.io/github/last-commit/SkylaIND/Skyla-Userbot?color=blue&logo=github&logoColor=green&style=for-the-badge" /></a>
+    <a href="https://github.com/SkylaIND/Skyla-Userbot/issues"> <img src="https://img.shields.io/github/issues/SkylaIND/Skyla-Userbot?color=blueviolet&logo=github&logoColor=green&style=for-the-badge" /></a>
+    <a href="https://github.com/SkylaIND/Skyla-Userbot/network/members"> <img src="https://img.shields.io/github/forks/SkylaIND/Skyla-Userbot?color=red&logo=github&logoColor=green&style=for-the-badge" /></a>  
     <a href="https://pypi.org/project/Telethon/"> <img src="https://img.shields.io/pypi/v/telethon?color=yellow&label=telethon&logo=python&logoColor=green&style=for-the-badge" /></a>
     <img alt="PYTHON" src="https://img.shields.io/badge/PYTHON-v3.9.6-purple?style=for-the-badge&logo=appveyor"/>
-    </p>
+</p>
 
 <h2 align="center">☃️Sᴋʏʟᴀ-Usᴇʀʙᴏᴛ☃️
 </h2>
