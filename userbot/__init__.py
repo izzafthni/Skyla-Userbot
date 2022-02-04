@@ -202,7 +202,7 @@ YOUTUBE_API_KEY = os.environ.get(
 # Untuk Perintah .kayalive
 SKYLA_TEKS_KUSTOM = os.environ.get(
     "SKYLA_TEKS_KUSTOM",
-    "I'am Using Skyla-Userbot⚡")
+    "I'am Userbot Telegram ✨")
 
 # Untuk Mengubah Pesan Welcome
 START_WELCOME = os.environ.get("START_WELCOME", None)
