@@ -86,12 +86,10 @@ async def killdabot(event):
 @register(outgoing=True, pattern="^.readme$")
 async def reedme(e):
     await e.edit(
-        "┏━━━━━━━━━━━━━━━━━━━━━━┓\n"
         "Here's Something for You to Read :\n"
         "\n[Skyla-Userbot Repo](https://github.com/SkylaIND/Skyla-Userbot/blob/Skyla-Userbot/README.md)"
         "\n[Setup Guide - Basic](https://telegra.ph/How-to-host-a-Telegram-Userbot-11-02)"
-        "\n[Special - Note](https://telegra.ph/Special-Note-11-02)"
-        "┗━━━━━━━━━━━━━━━━━━━━━━┛\n")
+        "\n[Special - Note](https://telegra.ph/Special-Note-11-02)")
 
 
 @register(outgoing=True, pattern="^.repeat (.*)")
@@ -116,7 +114,7 @@ async def repo_is_here(wannasee):
         "┌─────────⋆⋅⋅⋆──────────┐ \n"
         "❖ **ʀᴇᴘᴏ :** [ɢɪᴛʜᴜʙ](https://github.com/SkylaIND/Skyla-Userbot)\n"
         "❖ **ᴏᴡɴᴇʀ :** [sᴋʏʟᴀ](t.me/Zxyune)\n"
-        "├┈──────────────────────\n"
+        "├┈────────────────────\n"
         "❖ **ꜱᴜᴘᴘᴏʀᴛ   :** [ꜱᴜᴘᴘᴏʀᴛ](https://t.me/skylasupport)\n"
         "❖ **ᴄʜᴀɴɴᴇʟ   :** [ᴄʜᴀɴɴᴇʟ](https://t.me/SkylaIND)\n"
         "└─────────⋆⋅⋅⋆──────────┘\n"
