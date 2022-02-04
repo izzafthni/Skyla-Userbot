@@ -145,9 +145,9 @@ async def redis(pong):
     duration = (end - start).microseconds / 1000
     await pong.edit(
         f"**☃️Sᴋʏʟᴀ - Usᴇʀʙᴏᴛ☃️**\n"
-        f"➾ __Signal__    __:__ "
+        f"➤ __Signal__    __:__ "
         f"`%sms` \n"
-        f"➾ __Uptime__ __:__ "
+        f"➤ __Uptime__ __:__ "
         f"`{uptime}` \n" % (duration)
     )
 
@@ -189,12 +189,12 @@ async def redis(pong):
     end = datetime.now()
     duration = (end - start).microseconds / 1000
     await pong.edit(
-        f"**PONG!!🏓**\n"
-        f"➥ **ᴘɪɴɢ:** "
+        f"**𝗣𝗢𝗡𝗚!!🏓**\n"
+        f"⏱️ **𝗣𝗜𝗡𝗚:** "
         f"`%sms` \n"
-        f"➥ **ᴜᴘᴛɪᴍᴇ:** "
+        f"⏳ **𝗨𝗣𝗧𝗜𝗠𝗘:** "
         f"`{uptime}` \n"
-        f"**➳ ᴍʏ ɴᴀᴍᴇ:** `{ALIVE_NAME}`" % (duration)
+        f"**➳ 𝗢𝗪𝗡𝗘𝗥:** `{ALIVE_NAME}`" % (duration)
     )
 
 
