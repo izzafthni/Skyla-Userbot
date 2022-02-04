@@ -86,12 +86,12 @@ async def killdabot(event):
 @register(outgoing=True, pattern="^.readme$")
 async def reedme(e):
     await e.edit(
-        "┏━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n"
+        "┏━━━━━━━━━━━━━━━━━━━━━━┓\n"
         "Here's Something for You to Read :\n"
         "\n[Skyla-Userbot Repo](https://github.com/SkylaIND/Skyla-Userbot/blob/Skyla-Userbot/README.md)"
         "\n[Setup Guide - Basic](https://telegra.ph/How-to-host-a-Telegram-Userbot-11-02)"
         "\n[Special - Note](https://telegra.ph/Special-Note-11-02)"
-        "┗━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n")
+        "┗━━━━━━━━━━━━━━━━━━━━━━┛\n")
 
 
 @register(outgoing=True, pattern="^.repeat (.*)")
