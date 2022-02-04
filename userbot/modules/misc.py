@@ -119,7 +119,7 @@ async def repo_is_here(wannasee):
         "❖ **ꜱᴜᴘᴘᴏʀᴛ   :** [ꜱᴜᴘᴘᴏʀᴛ](https://t.me/skylasupport)\n"
         "❖ **ᴄʜᴀɴɴᴇʟ   :** [ᴄʜᴀɴɴᴇʟ](https://t.me/SkylaIND)\n"
         "└──────────⋆⋅⋅⋆──────────┘\n"
-        "[ᴅᴇᴘʟᴏʏ]() ᴊɪᴋᴀ ɪɴɢɪɴ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ\n"
+        "[ᴅᴇᴘʟᴏʏ](https://dashboard.heroku.com/new?template=https://github.com/SkylaIND/Skyla-Userbot) ᴊɪᴋᴀ ɪɴɢɪɴ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ\n"
         "﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏\n"
     )
 
