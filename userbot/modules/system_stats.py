@@ -242,15 +242,16 @@ async def amireallyalive(alive):
         f"├ ☃️𝗦𝗞𝗬𝗟𝗔-𝗨𝗦𝗘𝗥𝗕𝗢𝗧☃️\n"
         f"╰┈────────────────\n"
         f"\n__**{SKYLA_TEKS_KUSTOM}**__\n\n"
-        f"╭✠╼━━━━━━━━━━━━━━✠╮\n"
-        f"├➤ **Name** : `{DEFAULTUSER}` \n"
-        f"├➤ **Username** : @{user.username} \n"
-        f"├➤ **Telethon** : `{version.__version__}` \n"
-        f"├➤ **Python**   : `{python_version()}` \n"
-        f"├➤ **Bot Ver**  : `{BOT_VER}` \n"
-        f"├➤ **Modules**  : `{len(modules)}` \n"
-        f"╰✠╼━━━━━━━━━━━━━━✠╯\n"
-        f"[𝗚𝗥𝗢𝗨𝗣](https://t.me/skylasupport) | [𝗕𝗢𝗧𝗢𝗙](https://t.me/{user.username}) | [𝗥𝗘𝗣𝗢](https://github.com/Cangcimenn/Skyla-Userbot)"
+        f"──────────────────────────\n"
+        f"┌──────═━┈┈━═──────┐\n"
+        f"├🤴 **Name** : `{DEFAULTUSER}` \n"
+        f"├👀 **Username** : @{user.username} \n"
+        f"├⚙️ **Telethon** : `{version.__version__}` \n"
+        f"├🐍 **Python**   : `{python_version()}` \n"
+        f"├👾 **Bot Ver**  : `{BOT_VER}` \n"
+        f"├📂 **Modules**  : `{len(modules)}` \n"
+        f"└──────═━┈┈━═──────┘\n"
+        f"[𝗚𝗥𝗢𝗨𝗣](https://t.me/skylasupport) | [𝗕𝗢𝗧𝗢𝗙](https://t.me/{user.username}) | [𝗥𝗘𝗣𝗢](https://github.com/SkylaIND/Skyla-Userbot)"
     )
     if ALIVE_LOGO:
         try:
@@ -320,7 +321,9 @@ async def redis(alive):
     await alive.edit("🐣")
     await asyncio.sleep(2)
     output = (
-        f"☃️𝗦𝗞𝗬𝗟𝗔-𝗨𝗦𝗘𝗥𝗕𝗢𝗧☃️\n"
+        f"╭─━━━━━━━━━━━━━━─╮\n"
+        f" ☃️𝗦𝗞𝗬𝗟𝗔-𝗨𝗦𝗘𝗥𝗕𝗢𝗧☃️\n"
+        f"╰─━━━━━━━━━━━━━━─╯\n"
         f"╭✠╼━━━━━━━━━━━━━━━✠╮\n"
         f"┃✥ **Name     :** {DEFAULTUSER} \n"
         f"┃✥ **Username :** @{user.username} \n"
