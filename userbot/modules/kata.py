@@ -22,3 +22,30 @@ async def typewriter(typew):
                      "╰━━━┻╯╰┻━╮╭┻╯╰┻╯╰┻━╮┃\n"
                      "╱╱╱╱╱╱╱╭━╯┃╱╱╱╱╱╱╭━╯┃\n"
                      "╱╱╱╱╱╱╱╰━━╯╱╱╱╱╱╱╰━━╯\n")
+
+
+
+CMD_HELP.update({
+    "kata":
+    ".syg\
+\nUsage: .\
+\n\n.\
+\nUsage: .\
+\n\n.\
+\nUsage: .\
+\n\n.\
+\nUsage: ."
+})
+
+
+CMD_HELP.update({
+    "kata2":
+    ".\
+\nUsage: .\
+\n\n.\
+\nUsage: .\
+\n\n.\
+\nUsage: ."
+})
+
+
