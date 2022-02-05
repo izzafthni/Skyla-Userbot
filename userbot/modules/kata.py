@@ -24,7 +24,6 @@ async def typewriter(typew):
                      "╱╱╱╱╱╱╱╰━━╯╱╱╱╱╱╱╰━━╯\n")
 
 
-
 CMD_HELP.update({
     "kata":
     ".syg\
@@ -47,5 +46,3 @@ CMD_HELP.update({
 \n\n.\
 \nUsage: ."
 })
-
-
