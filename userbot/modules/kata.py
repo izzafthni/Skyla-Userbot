@@ -24,25 +24,21 @@ async def typewriter(typew):
                      "╱╱╱╱╱╱╱╰━━╯╱╱╱╱╱╱╰━━╯\n")
 
 
+@register(outgoing=True, pattern='^.sas(?: |$)(.*)')
+async def typewriter(typew):
+    typew.pattern_match.group(1)
+    await typew.edit("╔═══╗\n"
+                     "║╔═╗║\n"
+                     "║╚══╦══╦══╦╦╗╔╦══╗\n"
+                     "╚══╗║╔╗║══╬╣╚╝║╔╗║\n"
+                     "║╚═╝║╔╗╠══║║║║║╚╝║\n"
+                     "╚═══╩╝╚╩══╩╩╩╩╩══╝\n")
+
+
 CMD_HELP.update({
     "kata":
     ".syg\
-\nUsage: .\
-\n\n.\
-\nUsage: .\
-\n\n.\
-\nUsage: .\
-\n\n.\
-\nUsage: ."
-})
-
-
-CMD_HELP.update({
-    "kata2":
-    ".\
-\nUsage: .\
-\n\n.\
-\nUsage: .\
-\n\n.\
-\nUsage: ."
+\nUsage: .Tulisan Sayang\
+\n\n.sas\
+\nUsage: .Tulisan Sasimo"
 })
