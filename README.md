@@ -11,7 +11,7 @@
 </h2>
 
 <p align="center">
-  <img src="https://telegra.ph/file/0970dd27e9141599aaccf.jpg">
+  <img src="https://telegra.ph/file/d9ac670cc24b43290faec.jpg">
 </p>
 
 <h3 align="center">Klik Tombol di Bawah ini untuk Deploy Skyla-Userbot :</h3>
