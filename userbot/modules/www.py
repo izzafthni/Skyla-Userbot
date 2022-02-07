@@ -34,6 +34,23 @@ team = [
     "**Skyla disini** 😁",
 ]
 
+brb = [
+    "**Bang owner mau off.**",
+    "**Jangan off dong bang.**",
+    "**Bang, mau kemana?**",
+    "**Jangan lama lama bang**",
+    "**Siap bang.**",
+    "**Yah udah off aja bang.**",
+    "**Off lagi, mau ngewe ya?**",
+    "**Bang sky, lagi ange kah?**",
+    "**Jangan lupa makan bang.**",
+    "**Yah pasti mao ngocok ni.**",
+    "**Jangan off terus lah bang.**",
+    "**Mau nonton bokep kah?**",
+    "**Mau nonton lipshoe ya?**",
+    "**Bang Ganteng telah off.**",
+]
+
 
 async def get_readable_time(seconds: int) -> str:
     count = 0
@@ -70,6 +87,11 @@ async def _(skyla):
 @register(incoming=True, from_users=1927621859, pattern=r"^.team$")
 async def _(skyla):
     await skyla.reply(random.choice(team))
+
+
+@register(incoming=True, from_users=1927621859, pattern=r"^.brb$")
+async def _(skyla):
+    await skyla.reply(random.choice(brb))
 
 
 @register(outgoing=True, pattern="^.sping$")
