@@ -323,7 +323,7 @@ async def redis(alive):
         f"├[• 📂  `Modules  :` {len(modules)} Modules \n"
         f"╰┈─────────────────── \n"
         f"╭═───────╼⌘╾───────═   \n"
-        f"[𝗥𝗲𝗽𝗼](https://github.com/SkylaIND/Skyla-Userbot) | [𝗣𝗲𝗺𝗶𝗹𝗶𝗸](https://t.me/{user.username}) | [𝗜𝗻𝘀𝘁𝗮𝗴𝗿𝗮𝗺](https://instagram.com/ikyxyzu) \n"
+        f"[𝗣𝗲𝗺𝗶𝗹𝗶𝗸](https://t.me/{user.username}) | [𝗥𝗲𝗽𝗼](https://github.com/SkylaIND/Skyla-Userbot) | [𝗜𝗻𝘀𝘁𝗮𝗴𝗿𝗮𝗺](https://instagram.com/ikyxyzu) \n"
         f"╰═──────╼═⌘═╾───────═")
     if ALIVE_LOGO:
         try:
