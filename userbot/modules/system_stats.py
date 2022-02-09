@@ -337,10 +337,9 @@ async def redis(alive):
         f"╭═───────╼⌘╾───────═ \n"
         f"┃[𝗥𝗲𝗽𝗼](https://github.com/Skyla-UserBot)  |  [𝗦𝘂𝗽𝗽𝗼𝗿𝘁](t.me/skylasupport)  |  "
         f"[𝗜𝗻𝘀𝘁𝗮𝗴𝗿𝗮𝗺](https://Instagram.com/ikyxyzu)\n"
-        f"╰═──────╼═⌘═╾───────═"
-    )
+        f"╰═──────╼═⌘═╾───────═")
     if ALIVE_LOGO:
-        try:    
+        try:
             logo = ALIVE_LOGO
             await alive.delete()
             msg = await bot.send_file(alive.chat_id, logo, caption=output)
