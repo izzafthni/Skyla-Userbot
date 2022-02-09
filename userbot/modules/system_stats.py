@@ -333,7 +333,6 @@ async def redis(alive):
         f"├[• ⚡ **Branch   :** {UPSTREAM_REPO_BRANCH} \n"
         f"├[• 👾 **Bot Ver  :** {BOT_VER} \n"
         f"├[• 📂 **Modules  :** {len(modules)} Modules \n"
-        f"╰┈────────────────────\n"
         f"╭═───────╼⌘╾───────═ \n"
         f"┃[𝗥𝗲𝗽𝗼](https://github.com/SkylaIND/Skyla-UserBot) | [𝗦𝘂𝗽𝗽𝗼𝗿𝘁](t.me/skylasupport) | [𝗜𝗻𝘀𝘁𝗮𝗴𝗿𝗮𝗺](https://Instagram.com/ikyxyzu)\n"
         f"╰═──────╼═⌘═╾───────═")
