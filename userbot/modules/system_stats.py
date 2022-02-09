@@ -315,7 +315,7 @@ async def redis(alive):
         f"╭┈──────────────────── \n"
         f"├[• 🤴  `Name     :` {DEFAULTUSER} \n"
         f"├[• 👀  `Username :` @{user.username} \n"
-        f"├┈────────────────────\\ \n"
+        f"├┈──────────────────── \n"
         f"├[• ⚙️  `Telethon :` Ver {version.__version__} \n"
         f"├[• 🐍  `Python   :` Ver {python_version()} \n"
         f"├[• ⚡  `Branch   :` {UPSTREAM_REPO_BRANCH} \n"
@@ -323,7 +323,7 @@ async def redis(alive):
         f"├[• 📂  `Modules  :` {len(modules)} Modules \n"
         f"╰┈─────────────────── \n"
         f"╭═───────╼⌘╾───────═   \n"
-        f"[𝗥𝗲𝗽𝗼](https://github.com/SkylaIND/Skyla-Userbot) | [𝗣𝗲𝗺𝗶𝗹𝗶𝗸](https://t.me/{user.username}) | [𝗜𝗻𝘀𝘁𝗮𝗴𝗿𝗮𝗺](https://instagram.com/ikyxyzu) \n"
+        f"┃[𝗥𝗲𝗽𝗼](https://github.com/SkylaIND/Skyla-Userbot) | [𝗣𝗲𝗺𝗶𝗹𝗶𝗸](https://t.me/{user.username}) | [𝗜𝗻𝘀𝘁𝗮𝗴𝗿𝗮𝗺](https://instagram.com/ikyxyzu) \n"
         f"╰═──────╼═⌘═╾───────═")
     if ALIVE_LOGO:
         try:
