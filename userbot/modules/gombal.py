@@ -1,4 +1,3 @@
-
 # Sky Not
 # ReCode by @Zxyune
 # FROM Skyla-Userbot <https://github.com/Cangcimenn/Skyla-Userbot>
