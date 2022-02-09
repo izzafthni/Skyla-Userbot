@@ -19,7 +19,9 @@ async def typewriter(typew):
 @register(outgoing=True, pattern="^.l(?: |$)(.*)")
 async def typewriter(typew):
     typew.pattern_match.group(1)
-    await typew.edit("`𝙊𝙢 𝙎𝙬𝙖𝙨𝙩𝙞𝙖𝙨𝙩𝙪...`")
+    await typew.edit("`Kalo Orang Salam Itu Dijawab...`")
+    sleep(2)
+    await typew.edit("`وَعَلَيْكُمْ السَّلاَمُ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ`")    
 # Menjawab Salam
 
 
