@@ -229,7 +229,7 @@ async def amireallyalive(alive):
     await get_readable_time((time.time() - StartTime))
     output = (
         f"╔════════≪•❈•≫═══════╗ \n\n"
-        f"  ☃️ 𝐒𝐊𝐘𝐋𝐀 - 𝐔𝐒𝐄𝐑𝐁𝐎𝐓 ☃️ \n\n"
+        f"☃️𝐒 𝐊 𝐘 𝐋 𝐀 - 𝐔 𝐒 𝐄 𝐑 𝐁 𝐎 𝐓☃️ \n\n"
         f"╚════════≪•❈•≫═══════╝ \n\n"
         f"\n__**{SKYLA_TEKS_KUSTOM}**__\n"
         f"──────────────────────── \n"
@@ -309,18 +309,18 @@ async def redis(alive):
     await alive.edit("🐣")
     await asyncio.sleep(2)
     output = (
-        f"╭✠╼━━━━━━━━❖━━━━━━━━━✠ \n"
-        f"┃  ☃️𝐒𝐊𝐘𝐋𝐀 - 𝐔𝐒𝐄𝐑𝐁𝐎𝐓☃️ \n"
+        f"╭✠╼━━━━━━━━❖━━━━━━━━✠ \n"
+        f"┃ ☃️ 𝐒𝐊𝐘𝐋𝐀 - 𝐔𝐒𝐄𝐑𝐁𝐎𝐓 ☃️ \n"
         f"╰✠╼━━━━━━━━❖━━━━━━━━━✠ \n"
         f"╭═───────╼⌘╾───────═ \n"
-        f"┃⌘ 🤴  `Name     :` {DEFAULTUSER} \n"
-        f"┃⌘ 👀  `Username :` @{user.username} \n"
-        f"┃┈──────────────────── \n"
-        f"┃⌘ ⚙️  `Telethon :` Ver {version.__version__} \n"
-        f"┃⌘ 🐍  `Python   :` Ver {python_version()} \n"
-        f"┃⌘ ⚡  `Branch   :` {UPSTREAM_REPO_BRANCH} \n"
-        f"┃⌘ 👾  `Bot Ver  :` {BOT_VER} \n"
-        f"┃⌘ 📂  `Modules  :` {len(modules)} Modules \n"
+        f"┃[• 🤴  `Name     :` {DEFAULTUSER} \n"
+        f"┃[• 👀  `Username :` @{user.username} \n"
+        f"┃┈─────────────────── \n"
+        f"┃[• ⚙️  `Telethon :` Ver {version.__version__} \n"
+        f"┃[• 🐍  `Python   :` Ver {python_version()} \n"
+        f"┃[• ⚡  `Branch   :` {UPSTREAM_REPO_BRANCH} \n"
+        f"┃[• 👾  `Bot Ver  :` {BOT_VER} \n"
+        f"┃[• 📂  `Modules  :` {len(modules)} Modules \n"
         f"╰═──────╼═⌘═╾───────═ \n"
         f"[𝗣𝗲𝗺𝗶𝗹𝗶𝗸](https://t.me/{user.username}) | [𝗥𝗲𝗽𝗼](https://github.com/SkylaIND/Skyla-Userbot) | [𝗜𝗻𝘀𝘁𝗮𝗴𝗿𝗮𝗺](https://instagram.com/ikyxyzu)")
     if ALIVE_LOGO:
