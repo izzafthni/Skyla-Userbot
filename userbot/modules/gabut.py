@@ -55,10 +55,12 @@ async def perkenalan(event):
 
 CMD_HELP.update({
     "gabut": "**Modules** - `Gabut`\
-    \n\n Cmd : `.l`\
-    \nUsage : Untuk Menjawab Salam\
-    \n\n Cmd : `.perkenalan`\
-    \nUsage : Memperkenalkan Diri\
     \n\n Cmd : `.p`\
-    \nUsage : Untuk Memberi Salam."
+    \nUsage : Untuk Memberi Salam\
+    \n\n Cmd : `.l`\
+    \nUsage : Untuk Menjawab salam\
+    \n\n Cmd : `.istigfar`\
+    \nUsage : Untuk Beristighfar\
+    \n\n Cmd : `.perkenalan`\
+    \nUsage : Untuk Memperkenalkan diri."
 })
