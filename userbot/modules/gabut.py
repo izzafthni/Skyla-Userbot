@@ -28,7 +28,7 @@ async def typewriter(typew):
 @register(outgoing=True, pattern="^.istigfar(?: |$)(.*)")
 async def perkenalan(event):
     event.pattern_match.group(1)
-    await event.edit("`𝘼𝙨𝙩𝙖𝙜𝙖𝙖...`")
+    await event.edit("`اَسْتَغْفِرُاللهَ الْعَظِيْم`")
 
 
 # Istigfar
