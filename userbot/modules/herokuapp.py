@@ -229,7 +229,7 @@ async def dyno_usage(dyno):
             return True
 
 
-@flicks_cmd(pattern="logs")
+@register(outgoing=True, pattern=r"^\.logs")
 async def _(dyno):
     try:
         Heroku = heroku3.from_key(HEROKU_API_KEY)
