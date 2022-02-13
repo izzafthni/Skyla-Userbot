@@ -15,7 +15,9 @@ from userbot import (
     BOTLOG,
     BOTLOG_CHATID,
     ALIVE_NAME,
-    CMD_HELP)
+    CMD_HELP,
+)
+from userbot.events import register
 
 heroku_api = "https://api.heroku.com"
 if HEROKU_APP_NAME is not None and HEROKU_API_KEY is not None:
