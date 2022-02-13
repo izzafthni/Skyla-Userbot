@@ -151,7 +151,7 @@ async def set_var(var):
 """
 
 
-@skyla_cmd(pattern="(usage|kuota|dyno)(?: |$)")
+@register(outgoing=True, pattern=r"^.usage(?: |$)")
 async def dyno_usage(dyno):
     """
         Get your account Dyno Usage
