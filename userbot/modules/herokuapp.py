@@ -16,7 +16,6 @@ from userbot import (
     BOTLOG_CHATID,
     ALIVE_NAME,
     CMD_HELP)
-from userbot import CMD_HANDLER as cmd
 from userbot.utils import skyla_cmd
 
 heroku_api = "https://api.heroku.com"
