@@ -12,6 +12,7 @@ from userbot import (
     tgbot,
 )
 
+
 def decorator(func):
         if tgbot:
             tgbot.add_event_handler(func, events.NewMessage(**args))
