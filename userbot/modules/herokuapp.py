@@ -247,16 +247,14 @@ async def _(dyno):
     return os.remove("logs.txt")
 
 
-CMD_HELP.update({"herokuapp": f"Cmd: `{cmd}usage`|`{cmd}kuota`|`{cmd}dyno`"
+CMD_HELP.update({"herokuapp": "𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.usage`"
                  "\n↳ : Check Quota Dyno Heroku"
-                 f"\n\nCmd: `{cmd}logs`"
-                 "\n↳ : Melihat Logs Heroku Anda"
-                 f"\n\nCmd: `{cmd}set var <NEW VAR> <VALUE>`"
+                 "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.set var <NEW VAR> <VALUE>`"
                  "\n↳ : Tambahkan Variabel Baru Atau Memperbarui Variabel"
-                 "\nSetelah Menyetel Variabel Tersebut, Skyla-Userbot Akan Di Restart."
-                 f"\n\nCmd: `{cmd}get var atau .get var <VAR>`"
+                 "\nSetelah Menyetel Variabel Tersebut, Rose-Userbot Akan Di Restart."
+                 "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.get var atau .get var <VAR>`"
                  "\n↳ : Dapatkan Variabel Yang Ada, !!PERINGATAN!! Gunakanlah Di Grup Privasi Anda."
                  "\nIni Mengembalikan Semua Informasi Pribadi Anda, Harap berhati-hati."
-                 f"\n\nCmd: `{cmd}del var <VAR>`"
+                 "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.del var <VAR>`"
                  "\n↳ : Menghapus Variabel Yang Ada"
                  "\nSetelah Menghapus Variabel, Bot Akan Di Restart."})
