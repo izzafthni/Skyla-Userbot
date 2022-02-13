@@ -31,89 +31,118 @@ else:
 """
 
 
-@skyla_cmd(pattern="(get|del) var(?: |$)(\\w*)")
+@register(outgoing=True, pattern=r"^.(get|del) var(?: |$)(\w*)")
 async def variable(var):
     exe = var.pattern_match.group(1)
     if app is None:
-        await var.edit("`[HEROKU]"
-                       "\nHarap Siapkan`  **HEROKU_APP_NAME**.")
+        await var.edit(
+            "`[HEROKU]" "\nHarap Siapkan`  **HEROKU_APP_NAME**."
+        )
         return False
     if exe == "get":
-        await var.edit("`Mendapatkan Informasi...`")
+        await var.edit(
+            "`Mendapatkan Informasi...`"
+        )
         variable = var.pattern_match.group(2)
-        if variable != '':
+        if variable != "":
             if variable in heroku_var:
                 if BOTLOG:
                     await var.client.send_message(
-                        BOTLOG_CHATID, "#ConfigVars\n\n"
+                        BOTLOG_CHATID,
+                        "#ConfigVars\n\n"
                         "**Config Vars**:\n"
-                        f"`{variable}` **=** `{heroku_var[variable]}`\n"
+                        f"`{variable}` **=** `{heroku_var[variable]}`\n",
                     )
-                    await var.edit("`Diterima Ke BOTLOG_CHATID...`")
+                    await var.edit(
+                        "`Diterima Ke BOTLOG_CHATID...`"
+                    )
                     return True
                 else:
-                    await var.edit("`Mohon Ubah BOTLOG Ke True...`")
+                    await var.edit(
+                        "`Mohon Ubah BOTLOG Ke True...`"
+                    )
                     return False
             else:
-                await var.edit("`Informasi Tidak Ditemukan...`")
+                await var.edit(
+                    "`Informasi Tidak Ditemukan...`"
+                )
                 return True
         else:
             configvars = heroku_var.to_dict()
-            msg = ''
+            msg = ""
             if BOTLOG:
                 for item in configvars:
                     msg += f"`{item}` = `{configvars[item]}`\n"
                 await var.client.send_message(
-                    BOTLOG_CHATID, "#CONFIGVARS\n\n"
-                    "**Config Vars**:\n"
-                    f"{msg}"
+                    BOTLOG_CHATID, "#CONFIGVARS\n\n" "**Config Vars**:\n" f"{msg}"
                 )
-                await var.edit("`Diterima Ke BOTLOG_CHATID`")
+                await var.edit(
+                    "`Diterima Ke BOTLOG_CHATID`"
+                )
                 return True
             else:
-                await var.edit("`Mohon Ubah BOTLOG Ke True`")
+                await var.edit(
+                    "`Mohon Ubah BOTLOG Ke True`"
+                )
                 return False
     elif exe == "del":
-        await var.edit("`Menghapus Config Vars...`")
+        await var.edit(
+            "`Menghapus Config Vars...`"
+        )
         variable = var.pattern_match.group(2)
-        if variable == '':
-            await var.edit("`Mohon Tentukan Config Vars Yang Mau Anda Hapus`")
+        if variable == "":
+            await var.edit(
+                "`Mohon Tentukan Config Vars Yang Mau Anda Hapus`"
+            )
             return False
         if variable in heroku_var:
             if BOTLOG:
                 await var.client.send_message(
-                    BOTLOG_CHATID, "#MenghapusConfigVars\n\n"
+                    BOTLOG_CHATID,
+                    "#MenghapusConfigVars\n\n"
                     "**Menghapus Config Vars**:\n"
-                    f"`{variable}`"
+                    f"`{variable}`",
                 )
-            await var.edit("`Config Vars Telah Dihapus`")
+            await var.edit(
+                "`Config Vars Telah Dihapus`"
+            )
             del heroku_var[variable]
         else:
-            await var.edit("`Tidak Dapat Menemukan Config Vars, Kemungkinan Telah Anda Hapus.`")
+            await var.edit(
+                "`Tidak Dapat Menemukan Config Vars, Kemungkinan Telah Anda Hapus.`"
+            )
             return True
 
 
-@skyla_cmd(pattern="set var (\\w*) ([\\s\\S]*)")
+@register(outgoing=True, pattern=r"^.set var (\w*) ([\s\S]*)")
 async def set_var(var):
-    await var.edit("`Sedang Menyetel Config Vars 🛠️`")
+    await var.edit(
+        "`Sedang Menyetel Config Vars ヅ`"
+    )
     variable = var.pattern_match.group(1)
     value = var.pattern_match.group(2)
     if variable in heroku_var:
         if BOTLOG:
             await var.client.send_message(
-                BOTLOG_CHATID, "#SetelConfigVars\n\n"
+                BOTLOG_CHATID,
+                "#SetelConfigVars\n\n"
                 "**Mengganti Config Vars**:\n"
-                f"`{variable}` = `{value}`"
+                f"`{variable}` = `{value}`",
             )
-        await var.edit("`Sedang Di Proses, Mohon Menunggu Dalam Beberapa Detik ⌛`")
+        await var.edit(
+            "`Sedang Di Proses, Mohon Menunggu Dalam Beberapa Detik 😼`"
+        )
     else:
         if BOTLOG:
             await var.client.send_message(
-                BOTLOG_CHATID, "#MenambahkanConfigVar\n\n"
+                BOTLOG_CHATID,
+                "#MenambahkanConfigVar\n\n"
                 "**Menambahkan Config Vars**:\n"
-                f"`{variable}` **=** `{value}`"
+                f"`{variable}` **=** `{value}`",
             )
-        await var.edit("`Menambahkan Config Vars...`")
+        await var.edit(
+            "`Menambahkan Config Vars...`"
+        )
     heroku_var[variable] = value
 
 
