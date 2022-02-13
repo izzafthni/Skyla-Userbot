@@ -233,14 +233,14 @@ async def amireallyalive(alive):
         f"╚═══════≪•❈•≫══════╝ \n\n"
         f"\n__**{SKYLA_TEKS_KUSTOM}**__\n"
         f"───────────────────── \n"
-        f"╔════════๏⊙๏════════╗\n"
+        f"╔═══════๏⊙๏════════╗\n"
         f"╠ 🤴 `Name       :` {DEFAULTUSER} \n"
         f"╠ 👀 `Username   :` @{user.username} \n"
         f"╠ ⚙️ `Telethon   :` {version.__version__} \n"
         f"╠ 🐍 `Python     :` {python_version()} \n"
         f"╠ 👾 `Bot Ver    :` {BOT_VER} \n"
         f"╠ 📂 `Modules    :` {len(modules)} \n"
-        f"╚════════๏⊙๏════════╝\n"
+        f"╚═══════๏⊙๏════════╝\n"
         f"[𝗚𝗿𝗼𝘂𝗽](https://t.me/skylasupport) | [𝗖𝗵𝗮𝗻𝗻𝗲𝗹](https://t.me/SkylaIND) | [𝗥𝗲𝗽𝗼](https://github.com/SkylaIND/Skyla-Userbot)")
     if ALIVE_LOGO:
         try:
@@ -267,14 +267,15 @@ async def amireallyalive(alive):
     await bot.get_me()
     await get_readable_time((time.time() - StartTime))
     output = (
-        f"╔════════▣◎▣════════╗ \n"
+        f"☃️ 𝐒𝐊𝐘𝐋𝐀 - 𝐔𝐒𝐄𝐑𝐁𝐎𝐓 ☃️ \n"
+        f"╔═══════▣◎▣════════╗ \n"
         f"➤ 🤴 • `ᴏᴡɴᴇʀ    :`[skyla](t.me/Zxyune) \n"
         f"➤ 🖥️ • `ꜱʏꜱᴛᴇᴍ   :`Ubuntu 20.10 \n"
         f"➤ ⚙️ • `ᴛᴇʟᴇᴛʜᴏɴ :`v.{version.__version__} \n\n"
         f"➤ 🐍 • `ᴘʏᴛʜᴏɴ   :`v.{python_version()} \n"
         f"➤ 👾 • `ʙᴏᴛ      :`v.{BOT_VER} \n"
         f"➤ 📂 • `ᴍᴏᴅᴜʟᴇ   :`{len(modules)} \n"
-        f"╚════════▣◎▣════════╝")
+        f"╚═══════▣◎▣════════╝")
     if ALIVE_LOGO:
         try:
             logo = ALIVE_LOGO
