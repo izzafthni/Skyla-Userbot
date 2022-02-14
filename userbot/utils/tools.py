@@ -33,6 +33,7 @@ def humanbytes(size: Union[int, float]) -> str:
         raised_to_pow += 1
     return str(round(size, 2)) + " " + dict_power_n[raised_to_pow] + "B"
 
+
 def media_type(message):
     if message and message.photo:
         return "Photo"
