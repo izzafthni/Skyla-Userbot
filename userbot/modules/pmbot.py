@@ -71,20 +71,27 @@ async def check_bot_started_users(user, event):
                 \n**ID: **`{user.id}`\
                 \n**Action: **Telah Me-Restart saya"
     try:
-        add_starter_to_db(user.id, get_display_name(user), start_date, user.username)
+        add_starter_to_db(
+            user.id,
+            get_display_name(user),
+            start_date,
+            user.username)
     except Exception as e:
         LOGS.error(str(e))
     if BOTLOG_CHATID:
         await event.client.send_message(BOTLOG_CHATID, notification)
+
 
 @callback(data=re.compile(b"pmclose"))
 async def pmclose(event):
     if event.query.user_id == OWNER_ID:
         await event.delete()
 
+
 @callback(data=re.compile(b"goblok"))
 async def pmclose(event):
-        await event.delete()
+    await event.delete()
+
 
 @callback(data=re.compile(b"cmdhndlr"))
 async def cmdhndlr(event):
@@ -139,6 +146,7 @@ async def apiset(event):
         ],
     )
 
+
 @callback(data=re.compile(b"hndlrmenu"))
 async def hndlrmenu(event):
     await event.edit(
@@ -151,6 +159,7 @@ async def hndlrmenu(event):
             [Button.inline("ʙᴀᴄᴋ", data="apiset")],
         ],
     )
+
 
 @callback(data=re.compile(b"alivemenu"))
 async def alivemenu(event):
@@ -170,7 +179,6 @@ async def alivemenu(event):
     )
 
 
-
 @callback(data=re.compile(b"inlinemenu"))
 async def inlinemenu(event):
     await event.edit(
@@ -183,6 +191,7 @@ async def inlinemenu(event):
             [Button.inline("ʙᴀᴄᴋ", data="apiset")],
         ],
     )
+
 
 @callback(data=re.compile(b"pmbot"))
 async def pmbot(event):
@@ -213,6 +222,7 @@ async def pmbot(event):
             ],
         )
 
+
 @callback(data=re.compile(b"users"))
 async def users(event):
     await event.delete()
@@ -238,6 +248,7 @@ async def users(event):
                 ],
             )
 
+
 @callback(data=re.compile(b"settings"))
 async def botsettings(event):
     await event.delete()
@@ -259,6 +270,7 @@ async def botsettings(event):
             ],
         )
 
+
 @callback(data=re.compile(b"pmpermitmenu"))
 async def alivemenu(event):
     await event.edit(
@@ -276,6 +288,7 @@ async def alivemenu(event):
         ],
     )
 
+
 @callback(data=re.compile(b"pmon"))
 async def pmonn(event):
     var = "PM_AUTO_BAN"
@@ -283,7 +296,8 @@ async def pmonn(event):
     await event.edit(
         "Done! PMPermit telah berubah on!!",
         buttons=get_back_button("settings"),
-      )
+    )
+
 
 @callback(data=re.compile(b"pmoff"))
 async def pmofff(event):
@@ -292,7 +306,8 @@ async def pmofff(event):
     await event.edit(
         "Done! PMPermit telah berubah off!!",
         buttons=get_back_button("settings"),
-      )
+    )
+
 
 @callback(data=re.compile(b"alvname"))
 async def alvname(event):
@@ -316,6 +331,7 @@ async def alvname(event):
             f"**ALIVE_NAME Berhasil di Ganti Menjadi** `{themssg}`\n\nSedang MeRestart Heroku untuk Menerapkan Perubahan.",
             buttons=get_back_button("alivemenu"),
         )
+
 
 @callback(data=re.compile(b"sdhndlr"))
 async def sdhndlr(event):
@@ -352,6 +368,7 @@ async def sdhndlr(event):
                 buttons=get_back_button("hndlrmenu"),
             )
 
+
 @callback(data=re.compile(b"inpics"))
 async def inpics(event):
     await event.delete()
@@ -374,6 +391,7 @@ async def inpics(event):
             f"**INLINE_PIC Berhasil di Ganti Menjadi** `{themssg}`\n\nSedang MeRestart Heroku untuk Menerapkan Perubahan.",
             buttons=get_back_button("inlinemenu"),
         )
+
 
 @callback(data=re.compile(b"inmoji"))
 async def inmoji(event):
@@ -398,6 +416,7 @@ async def inmoji(event):
             buttons=get_back_button("inlinemenu"),
         )
 
+
 @callback(data=re.compile(b"alvmoji"))
 async def alvmoji(event):
     await event.delete()
@@ -420,6 +439,7 @@ async def alvmoji(event):
             f"**ALIVE_EMOJI Berhasil di Ganti Menjadi** `{themssg}`\n\nSedang MeRestart Heroku untuk Menerapkan Perubahan.",
             buttons=get_back_button("alivemenu"),
         )
+
 
 @callback(data=re.compile(b"alvlogo"))
 async def alvlogo(event):
@@ -444,7 +464,9 @@ async def alvlogo(event):
             buttons=get_back_button("alivemenu"),
         )
 
-@asst_cmd(pattern=f"^/start({botusername})?([\\s]+)?$", func=lambda e: e.is_private)
+
+@asst_cmd(pattern=f"^/start({botusername})?([\\s]+)?$",
+          func=lambda e: e.is_private)
 async def bot_start(event):
     chat = await event.get_chat()
     user = await event.client.get_me()
@@ -483,11 +505,11 @@ async def bot_start(event):
                         \n\n**Bot**: [{OWNER}](tg://user?id={OWNER_ID}) \
                         \n**Forward**: True\
                         \n\n**Powered by**: [Rose-Userbot](https://github.com/SendiAp/Rose-Userbot)"
-            buttons=[
+            buttons = [
                 (
                     Button.inline("ɪɴꜰᴏ", data="infor"),
-            )
-        ]
+                )
+            ]
     else:
         start_msg = f"**Menu ini Hanya Terlihat Oleh [{OWNER}](tg://user?id={OWNER_ID})** ..!"
         buttons = [
@@ -520,11 +542,13 @@ async def bot_start(event):
     else:
         await check_bot_started_users(chat, event)
 
+
 @callback(data=re.compile(b"uptimebot"))
 async def _(event):
     uptime = await get_readable_time((time.time() - StartTime))
     pin = f"⏱ ᴜᴘᴛɪᴍᴇ = {uptime}"
     await event.answer(pin, cache_time=0, alert=True)
+
 
 @callback(data=re.compile(b"pingbot"))
 async def _(event):
@@ -537,15 +561,15 @@ async def _(event):
 
 @callback(data=re.compile(b"infor"))
 async def infor(event):
-        await tgbot.send_message(
-            event.chat_id,
-            message=f"**Channel**: [Team-Rose](t.me/fckyoupeople1)\n**Github**: [Rose-Userbot](https://github.com/SendiAp/Rose-Userbot)\n**Deploy**: [Heroku](https://telegram.dog/XTZ_HerokuBot?start=U2VuZGlBcC9Sb3NlLVVzZXJib3QgbWFzdGVy)",
-            buttons=[
-                [
-                    custom.Button.inline(
-                        "ᴄʟᴏꜱᴇ",
-                        data="goblok",
-                    )
-                ],
+    await tgbot.send_message(
+        event.chat_id,
+        message=f"**Channel**: [Team-Rose](t.me/fckyoupeople1)\n**Github**: [Rose-Userbot](https://github.com/SendiAp/Rose-Userbot)\n**Deploy**: [Heroku](https://telegram.dog/XTZ_HerokuBot?start=U2VuZGlBcC9Sb3NlLVVzZXJib3QgbWFzdGVy)",
+        buttons=[
+            [
+                custom.Button.inline(
+                    "ᴄʟᴏꜱᴇ",
+                    data="goblok",
+                )
             ],
-        )
+        ],
+    )
