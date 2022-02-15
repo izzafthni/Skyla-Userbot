@@ -1,59 +1,124 @@
-import io
-import re
-import time
-from datetime import datetime
-from telethon.sync import custom, events
+# Copyright (C) 2021 Catuserbot <https://github.com/sandy1709/catuserbot>
+# Ported by @mrismanaziz
+# FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
+# t.me/SharingUserbot & t.me/Lunatic0de
 
-import heroku3
-from telethon import Button, custom, events
+import asyncio
+from datetime import datetime
+from math import floor
+
+from telethon import Button, events
+from telethon.errors import BadRequestError, FloodWaitError, ForbiddenError
 from telethon.utils import get_display_name
 
-from userbot import (
-    BOT_USERNAME,
-    BOTLOG_CHATID,
-    CMD_HANDLER,
-    HEROKU_API_KEY,
-    HEROKU_APP_NAME,
-    SUDO_HANDLER,
-    StartTime,
-    tgbot,
-    bot,
+from userbot import BOT_USERNAME, BOTLOG, BOTLOG_CHATID
+from userbot import CMD_HANDLER as cmd
+from userbot import CMD_HELP, bot, tgbot
+from userbot.modules.sql_helper.bot_blacklists import (
+    add_user_to_bl,
+    check_is_black_list,
+    get_all_bl_users,
+    rem_user_from_bl,
 )
-from userbot.modules.sql_helper.bot_blacklists import check_is_black_list
+from userbot.modules.sql_helper.bot_pms_sql import get_user_id
 from userbot.modules.sql_helper.bot_starters import (
     add_starter_to_db,
+    del_starter_from_db,
     get_all_starters,
     get_starter_details,
 )
 from userbot.modules.sql_helper.globals import gvarstatus
-from userbot.utils import _format, asst_cmd, callback, reply_id
+from userbot.utils import (
+    _format,
+    asst_cmd,
+    callback,
+    edit_delete,
+    edit_or_reply,
+    flicks_cmd,
+    reply_id,
+    time_formatter,
+)
+from userbot.logger import logging
 
-from .ping import get_readable_time
+LOGS = logging.getLogger(__name__)
 
 user = bot.get_me()
 botusername = BOT_USERNAME
-OWNER = user.first_name
 OWNER_ID = user.id
+OWNER = user.first_name
+FINISHED_PROGRESS_STR = "●"
+UNFINISHED_PROGRESS_STR = "○"
 
 
-heroku_api = "https://api.heroku.com"
-if HEROKU_APP_NAME is not None and HEROKU_API_KEY is not None:
-    Heroku = heroku3.from_key(HEROKU_API_KEY)
-    app = Heroku.app(HEROKU_APP_NAME)
-    heroku_var = app.config()
-else:
-    app = None
+async def get_user_and_reason(event):
+    id_reason = event.pattern_match.group(1)
+    replied = await reply_id(event)
+    user_id, reason = None, None
+    if replied:
+        users = get_user_id(replied)
+        if users is not None:
+            for usr in users:
+                user_id = int(usr.chat_id)
+                break
+            reason = id_reason
+    elif id_reason:
+        data = id_reason.split(maxsplit=1)
+        if len(data) == 2:
+            user, reason = data
+        elif len(data) == 1:
+            user = data[0]
+        if user.isdigit():
+            user_id = int(user)
+        if user.startswith("@"):
+            user_id = user
+    return user_id, reason
 
 
-async def setit(event, name, value):
+# taken from
+# https://github.com/code-rgb/USERGE-X/blob/f95766027ef95854d05e523b42cd158c2e8cdbd0/userge/plugins/bot/bot_forwards.py#L420
+def progress_str(total: int, current: int) -> str:
+    percentage = current * 100 / total
+    prog_arg = "**Progress** : `{}%`\n" "```[{}{}]```"
+    return prog_arg.format(
+        percentage,
+        "".join((FINISHED_PROGRESS_STR for i in range(floor(percentage / 5)))),
+        "".join((UNFINISHED_PROGRESS_STR for i in range(20 - floor(percentage / 5)))),
+    )
+
+
+async def ban_user_from_bot(user, reason, reply_to=None):
     try:
-        heroku_var[name] = value
-    except BaseException:
-        return await event.edit("**Maaf Gagal Menyimpan Karena ERROR**")
+        date = str(datetime.now().strftime("%B %d, %Y"))
+        add_user_to_bl(user.id, get_display_name(user), user.username, reason, date)
+    except Exception as e:
+        LOGS.error(str(e))
+    banned_msg = f"**Anda Telah Dibanned dari Bot ini.\nKarena:** `{reason}`"
+    await tgbot.send_message(user.id, banned_msg)
+    info = f"**#Banned_Bot_PM_User**\
+            \n**First Name:** {_format.mentionuser(get_display_name(user) , user.id)}\
+            \n**User ID:** `{user.id}`\
+            \n**Reason:** `{reason}`"
+    if BOTLOG:
+        await bot.send_message(BOTLOG_CHATID, info)
+    return info
 
 
-def get_back_button(name):
-    return [Button.inline("ʙᴀᴄᴋ", data=f"{name}")]
+async def unban_user_from_bot(user, reason, reply_to=None):
+    try:
+        rem_user_from_bl(user.id)
+    except Exception as e:
+        LOGS.error(str(e))
+    banned_msg = "**Anda Telah diunbanned dari Bot ini.**"
+
+    if reason is not None:
+        banned_msg += f"\n**Karena:** {reason}"
+    await tgbot.send_message(user.id, banned_msg)
+    info = f"**#Unbanned_Bot_PM_User**\
+            \n**First Name:** {_format.mentionuser(get_display_name(user) , user.id)}\
+            \n**User ID:** `{user.id}`"
+    if BOTLOG:
+        await bot.send_message(BOTLOG_CHATID, info)
+    return info
 
 
 async def check_bot_started_users(user, event):
@@ -71,135 +136,17 @@ async def check_bot_started_users(user, event):
                 \n**ID: **`{user.id}`\
                 \n**Action: **Telah Me-Restart saya"
     try:
-        add_starter_to_db(
-            user.id,
-            get_display_name(user),
-            start_date,
-            user.username)
+        add_starter_to_db(user.id, get_display_name(user), start_date, user.username)
     except Exception as e:
         LOGS.error(str(e))
-    if BOTLOG_CHATID:
+    if BOTLOG:
         await event.client.send_message(BOTLOG_CHATID, notification)
 
 
-@callback(data=re.compile(b"pmclose"))
-async def pmclose(event):
-    if event.query.user_id == OWNER_ID:
-        await event.delete()
-
-
-@callback(data=re.compile(b"goblok"))
-async def pmclose(event):
-    await event.delete()
-
-
-@callback(data=re.compile(b"cmdhndlr"))
-async def cmdhndlr(event):
-    await event.delete()
-    pru = event.sender_id
-    var = "CMD_HANDLER"
-    name = "CMD Handler/ Trigger"
-    async with event.client.conversation(pru) as conv:
-        await conv.send_message(
-            f"**Kirim Simbol yang anda inginkan sebagai Handler/Pemicu untuk menggunakan bot\nPenangan Anda Saat Ini adalah** [ `{CMD_HANDLER}` ]\n\nGunakan /cancel untuk membatalkan.",
-        )
-        response = conv.wait_event(events.NewMessage(chats=pru))
-        response = await response
-        themssg = response.message.message
-        if themssg == "/cancel":
-            await conv.send_message(
-                "Membatalkan Proses Settings VAR!",
-                buttons=get_back_button("hndlrmenu"),
-            )
-        elif len(themssg) > 1:
-            await conv.send_message(
-                "Handler yang anda masukan salah harap gunakan simbol",
-                buttons=get_back_button("hndlrmenu"),
-            )
-        elif themssg.startswith(("/", "#", "@")):
-            await conv.send_message(
-                "Simbol ini tidak dapat digunakan sebagai handler, Silahkan Gunakan Simbol lain",
-                buttons=get_back_button("hndlrmenu"),
-            )
-        else:
-            await setit(event, var, themssg)
-            await conv.send_message(
-                f"{name} **Berhasil diganti Menjadi** `{themssg}`",
-                buttons=get_back_button("hndlrmenu"),
-            )
-
-
-@callback(data=re.compile(b"apiset"))
-async def apiset(event):
-    await event.edit(
-        "**Silahkan Pilih VAR yang ingin anda Setting**",
-        buttons=[
-            [
-                Button.inline("ᴀʟɪᴠᴇ", data="alivemenu"),
-                Button.inline("ɪɴʟɪɴᴇ", data="inlinemenu"),
-            ],
-            [
-                Button.inline("ʜᴀɴᴅʟᴇʀ", data="hndlrmenu"),
-                Button.inline("ᴘᴍᴘᴇʀᴍɪᴛ", data="pmpermitmenu"),
-            ],
-            [Button.inline("ʙᴀᴄᴋ", data="settings")],
-        ],
-    )
-
-
-@callback(data=re.compile(b"hndlrmenu"))
-async def hndlrmenu(event):
-    await event.edit(
-        "**Silahkan Pilih VAR yang ingin anda Setting**",
-        buttons=[
-            [
-                Button.inline("ᴄᴍᴅ ʜᴀɴᴅʟᴇʀ", data="cmdhndlr"),
-                Button.inline("sᴜᴅᴏ ʜᴀɴᴅʟᴇʀ", data="sdhndlr"),
-            ],
-            [Button.inline("ʙᴀᴄᴋ", data="apiset")],
-        ],
-    )
-
-
-@callback(data=re.compile(b"alivemenu"))
-async def alivemenu(event):
-    await event.edit(
-        "**Silahkan Pilih VAR yang ingin anda Setting**",
-        buttons=[
-            [
-                Button.inline("ᴀʟɪᴠᴇ ᴇᴍᴏᴊɪ", data="alvmoji"),
-                Button.inline("ᴀʟɪᴠᴇ ʟᴏɢᴏ", data="alvlogo"),
-            ],
-            [
-                Button.inline("ᴀʟɪᴠᴇ ɴᴀᴍᴇ", data="alvname"),
-                Button.inline("ʙᴀᴄᴋ", data="apiset"),
-            ],
-            [Button.inline("ʙᴀᴄᴋ", data="settings")],
-        ],
-    )
-
-
-@callback(data=re.compile(b"inlinemenu"))
-async def inlinemenu(event):
-    await event.edit(
-        "**Silahkan Pilih VAR yang ingin anda Setting**",
-        buttons=[
-            [
-                Button.inline("ɪɴʟɪɴᴇ ᴇᴍᴏᴊɪ", data="inmoji"),
-                Button.inline("ɪɴʟɪɴᴇ ᴘɪᴄ", data="inpics"),
-            ],
-            [Button.inline("ʙᴀᴄᴋ", data="apiset")],
-        ],
-    )
-
-
-@callback(data=re.compile(b"pmbot"))
-async def pmbot(event):
-    await event.delete()
-    if event.query.user_id == OWNER_ID:
-        await tgbot.send_message(
-            event.chat_id,
-            message=f"""**Perintah di Bot ini adalah:**\n
+@asst_cmd(pattern=r"^/help$", from_users=OWNER_ID)
+async def bot_help(event):
+    await event.reply(
+        f"""**Perintah di Bot ini adalah:**\n
 **NOTE: Perintah ini hanya berfungsi di {botusername}**\n
  • **Command : **/uinfo <reply ke pesan>
  • **Function : **Untuk Mencari Info Pengirim Pesan.\n
@@ -211,262 +158,154 @@ async def pmbot(event):
  • **Command : **/broadcast
  • **Function : **Balas ke pesan untuk diBroadcast ke setiap pengguna yang memulai bot Anda. Untuk mendapatkan daftar pengguna Ketik `.botuser`\n
  • **NOTE : ** Jika pengguna menghentikan/memblokir bot maka dia akan dihapus dari database Anda yaitu dia akan dihapus dari daftar bot_starters
-""",
-            buttons=[
-                [
-                    custom.Button.inline(
-                        "« ʙᴀᴄᴋ",
-                        data="settings",
-                    )
-                ],
-            ],
-        )
-
-
-@callback(data=re.compile(b"users"))
-async def users(event):
-    await event.delete()
-    if event.query.user_id == OWNER_ID:
-        total_users = get_all_starters()
-        msg = "Daftar Pengguna Di Bot \n\n"
-        for user in total_users:
-            msg += f"• First Name: {user.first_name}\nUser ID: {user.user_id}\nTanggal: {user.date}\n\n"
-        with io.BytesIO(str.encode(msg)) as fileuser:
-            fileuser.name = "listusers.txt"
-            await tgbot.send_file(
-                event.chat_id,
-                fileuser,
-                force_document=True,
-                thumb="userbot/resources/extras/rosepict.jpg",
-                caption="**Total Pengguna Di Bot anda.**",
-                allow_cache=False,
-                buttons=[
-                    (
-                        Button.inline("« ʙᴀᴄᴋ", data="settings"),
-                        Button.inline("ᴄʟᴏsᴇ", data="pmclose"),
-                    )
-                ],
-            )
-
-
-@callback(data=re.compile(b"settings"))
-async def botsettings(event):
-    await event.delete()
-    if event.query.user_id == OWNER_ID:
-        await tgbot.send_message(
-            event.chat_id,
-            message=f"**Menu ini Hanya Terlihat Oleh [{OWNER}](tg://user?id={OWNER_ID})** ..!",
-            buttons=[
-                (Button.inline("sᴇᴛᴛɪɴɢs ᴠᴀʀ", data="apiset"),),
-                (
-                    Button.inline("ᴘᴍʙᴏᴛ", data="pmbot"),
-                    Button.inline("ᴜsᴇʀs", data="users"),
-                ),
-                (
-                    Button.inline("ᴘɪɴɢ", data="pingbot"),
-                    Button.inline("ᴜᴘᴛɪᴍᴇ", data="uptimebot"),
-                ),
-                (Button.inline("ᴄʟᴏsᴇ", data="pmclose"),),
-            ],
-        )
-
-
-@callback(data=re.compile(b"pmpermitmenu"))
-async def alivemenu(event):
-    await event.edit(
-        "**Silahkan Pilih VAR yang ingin anda Setting**",
-        buttons=[
-            [
-                Button.inline("ᴘᴍᴘᴇʀᴍɪᴛ ᴏɴ", data="pmon"),
-                Button.inline("ᴘᴍᴘᴇʀᴍɪᴛ ᴏᴏꜰ", data="pmoff"),
-            ],
-            [
-                Button.inline("ᴀʟɪᴠᴇ ɴᴀᴍᴇ", data="alvname"),
-                Button.inline("ʙᴀᴄᴋ", data="apiset"),
-            ],
-            [Button.inline("ʙᴀᴄᴋ", data="settings")],
-        ],
+"""
     )
 
 
-@callback(data=re.compile(b"pmon"))
-async def pmonn(event):
-    var = "PM_AUTO_BAN"
-    await setit(event, var, "True")
-    await event.edit(
-        "Done! PMPermit telah berubah on!!",
-        buttons=get_back_button("settings"),
-    )
-
-
-@callback(data=re.compile(b"pmoff"))
-async def pmofff(event):
-    var = "PM_AUTO_BAN"
-    await setit(event, var, "False")
-    await event.edit(
-        "Done! PMPermit telah berubah off!!",
-        buttons=get_back_button("settings"),
-    )
-
-
-@callback(data=re.compile(b"alvname"))
-async def alvname(event):
-    await event.delete()
-    pru = event.sender_id
-    var = "ALIVE_NAME"
-    async with event.client.conversation(pru) as conv:
-        await conv.send_message(
-            "**Silahkan Kirimkan Nama Untuk var ALIVE_NAME anda**\n\nGunakan /cancel untuk membatalkan."
-        )
-        response = conv.wait_event(events.NewMessage(chats=pru))
-        response = await response
-        themssg = response.message.message
-        if themssg == "/cancel":
-            return await conv.send_message(
-                "Membatalkan Proses Settings VAR!",
-                buttons=get_back_button("alivemenu"),
+@asst_cmd(pattern="^/broadcast$", from_users=OWNER_ID)
+async def bot_broadcast(event):
+    replied = await event.get_reply_message()
+    if not replied:
+        return await event.reply("**Mohon Balas Ke Pesan Yang ingin di Broadcast!**")
+    start_ = datetime.now()
+    br_cast = await replied.reply("`Broadcasting...`")
+    blocked_users = []
+    count = 0
+    bot_users_count = len(get_all_starters())
+    if bot_users_count == 0:
+        return await event.reply("**Belum ada yang memulai bot Anda.** 🥺")
+    users = get_all_starters()
+    if users is None:
+        return await event.reply("**Terjadi Error saat mengambil daftar pengguna.**")
+    for user in users:
+        try:
+            await event.client.send_message(
+                int(user.user_id), "🔊 You received a **new** Broadcast."
             )
-        await setit(event, var, themssg)
-        await conv.send_message(
-            f"**ALIVE_NAME Berhasil di Ganti Menjadi** `{themssg}`\n\nSedang MeRestart Heroku untuk Menerapkan Perubahan.",
-            buttons=get_back_button("alivemenu"),
-        )
+            await event.client.send_message(int(user.user_id), replied)
+            await asyncio.sleep(0.8)
+        except FloodWaitError as e:
+            await asyncio.sleep(e.seconds)
+        except (BadRequestError, ValueError, ForbiddenError):
+            del_starter_from_db(int(user.user_id))
+        except Exception as e:
+            LOGS.error(str(e))
+            if BOTLOG:
+                await event.client.send_message(
+                    BOTLOG_CHATID, f"**Terjadi Error Saat Broadcast**\n`{e}`"
+                )
 
-
-@callback(data=re.compile(b"sdhndlr"))
-async def sdhndlr(event):
-    await event.delete()
-    pru = event.sender_id
-    var = "SUDO_HANDLER"
-    name = "SUDO Handler/ Trigger"
-    async with event.client.conversation(pru) as conv:
-        await conv.send_message(
-            f"**Kirim Simbol yang anda inginkan sebagai HANDLER untuk pengguna sudo bot anda\nSUDO_HANDLER anda Saat Ini adalah** [ `{SUDO_HANDLER}` ]\n\nGunakan /cancel untuk membatalkan.",
-        )
-        response = conv.wait_event(events.NewMessage(chats=pru))
-        response = await response
-        themssg = response.message.message
-        if themssg == "/cancel":
-            await conv.send_message(
-                "Membatalkan Proses Settings VAR!",
-                buttons=get_back_button("hndlrmenu"),
-            )
-        elif len(themssg) > 1:
-            await conv.send_message(
-                "Handler yang anda masukan salah harap gunakan simbol",
-                buttons=get_back_button("hndlrmenu"),
-            )
-        elif themssg.startswith(("/", "#", "@")):
-            await conv.send_message(
-                "Simbol ini tidak dapat digunakan sebagai handler, Silahkan Gunakan Simbol lain",
-                buttons=get_back_button("hndlrmenu"),
-            )
         else:
-            await setit(event, var, themssg)
-            await conv.send_message(
-                f"{name} **Berhasil diganti Menjadi** `{themssg}`",
-                buttons=get_back_button("hndlrmenu"),
-            )
+            count += 1
+            if count % 5 == 0:
+                try:
+                    prog_ = (
+                        "🔊 **Broadcasting...**\n\n"
+                        + progress_str(
+                            total=bot_users_count,
+                            current=count + len(blocked_users),
+                        )
+                        + f"\n\n• ✔️ **Berhasil** :  `{count}`\n"
+                        + f"• ✖️ **Gagal** :  `{len(blocked_users)}`"
+                    )
+                    await br_cast.edit(prog_)
+                except FloodWaitError as e:
+                    await asyncio.sleep(e.seconds)
+    end_ = datetime.now()
+    b_info = f"🔊 <b>Berhasil Mengirim Broadcast Pesan Ke</b> ➜ <code>{count}</code> <b>Users.</b>"
+    if len(blocked_users) != 0:
+        b_info += f"\n🚫 <code>{len(blocked_users)}</code> <b>user memblokir bot Anda baru-baru ini, jadi telah dihapus.</b>"
+    b_info += f"\n⏳ <b>Dalam Waktu</b>  <code>{time_formatter((end_ - start_).seconds)}</code>."
+    await br_cast.edit(b_info, parse_mode="html")
 
 
-@callback(data=re.compile(b"inpics"))
-async def inpics(event):
-    await event.delete()
-    pru = event.sender_id
-    var = "INLINE_PIC"
-    async with event.client.conversation(pru) as conv:
-        await conv.send_message(
-            "**Silahkan Kirimkan Link Telegraph Untuk var INLINE_PIC anda**\n\nGunakan /cancel untuk membatalkan."
+@flicks_cmd(pattern="botuser$")
+async def ban_starters(event):
+    "To get list of users who started bot."
+    ulist = get_all_starters()
+    if len(ulist) == 0:
+        return await edit_delete(event, "**Belum ada yang memulai bot Anda.** 🥺")
+    msg = "**Daftar Pengguna yang Memulai Bot Anda adalah:\n\n**"
+    for user in ulist:
+        msg += f"• **First Name:** {_format.mentionuser(user.first_name , user.user_id)}\n**User ID:** `{user.user_id}`\n**Tanggal: **{user.date}\n\n"
+    await edit_or_reply(event, msg)
+
+
+@asst_cmd(pattern="^/ban\\s+([\\s\\S]*)", from_users=OWNER_ID)
+async def ban_botpms(event):
+    user_id, reason = await get_user_and_reason(event)
+    reply_to = await reply_id(event)
+    if not user_id:
+        return await event.client.send_message(
+            event.chat_id,
+            "**Saya tidak dapat menemukan user untuk dibanned**",
+            reply_to=reply_to,
         )
-        response = conv.wait_event(events.NewMessage(chats=pru))
-        response = await response
-        themssg = response.message.message
-        if themssg == "/cancel":
-            return await conv.send_message(
-                "Membatalkan Proses Settings VAR!",
-                buttons=get_back_button("inlinemenu"),
-            )
-        await setit(event, var, themssg)
-        await conv.send_message(
-            f"**INLINE_PIC Berhasil di Ganti Menjadi** `{themssg}`\n\nSedang MeRestart Heroku untuk Menerapkan Perubahan.",
-            buttons=get_back_button("inlinemenu"),
+    if not reason:
+        return await event.client.send_message(
+            event.chat_id,
+            "**Untuk Membanned User mohon Berikan alasan terlebih dahulu**",
+            reply_to=reply_to,
         )
-
-
-@callback(data=re.compile(b"inmoji"))
-async def inmoji(event):
-    await event.delete()
-    pru = event.sender_id
-    var = "INLINE_EMOJI"
-    async with event.client.conversation(pru) as conv:
-        await conv.send_message(
-            "**Silahkan Kirimkan Teks Untuk var INLINE_EMOJI anda**\n\nGunakan /cancel untuk membatalkan."
+    try:
+        user = await event.client.get_entity(user_id)
+        user_id = user.id
+    except Exception as e:
+        return await event.reply(f"**ERROR:**\n`{e}`")
+    if user_id == OWNER_ID:
+        return await event.reply("**Saya Tidak Bisa Membanned Master** 🥺")
+    check = check_is_black_list(user.id)
+    if check:
+        return await event.client.send_message(
+            event.chat_id,
+            f"**#Already_Banned**\
+            \n**Pengguna sudah ada di Daftar Banned saya.**\
+            \n**Alasan diBanned:** `{check.reason}`\
+            \n**Tanggal:** `{check.date}`",
         )
-        response = conv.wait_event(events.NewMessage(chats=pru))
-        response = await response
-        themssg = response.message.message
-        if themssg == "/cancel":
-            return await conv.send_message(
-                "Membatalkan Proses Settings VAR!",
-                buttons=get_back_button("inlinemenu"),
-            )
-        await setit(event, var, themssg)
-        await conv.send_message(
-            f"**INLINE_EMOJI Berhasil di Ganti Menjadi** `{themssg}`\n\nSedang MeRestart Heroku untuk Menerapkan Perubahan.",
-            buttons=get_back_button("inlinemenu"),
+    msg = await ban_user_from_bot(user, reason, reply_to)
+    await event.reply(msg)
+
+
+@asst_cmd(pattern="^/unban(?:\\s|$)([\\s\\S]*)", from_users=OWNER_ID)
+async def ban_botpms(event):
+    user_id, reason = await get_user_and_reason(event)
+    reply_to = await reply_id(event)
+    if not user_id:
+        return await event.client.send_message(
+            event.chat_id,
+            "**Saya tidak dapat menemukan pengguna untuk di unbanned**",
+            reply_to=reply_to,
         )
-
-
-@callback(data=re.compile(b"alvmoji"))
-async def alvmoji(event):
-    await event.delete()
-    pru = event.sender_id
-    var = "ALIVE_EMOJI"
-    async with event.client.conversation(pru) as conv:
-        await conv.send_message(
-            "**Silahkan Kirimkan Emoji Untuk var ALIVE_EMOJI anda**\n\nGunakan /cancel untuk membatalkan."
+    try:
+        user = await event.client.get_entity(user_id)
+        user_id = user.id
+    except Exception as e:
+        return await event.reply(f"**Error:**\n`{e}`")
+    check = check_is_black_list(user.id)
+    if not check:
+        return await event.client.send_message(
+            event.chat_id,
+            f"**#User_Not_Banned**\
+            \n• {_format.mentionuser(user.first_name , user.id)} **Tidak ada di List Banned saya.**",
         )
-        response = conv.wait_event(events.NewMessage(chats=pru))
-        response = await response
-        themssg = response.message.message
-        if themssg == "/cancel":
-            return await conv.send_message(
-                "Membatalkan Proses Settings VAR!",
-                buttons=get_back_button("alivemenu"),
-            )
-        await setit(event, var, themssg)
-        await conv.send_message(
-            f"**ALIVE_EMOJI Berhasil di Ganti Menjadi** `{themssg}`\n\nSedang MeRestart Heroku untuk Menerapkan Perubahan.",
-            buttons=get_back_button("alivemenu"),
-        )
+    msg = await unban_user_from_bot(user, reason, reply_to)
+    await event.reply(msg)
 
 
-@callback(data=re.compile(b"alvlogo"))
-async def alvlogo(event):
-    await event.delete()
-    pru = event.sender_id
-    var = "ALIVE_LOGO"
-    async with event.client.conversation(pru) as conv:
-        await conv.send_message(
-            "**Silahkan Kirimkan Link Telegraph Untuk var ALIVE_LOGO anda**\n\nGunakan /cancel untuk membatalkan."
-        )
-        response = conv.wait_event(events.NewMessage(chats=pru))
-        response = await response
-        themssg = response.message.message
-        if themssg == "/cancel":
-            return await conv.send_message(
-                "Membatalkan Proses Settings VAR!",
-                buttons=get_back_button("alivemenu"),
-            )
-        await setit(event, var, themssg)
-        await conv.send_message(
-            f"**ALIVE_LOGO Berhasil di Ganti Menjadi** `{themssg}`\n\nSedang MeRestart Heroku untuk Menerapkan Perubahan.",
-            buttons=get_back_button("alivemenu"),
-        )
+@flicks_cmd(pattern="bblist$")
+async def ban_starters(event):
+    "To get list of users who are banned in bot."
+    ulist = get_all_bl_users()
+    if len(ulist) == 0:
+        return await edit_delete(event, "**Belum ada yang dibanned di bot Anda.**")
+    msg = "**Daftar Pengguna Yang diBanned di Bot Anda adalah:\n\n**"
+    for user in ulist:
+        msg += f"• **Nama:** {_format.mentionuser(user.first_name , user.chat_id)}\n**User ID:** `{user.chat_id}`\n**Tanggal: **{user.date}\n**Karena:** {user.reason}\n\n"
+    await edit_or_reply(event, msg)
 
 
-@asst_cmd(pattern=f"^/start({botusername})?([\\s]+)?$",
-          func=lambda e: e.is_private)
+@asst_cmd(pattern=f"^/start({botusername})?([\\s]+)?$", func=lambda e: e.is_private)
 async def bot_start(event):
     chat = await event.get_chat()
     user = await event.client.get_me()
@@ -501,28 +340,32 @@ async def bot_start(event):
                 my_mention=my_mention,
             )
         else:
-            start_msg = f"**Users**: {mention}\
-                        \n\n**Bot**: [{OWNER}](tg://user?id={OWNER_ID}) \
-                        \n**Forward**: True\
-                        \n\n**Powered by**: [Rose-Userbot](https://github.com/SendiAp/Rose-Userbot)"
-            buttons = [
-                (
-                    Button.inline("ɪɴꜰᴏ", data="infor"),
-                )
-            ]
-    else:
-        start_msg = f"**Menu ini Hanya Terlihat Oleh [{OWNER}](tg://user?id={OWNER_ID})** ..!"
+            start_msg = f"**👋 Hai** {mention}**!**\
+                        \n\n**Saya adalah {my_first}** \
+                        \n**Anda dapat Menghubungi [{OWNER}](tg://user?id={OWNER_ID}) dari sini.**\
+                        \n**Jangan Melakukan Spam Atau anda akan di blokir**\
+                        \n\n**Powered by** [UserBot](https://github.com/fjgaming212/Flicks-Userbot)"
         buttons = [
-            (Button.inline("sᴇᴛᴛɪɴɢs ᴠᴀʀ", data="apiset"),),
             (
-                Button.inline("ᴘᴍʙᴏᴛ", data="pmbot"),
-                Button.inline("ᴜsᴇʀs", data="users"),
-            ),
+                Button.url("ɢʀᴏᴜᴘ", f"https://t.me/FlicksSupport"),
+                Button.url(
+                    "ᴄʜᴀɴɴᴇʟ",
+                    f"https://t.me/InfoFlicksUserbot",
+                ),
+            )
+        ]
+    else:
+        start_msg = f"**Halo [{OWNER}](tg://user?id={OWNER_ID})\
+            \nApa ada yang bisa saya Bantu?\
+            \nSilahkan Ketik /help Bila butuh Bantuan**"
+        buttons = [
             (
-                Button.inline("ᴘɪɴɢ", data="pingbot"),
-                Button.inline("ᴜᴘᴛɪᴍᴇ", data="uptimebot"),
-            ),
-            (Button.inline("ᴄʟᴏsᴇ", data="pmclose"),),
+                Button.url("ɢʀᴏᴜᴘ", f"https://t.me/FlicksSupport"),
+                Button.url(
+                    "ᴄʜᴀɴɴᴇʟ",
+                    f"https://t.me/InfoFlicksUserbot",
+                ),
+            )
         ]
     try:
         await event.client.send_message(
@@ -533,43 +376,112 @@ async def bot_start(event):
             reply_to=reply_to,
         )
     except Exception as e:
-        if BOTLOG_CHATID:
+        if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                f"**ERROR:** Saat Pengguna memulai Bot anda.\n`{e}`",
+                f"**ERROR:** Saat Pengguna memulai Bot anda.\\\x1f                \n`{e}`",
             )
 
     else:
         await check_bot_started_users(chat, event)
 
 
-@callback(data=re.compile(b"uptimebot"))
-async def _(event):
-    uptime = await get_readable_time((time.time() - StartTime))
-    pin = f"⏱ ᴜᴘᴛɪᴍᴇ = {uptime}"
-    await event.answer(pin, cache_time=0, alert=True)
+@tgbot.on(events.CallbackQuery(data=b"about"))
+async def about(event):
+      await event.edit(f"""
+Owner - {user.first_name}
+OwnerID - {user.id}
+[Link To Profile 👤](tg://user?id={user.id})
+
+By @TeamFlicksUserbot
+Flicks-Userbot [v{BOT_VER}](https://github.com/fjgaming212/Flicks-Userbot)
+""",
+                             buttons=[
+                                 [
+                                     custom.Button.inline("ᴄʟᴏsᴇ",
+                                                          data="keluar")],
+                             ]
+                             )
+
+@tgbot.on(events.CallbackQuery(data=b"keluar"))
+async def keluar(event):
+    await event.delete()
 
 
-@callback(data=re.compile(b"pingbot"))
-async def _(event):
-    start = datetime.now()
-    end = datetime.now()
-    ms = (end - start).microseconds
-    pin = f"🏓 ᴘɪɴɢ = {ms} microseconds"
-    await event.answer(pin, cache_time=0, alert=True)
-
-
-@callback(data=re.compile(b"infor"))
-async def infor(event):
-    await tgbot.send_message(
+@asst_cmd(pattern="^/uinfo$", from_users=OWNER_ID)
+async def bot_start(event):
+    reply_to = await reply_id(event)
+    if not reply_to:
+        return await event.reply(
+            "**Silahkan Balas ke pesan untuk mendapatkan info pesan**"
+        )
+    info_msg = await event.client.send_message(
         event.chat_id,
-        message=f"**Channel**: [Team-Rose](t.me/fckyoupeople1)\n**Github**: [Rose-Userbot](https://github.com/SendiAp/Rose-Userbot)\n**Deploy**: [Heroku](https://telegram.dog/XTZ_HerokuBot?start=U2VuZGlBcC9Sb3NlLVVzZXJib3QgbWFzdGVy)",
-        buttons=[
-            [
-                custom.Button.inline(
-                    "ᴄʟᴏꜱᴇ",
-                    data="goblok",
-                )
-            ],
-        ],
+        "`🔎 Sedang Mencari di Database...`",
+        reply_to=reply_to,
     )
+    users = get_user_id(reply_to)
+    if users is None:
+        return await info_msg.edit(
+            "**ERROR: Maaf! Tidak Dapat Menemukan pengguna ini di database saya 🥺**"
+        )
+    for usr in users:
+        user_id = int(usr.chat_id)
+        user_name = usr.first_name
+        break
+    if user_id is None:
+        return await info_msg.edit(
+            "**ERROR: Maaf! Tidak Dapat Menemukan pengguna ini di database saya 🥺**"
+        )
+    uinfo = f"**Pesan ini dikirim oleh**\
+            \n**First Name:** {_format.mentionuser(user_name , user_id)}\
+            \n**User ID:** `{user_id}`"
+    await info_msg.edit(uinfo)
+
+
+@flicks_cmd(pattern="(set|reset) pmbot(?: |$)(\w*)")
+async def setpmbot(event):
+    try:
+        import userbot.modules.sql_helper.globals as sql
+    except AttributeError:
+        await event.edit("**Running on Non-SQL mode!**")
+        return
+    xnxx = await edit_or_reply(event, "`Processing...`")
+    conf = event.pattern_match.group(1)
+    custom_message = sql.gvarstatus("START_TEXT")
+    if conf.lower() == "set":
+        message = await event.get_reply_message()
+        status = "Pesan"
+        if custom_message is not None:
+            sql.delgvar("START_TEXT")
+            status = "Pesan"
+        if not message:
+            return await xnxx.edit("**Mohon Reply Ke Pesan**")
+        msg = message.message
+        sql.addgvar("START_TEXT", msg)
+        await xnxx.edit("**Berhasil Mengcustom Pesan Start BOT**")
+        if BOTLOG:
+            await event.client.send_message(
+                BOTLOG_CHATID,
+                f"**{status} PMBOT Yang Tersimpan:** \n\n{msg}",
+            )
+    if conf.lower() == "reset":
+        if custom_message is not None:
+            sql.delgvar("START_TEXT")
+        await edit_delete(xnxx, "**Berhasil Menghapus Pesan Custom PMBOT**")
+
+
+CMD_HELP.update(
+    {
+        "pmbot": f"**Plugin : **`pmbot`\
+        \n\n  •  **Syntax :** `{cmd}bblist`\
+        \n  •  **Function : **Untuk Melihat Daftar pengguna yang dibanned di bot anda.\
+        \n\n  •  **Syntax :** `{cmd}botuser`\
+        \n  •  **Function : **Untuk Melihat Daftar Pengguna yang Memulai Bot anda.\
+        \n\n  •  **Syntax :** `{cmd}set pmbot` <balas ke pesan>\
+        \n  •  **Function : **Mengcustom Pesan start pmbot.\
+        \n\n  •  **Syntax :** `{cmd}reset pmbot`\
+        \n  •  **Function : **Mengembalikan Custom Start PMBOT menjadi default.\
+    "
+    }
+)
