@@ -458,7 +458,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
 
 
 def paginate_help(page_number, loaded_modules, prefix):
-    number_of_rows = 5
+    number_of_rows = 6
     number_of_cols = 2
     global lockpage
     lockpage = page_number
@@ -466,12 +466,11 @@ def paginate_help(page_number, loaded_modules, prefix):
     helpable_modules = sorted(helpable_modules)
     modules = [
         custom.Button.inline(
-            "{} {} {} ".format(
-                f"{EMOJI_HELP}",
-                x,
-                f"{EMOJI_HELP}"),
-            data="ub_modul_{}".format(x)) for x in helpable_modules]
-    pairs = list(zip(modules[:: number_of_cols],
+            "{} {} ✥".format(
+                "✥", x), data="ub_modul_{}".format(x))
+        for x in helpable_modules
+    ]
+    pairs = list(zip(modules[::number_of_cols],
                      modules[1::number_of_cols]))
     if len(modules) % number_of_cols == 1:
         pairs.append((modules[-1],))
@@ -479,56 +478,118 @@ def paginate_help(page_number, loaded_modules, prefix):
     modulo_page = page_number % max_num_pages
     if len(pairs) > number_of_rows:
         pairs = pairs[
-            modulo_page * number_of_rows: number_of_rows * (
-                modulo_page + 1)] + [
-            (custom.Button.inline(
-                "<<ᴘʀᴇᴠɪᴏᴜꜱ", data="{}_prev({})".format(
-                    prefix, modulo_page)), custom.Button.inline(
-                        "ᴍᴇɴᴜ", data="{}_close({})".format(
-                            prefix, modulo_page)), custom.Button.inline(
-                                "ɴᴇxᴛ>>", data="{}_next({})".format(
-                                    prefix, modulo_page)), )]
+            modulo_page * number_of_rows: number_of_rows * (modulo_page + 1)
+        ] + [
+            (
+                custom.Button.inline(
+                    "««", data="{}_prev({})".format(prefix, modulo_page)
+                ),
+                custom.Button.inline(
+                    "Cʟᴏsᴇ", data="{}_close({})".format(prefix, modulo_page)
+                ),
+                custom.Button.inline(
+                    "»»", data="{}_next({})".format(prefix, modulo_page)
+                ),
+            )
+        ]
     return pairs
+
+
+def ibuild_keyboard(buttons):
+    keyb = []
+    for btn in buttons:
+        if btn[2] and keyb:
+            keyb[-1].append(Button.url(btn[0], btn[1]))
+        else:
+            keyb.append([Button.url(btn[0], btn[1])])
+    return keyb
 
 
 with bot:
     try:
-        tgbot = TelegramClient(
-            "TG_BOT_TOKEN",
-            api_id=API_KEY,
-            api_hash=API_HASH).start(
-            bot_token=BOT_TOKEN)
+
+        from userbot.modules.sql_helper.bot_blacklists import check_is_black_list
+        from userbot.modules.sql_helper.bot_pms_sql import add_user_to_db, get_user_id
+        from userbot.utils import reply_id
+
 
         dugmeler = CMD_HELP
         me = bot.get_me()
         uid = me.id
-
-        @tgbot.on(
-            events.callbackquery.CallbackQuery(  # pylint:disable=E0602
-                data=re.compile("open")
-            )
+        logo = ALIVE_LOGO
+        BTN_URL_REGEX = re.compile(
+            r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)"
         )
-        async def opeen(event):
-            try:
-                tgbotusername = BOT_USERNAME
-                if tgbotusername is not None:
-                    results = await event.client.inline_query(tgbotusername, "@KayzuUbot")
-                    await results[0].click(
-                        event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
-                    )
-                    await event.delete()
-                else:
-                    await event.edit(
-                        "`The bot doesn't work! Please set the Bot Token and Username correctly. The module has been stopped.`"
-                    )
-            except Exception:
-                return await event.edit(
-                    "⛔ **Kamu Tidak Diizinkan Untuk Menekan Nya**!"
-                )
 
         kyylogo = INLINE_PIC
         plugins = CMD_HELP
         vr = BOT_VER
+
+        @tgbot.on(events.NewMessage(incoming=True, func=lambda e: e.is_private))
+        async def bot_pms(event):
+            chat = await event.get_chat()
+            if check_is_black_list(chat.id):
+                return
+            if chat.id != uid:
+                msg = await event.forward_to(uid)
+                try:
+                    add_user_to_db(
+                        msg.id, get_display_name(chat), chat.id, event.id, 0, 0
+                    )
+                except Exception as e:
+                    LOGS.error(str(e))
+                    if BOTLOG:
+                        await event.client.send_message(
+                            BOTLOG_CHATID,
+                            f"**ERROR:** Saat menyimpan detail pesan di database\n`{str(e)}`",
+                        )
+            else:
+                if event.text.startswith("/"):
+                    return
+                reply_to = await reply_id(event)
+                if reply_to is None:
+                    return
+                users = get_user_id(reply_to)
+                if users is None:
+                    return
+                for usr in users:
+                    user_id = int(usr.chat_id)
+                    reply_msg = usr.reply_id
+                    user_name = usr.first_name
+                    break
+                if user_id is not None:
+                    try:
+                        if event.media:
+                            msg = await event.client.send_file(
+                                user_id,
+                                event.media,
+                                caption=event.text,
+                                reply_to=reply_msg,
+                            )
+                        else:
+                            msg = await event.client.send_message(
+                                user_id,
+                                event.text,
+                                reply_to=reply_msg,
+                                link_preview=False,
+                            )
+                    except UserIsBlockedError:
+                        return await event.reply(
+                            "❌ **Bot ini diblokir oleh pengguna.**"
+                        )
+                    except Exception as e:
+                        return await event.reply(f"**ERROR:** `{e}`")
+                    try:
+                        add_user_to_db(
+                            reply_to, user_name, user_id, reply_msg, event.id, msg.id
+                        )
+                    except Exception as e:
+                        LOGS.error(str(e))
+                        if BOTLOG:
+                            await event.client.send_message(
+                                BOTLOG_CHATID,
+                                f"**ERROR:** Saat menyimpan detail pesan di database\n`{e}`",
+                            )
 
 # ------------------------------ChatAction--------------->
 
