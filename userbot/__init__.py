@@ -32,6 +32,7 @@ from .storage import Storage
 def STORAGE(n):
     return Storage(Path("data") / n)
 
+
 load_dotenv("config.env")
 
 StartTime = time.time()
@@ -65,7 +66,8 @@ logging.basicConfig(
 )
 logging.getLogger("asyncio").setLevel(logging.ERROR)
 logging.getLogger("telethon.network.mtprotosender").setLevel(logging.ERROR)
-logging.getLogger("telethon.network.connection.connection").setLevel(logging.ERROR)
+logging.getLogger(
+    "telethon.network.connection.connection").setLevel(logging.ERROR)
 LOGS = getLogger(__name__)
 
 if version_info[0] < 3 or version_info[1] < 9:
@@ -354,7 +356,9 @@ try:
     chat_id, msg_id = gvarstatus("restartstatus").split("\n")
     with bot:
         try:
-            bot.loop.run_until_complete(update_restart_msg(int(chat_id), int(msg_id)))
+            bot.loop.run_until_complete(
+                update_restart_msg(
+                    int(chat_id), int(msg_id)))
         except BaseException:
             pass
     delgvar("restartstatus")
@@ -401,7 +405,7 @@ def paginate_help(page_number, loaded_modules, prefix):
     modulo_page = page_number % max_num_pages
     if len(pairs) > number_of_rows:
         pairs = pairs[
-            modulo_page * number_of_rows : number_of_rows * (modulo_page + 1)
+            modulo_page * number_of_rows: number_of_rows * (modulo_page + 1)
         ] + [
             (
                 custom.Button.inline(
@@ -447,7 +451,8 @@ with bot:
         async def on_plug_in_callback_query_handler(event):
             if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
                 current_page_number = int(lockpage)
-                buttons = paginate_help(current_page_number, dugmeler, "helpme")
+                buttons = paginate_help(
+                    current_page_number, dugmeler, "helpme")
                 text = f"**✗ Rose-Userbot Inline Menu ✗**\n\n✣ **Owner** [{user.first_name}](tg://user?id={user.id})\n✣ **Jumlah** `{len(dugmeler)}` Modules"
                 await event.edit(
                     text,
@@ -459,7 +464,8 @@ with bot:
                 reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
-        @tgbot.on(events.NewMessage(incoming=True, func=lambda e: e.is_private))
+        @tgbot.on(events.NewMessage(incoming=True,
+                  func=lambda e: e.is_private))
         async def bot_pms(event):
             chat = await event.get_chat()
             if check_is_black_list(chat.id):
@@ -515,8 +521,12 @@ with bot:
                         return await event.reply(f"**ERROR:** `{e}`")
                     try:
                         add_user_to_db(
-                            reply_to, user_name, user_id, reply_msg, event.id, msg.id
-                        )
+                            reply_to,
+                            user_name,
+                            user_id,
+                            reply_msg,
+                            event.id,
+                            msg.id)
                     except Exception as e:
                         LOGS.error(str(e))
                         if BOTLOG:
@@ -543,14 +553,20 @@ with bot:
                     title="Repository",
                     description="Repository Rose - Userbot",
                     url="https://t.me/Rose_Userbot",
-                    thumb=InputWebDocument(INLINE_PIC, 0, "image/jpeg", []),
+                    thumb=InputWebDocument(
+                        INLINE_PIC,
+                        0,
+                        "image/jpeg",
+                        []),
                     text="**Rose - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [Sendi](https://t.me/pikyus1)\n✣ **Support :** @Rose_Userbot\n✣ **Repository :** [Rose-Userbot](https://github.com/SendiAp/Rose-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
-                            custom.Button.url("ɢʀᴏᴜᴘ", "https://t.me/Rose_Userbot"),
                             custom.Button.url(
-                                "ʀᴇᴘᴏ", "https://github.com/SendiAp/Rose-Userbot"
-                            ),
+                                "ɢʀᴏᴜᴘ",
+                                "https://t.me/Rose_Userbot"),
+                            custom.Button.url(
+                                "ʀᴇᴘᴏ",
+                                "https://github.com/SendiAp/Rose-Userbot"),
                         ],
                     ],
                     link_preview=False,
@@ -568,9 +584,9 @@ with bot:
                         to_check -= 1
                     if n_escapes % 2 == 0:
                         buttons.append(
-                            (match.group(2), match.group(3), bool(match.group(4)))
-                        )
-                        note_data += markdown_note[prev : match.start(1)]
+                            (match.group(2), match.group(3), bool(
+                                match.group(4))))
+                        note_data += markdown_note[prev: match.start(1)]
                         prev = match.end(1)
                     elif n_escapes % 2 == 1:
                         note_data += markdown_note[prev:to_check]
@@ -592,14 +608,20 @@ with bot:
                     title="✗ Rose-Userbot ✗",
                     description="Rose - UserBot | Telethon",
                     url="https://t.me/Rose_Userbot",
-                    thumb=InputWebDocument(INLINE_PIC, 0, "image/jpeg", []),
+                    thumb=InputWebDocument(
+                        INLINE_PIC,
+                        0,
+                        "image/jpeg",
+                        []),
                     text=f"**Rose - UserBot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **UserMode:** [{user.first_name}](tg://user?id={user.id})\n✣ **Assistant:** {tgbotusername}\n➖➖➖➖➖➖➖➖➖➖\n**Support:** @Rose_Userbot\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
-                            custom.Button.url("ɢʀᴏᴜᴘ", "https://t.me/Rose_Userbot"),
                             custom.Button.url(
-                                "ʀᴇᴘᴏ", "https://github.com/SendiAp/Rose-Userbot"
-                            ),
+                                "ɢʀᴏᴜᴘ",
+                                "https://t.me/Rose_Userbot"),
+                            custom.Button.url(
+                                "ʀᴇᴘᴏ",
+                                "https://github.com/SendiAp/Rose-Userbot"),
                         ],
                     ],
                     link_preview=False,
@@ -615,8 +637,10 @@ with bot:
         )
         async def on_plug_in_callback_query_handler(event):
             if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
-                current_page_number = int(event.data_match.group(1).decode("UTF-8"))
-                buttons = paginate_help(current_page_number + 1, dugmeler, "helpme")
+                current_page_number = int(
+                    event.data_match.group(1).decode("UTF-8"))
+                buttons = paginate_help(
+                    current_page_number + 1, dugmeler, "helpme")
                 await event.edit(buttons=buttons)
             else:
                 reply_pop_up_alert = (
@@ -627,7 +651,8 @@ with bot:
         @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
         async def on_plug_in_callback_query_handler(event):
             if event.query.user_id == uid or event.query.user_id in DEVS and SUDO_USERS:
-                openlagi = custom.Button.inline("• Re-Open Menu •", data="reopen")
+                openlagi = custom.Button.inline(
+                    "• Re-Open Menu •", data="reopen")
                 await event.edit(
                     "⚜️ **Help Mode Button Ditutup!** ⚜️", buttons=openlagi
                 )
@@ -642,8 +667,10 @@ with bot:
         )
         async def on_plug_in_callback_query_handler(event):
             if event.query.user_id == uid or event.query.user_id in SUDO_USERS:
-                current_page_number = int(event.data_match.group(1).decode("UTF-8"))
-                buttons = paginate_help(current_page_number - 1, dugmeler, "helpme")
+                current_page_number = int(
+                    event.data_match.group(1).decode("UTF-8"))
+                buttons = paginate_help(
+                    current_page_number - 1, dugmeler, "helpme")
                 await event.edit(buttons=buttons)
             else:
                 reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
@@ -666,9 +693,8 @@ with bot:
                         + " "
                     )
                 else:
-                    help_string = (
-                        str(CMD_HELP[modul_name]).replace("`", "").replace("**", "")
-                    )
+                    help_string = (str(CMD_HELP[modul_name]).replace(
+                        "`", "").replace("**", ""))
 
                 reply_pop_up_alert = (
                     help_string
