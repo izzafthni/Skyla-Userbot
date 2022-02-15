@@ -1,17 +1,9 @@
-# Using Python Slim-Buster
 FROM vckyouuu/geezprojects:buster
-#━━━━━ Userbot Telegram ━━━━━
-#━━━━━ By Skyla-Userbot ━━━━━
 
-RUN git clone -b Skyla-Userbot https://github.com/SkylaIND/Skyla-Userbot /root/userbot
-RUN mkdir /root/userbot/.bin
-RUN pip install --upgrade pip setuptools
-WORKDIR /root/userbot
+RUN git clone -b master https://github.com/SkylaIND/Skyla-Userbot  /home/userbot/ \
+    && chmod 777 /home/userbot \
+    && mkdir /home/userbot/bin/
 
-#Install python requirements
-RUN pip3 install -r https://raw.githubusercontent.com/Kayzyu/Kayzu-Ubot/Kayzu-Ubot/requirements.txt
+WORKDIR /home/userbot/
 
-EXPOSE 80 443
-
-# Finalization
-CMD ["python3", "-m", "userbot"]
+CMD [ "bash", "start" ]
