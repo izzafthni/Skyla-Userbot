@@ -357,6 +357,7 @@ if STRING_SESSION:
     session = StringSession(str(STRING_SESSION))
 else:
     session = "Skyla-UserBot"
+
 if BOT_TOKEN is not None:
     tgbot = TelegramClient(
         "TG_BOT_TOKEN",
