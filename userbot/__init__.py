@@ -357,14 +357,13 @@ if STRING_SESSION:
     session = StringSession(str(STRING_SESSION))
 else:
     session = "Skyla-UserBot"
-try:
-    bot = TelegramClient(
-        session=session,
+if BOT_TOKEN is not None:
+    tgbot = TelegramClient(
+        "TG_BOT_TOKEN",
         api_id=API_KEY,
-        api_hash=API_HASH,
-        auto_reconnect=True,
-        connection_retries=None,
-    )
+        api_hash=API_HASH).start(
+        bot_token=BOT_TOKEN)
+
 except Exception as e:
     print(f"STRING_SESSION - {e}")
     sys.exit()
