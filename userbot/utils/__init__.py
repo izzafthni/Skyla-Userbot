@@ -16,6 +16,7 @@
 from . import format as _format
 from .format import parse_pre
 from .chrome import chrome, options
+from .decorator import asst_cmd, callback, flicks_cmd, flicks_handler
 from .google_images_download import googleimagesdownload
 from .progress import progress, CancelProcess
 from .tools import (
@@ -25,7 +26,9 @@ from .tools import (
     run_cmd, md5,
     post_to_telegraph,
     take_screen_shot,
+    reply_id,
     runcmd,
     edit_delete,
     edit_or_reply,
 )
+from .utils import autobot, load_module, remove_plugin, start_assistant
