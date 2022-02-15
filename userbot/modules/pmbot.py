@@ -31,7 +31,6 @@ from userbot.modules.sql_helper.globals import gvarstatus
 from userbot.utils import (
     _format,
     asst_cmd,
-    callback,
     edit_delete,
     edit_or_reply,
     flicks_cmd,
@@ -89,7 +88,12 @@ def progress_str(total: int, current: int) -> str:
 async def ban_user_from_bot(user, reason, reply_to=None):
     try:
         date = str(datetime.now().strftime("%B %d, %Y"))
-        add_user_to_bl(user.id, get_display_name(user), user.username, reason, date)
+        add_user_to_bl(
+            user.id,
+            get_display_name(user),
+            user.username,
+            reason,
+            date)
     except Exception as e:
         LOGS.error(str(e))
     banned_msg = f"**Anda Telah Dibanned dari Bot ini.\nKarena:** `{reason}`"
@@ -136,7 +140,11 @@ async def check_bot_started_users(user, event):
                 \n**ID: **`{user.id}`\
                 \n**Action: **Telah Me-Restart saya"
     try:
-        add_starter_to_db(user.id, get_display_name(user), start_date, user.username)
+        add_starter_to_db(
+            user.id,
+            get_display_name(user),
+            start_date,
+            user.username)
     except Exception as e:
         LOGS.error(str(e))
     if BOTLOG:
@@ -305,7 +313,8 @@ async def ban_starters(event):
     await edit_or_reply(event, msg)
 
 
-@asst_cmd(pattern=f"^/start({botusername})?([\\s]+)?$", func=lambda e: e.is_private)
+@asst_cmd(pattern=f"^/start({botusername})?([\\s]+)?$",
+          func=lambda e: e.is_private)
 async def bot_start(event):
     chat = await event.get_chat()
     user = await event.client.get_me()
@@ -388,7 +397,7 @@ async def bot_start(event):
 
 @tgbot.on(events.CallbackQuery(data=b"about"))
 async def about(event):
-      await event.edit(f"""
+    await event.edit(f"""
 Owner - {user.first_name}
 OwnerID - {user.id}
 [Link To Profile 👤](tg://user?id={user.id})
@@ -396,12 +405,13 @@ OwnerID - {user.id}
 By @TeamFlicksUserbot
 Flicks-Userbot [v{BOT_VER}](https://github.com/fjgaming212/Flicks-Userbot)
 """,
-                             buttons=[
-                                 [
-                                     custom.Button.inline("ᴄʟᴏsᴇ",
-                                                          data="keluar")],
-                             ]
-                             )
+                     buttons=[
+                         [
+                             custom.Button.inline("ᴄʟᴏsᴇ",
+                                                  data="keluar")],
+                     ]
+                     )
+
 
 @tgbot.on(events.CallbackQuery(data=b"keluar"))
 async def keluar(event):
@@ -439,7 +449,7 @@ async def bot_start(event):
     await info_msg.edit(uinfo)
 
 
-@flicks_cmd(pattern="(set|reset) pmbot(?: |$)(\w*)")
+@flicks_cmd(pattern="(set|reset) pmbot(?: |$)(\\w*)")
 async def setpmbot(event):
     try:
         import userbot.modules.sql_helper.globals as sql
