@@ -7,7 +7,7 @@ from os.path import basename
 import os.path
 from html_telegraph_poster import TelegraphPoster
 from typing import Optional, Union
-from userbot import bot, LOGS
+from userbot import bot, LOGS, SUDO_USERS
 
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantCreator, DocumentAttributeFilename
@@ -19,19 +19,6 @@ async def md5(fname: str) -> str:
         for chunk in iter(lambda: f.read(4096), b""):
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
-
-
-def humanbytes(size: Union[int, float]) -> str:
-    if size is None or isinstance(size, str):
-        return ""
-
-    power = 2**10
-    raised_to_pow = 0
-    dict_power_n = {0: "", 1: "Ki", 2: "Mi", 3: "Gi", 4: "Ti"}
-    while size > power:
-        size /= power
-        raised_to_pow += 1
-    return str(round(size, 2)) + " " + dict_power_n[raised_to_pow] + "B"
 
 
 def media_type(message):
@@ -52,6 +39,19 @@ def media_type(message):
     if message and message.document:
         return "Document"
     return None
+
+
+def humanbytes(size: Union[int, float]) -> str:
+    if size is None or isinstance(size, str):
+        return ""
+
+    power = 2**10
+    raised_to_pow = 0
+    dict_power_n = {0: "", 1: "Ki", 2: "Mi", 3: "Gi", 4: "Ti"}
+    while size > power:
+        size /= power
+        raised_to_pow += 1
+    return str(round(size, 2)) + " " + dict_power_n[raised_to_pow] + "B"
 
 
 def time_formatter(seconds: int) -> str:
@@ -126,6 +126,15 @@ async def take_screen_shot(video_file: str, duration: int, path: str = '') -> Op
     if err:
         LOGS.error(err)
     return thumb_image_path if os.path.exists(thumb_image_path) else None
+
+
+async def reply_id(event):
+    reply_to_id = None
+    if event.sender_id in SUDO_USERS:
+        reply_to_id = event.id
+    if event.reply_to_msg_id:
+        reply_to_id = event.reply_to_msg_id
+    return reply_to_id
 
 
 async def edit_or_reply(
@@ -239,8 +248,8 @@ async def run_cmd(cmd: list) -> tuple[bytes, bytes]:
 
 def post_to_telegraph(title, html_format_content):
     post_client = TelegraphPoster(use_api=True)
-    auth_name = "Kayzu-UBot"
-    auth_url = "https://github.com/Kayzyu/Kayzu-Ubot"
+    auth_name = "KEN-UBOT"
+    auth_url = "https://github.com/KennedyProject/KEN-UBOT"
     post_client.create_api_token(auth_name)
     post_page = post_client.post(
         title=title,
@@ -270,3 +279,38 @@ async def edit_delete(event, text, time=None, parse_mode=None, link_preview=None
         )
     await asyncio.sleep(time)
     return await newevent.delete()
+
+
+async def media_to_pic(event, reply):
+    mediatype = media_type(reply)
+    if mediatype not in ["Photo", "Round Video", "Gif", "Sticker", "Video"]:
+        await edit_delete(
+            event,
+            "**Saya tidak dapat mengekstrak gambar untuk memproses lebih lanjut ke media yang tepat**",
+        )
+        return None
+    media = await reply.download_media(file="./temp")
+    event = await edit_or_reply(event, f"`Transfiguration Time! Converting....`")
+    file = os.path.join("./temp/", "meme.png")
+    if mediatype == "Sticker":
+        if media.endswith(".tgs"):
+            await runcmd(
+                f"lottie_convert.py --frame 0 -if lottie -of png '{media}' '{file}'"
+            )
+        elif media.endswith(".webp"):
+            im = Image.open(media)
+            im.save(file)
+    elif mediatype in ["Round Video", "Video", "Gif"]:
+        extractMetadata(createParser(media))
+        await runcmd(f"rm -rf '{file}'")
+        await take_screen_shot(media, 0, file)
+        if not os.path.exists(file):
+            await edit_delete(
+                event, f"**Maaf. Saya tidak dapat mengekstrak gambar dari ini {mediatype}**"
+            )
+            return None
+    else:
+        im = Image.open(media)
+        im.save(file)
+    await runcmd(f"rm -rf '{media}'")
+    return [event, file, mediatype]
