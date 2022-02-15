@@ -512,7 +512,6 @@ with bot:
         from userbot.modules.sql_helper.bot_pms_sql import add_user_to_db, get_user_id
         from userbot.utils import reply_id
 
-
         dugmeler = CMD_HELP
         me = bot.get_me()
         uid = me.id
@@ -525,7 +524,8 @@ with bot:
         plugins = CMD_HELP
         vr = BOT_VER
 
-        @tgbot.on(events.NewMessage(incoming=True, func=lambda e: e.is_private))
+        @tgbot.on(events.NewMessage(incoming=True,
+                  func=lambda e: e.is_private))
         async def bot_pms(event):
             chat = await event.get_chat()
             if check_is_black_list(chat.id):
@@ -581,8 +581,12 @@ with bot:
                         return await event.reply(f"**ERROR:** `{e}`")
                     try:
                         add_user_to_db(
-                            reply_to, user_name, user_id, reply_msg, event.id, msg.id
-                        )
+                            reply_to,
+                            user_name,
+                            user_id,
+                            reply_msg,
+                            event.id,
+                            msg.id)
                     except Exception as e:
                         LOGS.error(str(e))
                         if BOTLOG:
