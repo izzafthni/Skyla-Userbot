@@ -369,10 +369,6 @@ if BOT_TOKEN is not None:
 else:
     tgbot = None
 
-# except Exception as e:
-    print(f"STRING_SESSION - {e}")
-    sys.exit()
-
 
 async def checking():
     gocheck = str("@skylasupport")
