@@ -20,6 +20,7 @@ async def md5(fname: str) -> str:
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
 
+
 def media_type(message):
     if message and message.photo:
         return "Photo"
