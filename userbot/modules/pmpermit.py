@@ -35,9 +35,9 @@ from userbot.events import register
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
 
 DEF_UNAPPROVED_MSG = (
-    " ─────「⚡Atention Please⚡」─────\n"
+    "    [⚡ 𝗔𝗨𝗧𝗢𝗠𝗔𝗧𝗜𝗖 𝗠𝗘𝗦𝗦𝗔𝗚𝗘𝗦 ⚡]({PMPERMIT_PIC})\n"
     f"Dimohon Untuk Tidak Melakukan Spam Ke Room Chat ini\n"
-    f"Karena bisa menggangu {ALIVE_NAME} [⚠️]({PMPERMIT_PIC})\n"
+    f"Karena bisa menggangu {ALIVE_NAME} ⚠️\n"
     f"Jika Anda Melakukan Spamming, Anda Akan Terblokir Otomatis\n"
     " ➖➖➖➖➖➖➖➖➖➖\n"
     f" **Owner :** {ALIVE_NAME} \n"
