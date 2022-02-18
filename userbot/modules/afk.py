@@ -97,7 +97,7 @@ async def type_afk_is_not_true(notafk):
     global afk_end
     user = await bot.get_me()  # pylint:disable=E0602
     last = user.last_name
-    if last and last.endswith("𝐴 𝐹 𝐾🔥"):
+    if last and last.endswith("𝐒𝐄𝐃𝐀𝐍𝐆 𝐀𝐅𝐊🔥"):
         last1 = last[:-12]
     else:
         last1 = ""
@@ -105,7 +105,7 @@ async def type_afk_is_not_true(notafk):
     afk_end = back_alive.replace(microsecond=0)
     if ISAFK:
         ISAFK = False
-        msg = await notafk.respond("𝑂𝑁𝐿𝐼𝑁𝐸⚡")
+        msg = await notafk.respond("𝐊𝐄𝐌𝐁𝐀𝐋𝐈 𝐎𝐍𝐋𝐈𝐍𝐄⚡")
         time.sleep(3)
         await msg.delete()
         await notafk.client(
