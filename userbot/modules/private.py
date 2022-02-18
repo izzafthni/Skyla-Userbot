@@ -502,7 +502,7 @@ async def bot_start(event):
         else:
             start_msg = f"**Users**: {mention}\
                         \n\n**Bot**: [{OWNER}](tg://user?id={OWNER_ID}) \
-                        \n**Forward**: True\
+                        \n**Info**: Kamu bisa menghubungi owner bot melalui bot ini\
                         \n\n**Powered by**: [Skyla-Userbot](https://github.com/SkylaIND/Skyla-Userbot)"
             buttons = [
                 (
