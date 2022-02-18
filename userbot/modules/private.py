@@ -562,7 +562,7 @@ async def _(event):
 async def infor(event):
     await tgbot.send_message(
         event.chat_id,
-        message=f"**Groups**: [sᴜᴘᴘᴏʀᴛ](t.me/skylasupport)\n**Github**: [Skyla-Userbot](https://github.com/SkylaIND/Skyla-Userbot)\n**Deploy**: [Heroku](https://dashboard.heroku.com/new?template=https://github.com/muhammadrizky16/templat-userbot2)",
+        message=f"**Groups**: [sᴜᴘᴘᴏʀᴛ](t.me/skylasupport)\n**Github**: [Skyla-Userbot](https://github.com/SkylaIND/Skyla-Userbot)\n**Deploy**: [Heroku](https://dashboard.heroku.com/new?template=https://github.com/SkylaIND/Skyla-Userbot)",
         buttons=[
             [
                 custom.Button.inline(
