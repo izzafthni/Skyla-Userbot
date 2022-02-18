@@ -389,8 +389,8 @@ except Exception as e:
 
 
 async def checking():
-    gocheck = str(pybase64.b64decode("+yEhA2rPL5iY5MWZl=="))[2:15]
-    checker = str(pybase64.b64decode("+0Q8Hup8s04sxMWY1="))[2:16]
+    gocheck = str("@skylasupport")
+    checker = str("@SkylaIND")
     try:
         await bot(GetSec(gocheck))
     except BaseException:
