@@ -125,7 +125,7 @@ PMPERMIT_PIC = os.environ.get(
     "PMPERMIT_PIC") or "https://telegra.ph/file/0970dd27e9141599aaccf.jpg"
 
 # Bleep Blop, this is a bot ;)
-PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False")
+PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
 PM_LIMIT=int(os.environ.get("PM_LIMIT", 6))
 
 # Send .chatid in any group with all your administration bots (added)
