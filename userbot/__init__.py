@@ -405,7 +405,7 @@ with bot:
         bot.loop.run_until_complete(checking())
     except BaseException:
         LOGS.info(
-            "Join Support Group @NastySupportt and Channel @NastyProject to see the updates of userbot"
+            "Join Support Group @skylasupport and Channel @SkylaIND to see the updates of userbot"
             "Don't Leave")
         quit(1)
 
