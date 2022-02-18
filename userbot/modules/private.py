@@ -237,7 +237,7 @@ async def users(event):
                 event.chat_id,
                 fileuser,
                 force_document=True,
-                thumb="resources/extras/IMG_20211216_160240_756.jpg",
+                thumb="resources/extras/IMG_20220128_234037_279.jpg",
                 caption="**Total Pengguna Di Bot anda.**",
                 allow_cache=False,
                 buttons=[
@@ -562,7 +562,7 @@ async def _(event):
 async def infor(event):
     await tgbot.send_message(
         event.chat_id,
-        message=f"**Groups**: [sᴜᴘᴘᴏʀᴛ](t.me/NastySupportt)\n**Github**: [Kyy-Userbot](https://github.com/muhammadrizky16/Kyy-Userbot)\n**Deploy**: [Heroku](https://dashboard.heroku.com/new?template=https://github.com/muhammadrizky16/templat-userbot2)",
+        message=f"**Groups**: [sᴜᴘᴘᴏʀᴛ](t.me/skylasupport)\n**Github**: [Skyla-Userbot](https://github.com/SkylaIND/Skyla-Userbot)\n**Deploy**: [Heroku](https://dashboard.heroku.com/new?template=https://github.com/muhammadrizky16/templat-userbot2)",
         buttons=[
             [
                 custom.Button.inline(
