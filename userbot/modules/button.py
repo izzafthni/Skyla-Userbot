@@ -18,7 +18,7 @@ BTN_URL_REGEX = re.compile(
     r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
 
 
-@register(pattern="button(?:\\s|$)([\\s\\S]*)")
+@register(outgoing=True, pattern="button(?:\\s|$)([\\s\\S]*)")
 async def _(event):
     reply_to_id = await reply_id(event)
     reply_message = await event.get_reply_message()
