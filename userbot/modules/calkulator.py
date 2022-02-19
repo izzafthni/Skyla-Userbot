@@ -7,8 +7,9 @@ import io
 import sys
 import traceback
 
-from userbot import CMD_HELP
-from userbot.events import register, edit_or_reply
+from userbot import CMD_HELP, bot
+from userbot.events import register
+from userbot.utils import edit_or_reply
 
 
 @register(outgoing=True, pattern=r"^\.calc")
