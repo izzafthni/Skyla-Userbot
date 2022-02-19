@@ -7,7 +7,7 @@ import io
 import sys
 import traceback
 
-from userbot import CMD_HELP
+from userbot import CMD_HELP, bot
 from userbot.events import register, edit_or_reply
 
 
