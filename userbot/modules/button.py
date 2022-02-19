@@ -8,6 +8,7 @@ import re
 from telethon import Button
 
 from userbot import BOT_USERNAME
+from userbot.events import register
 from userbot import CMD_HELP, bot
 from userbot.utils import edit_delete, reply_id
 
