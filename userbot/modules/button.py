@@ -9,7 +9,7 @@ from telethon import Button
 
 from userbot import BOT_USERNAME
 from userbot.events import register
-from userbot import CMD_HELP, bot
+from userbot import CMD_HELP
 from userbot.utils import edit_delete, reply_id
 
 # regex obtained from:
@@ -18,7 +18,7 @@ BTN_URL_REGEX = re.compile(
     r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
 
 
-@register(outgoing=True, pattern="^\.button")
+@register(outgoing=True, pattern="^\\.button")
 async def _(event):
     reply_to_id = await reply_id(event)
     reply_message = await event.get_reply_message()
