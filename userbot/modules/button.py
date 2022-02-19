@@ -8,8 +8,7 @@ import re
 from telethon import Button
 
 from userbot import BOT_USERNAME
-from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP bot
+from userbot import CMD_HELP, bot
 from userbot.utils import edit_delete, reply_id
 
 # regex obtained from:
@@ -18,7 +17,7 @@ BTN_URL_REGEX = re.compile(
     r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
 
 
-@register(outgoing=True, pattern="button(?:\\s|$)([\\s\\S]*)")
+@register(outgoing=True, pattern="^\.button")
 async def _(event):
     reply_to_id = await reply_id(event)
     reply_message = await event.get_reply_message()
@@ -49,9 +48,9 @@ def build_keyboard(buttons):
 CMD_HELP.update(
     {
         "button": f"**Plugin : **`button`\
-        \n\n  •  **Syntax :** `{cmd}button` <text> [Name on button]<buttonurl:link you want to open>\
+        \n\n  •  **Syntax :** `.button` <text> [Name on button]<buttonurl:link you want to open>\
         \n  •  **Function : **Untuk membuat pesan button melalui inline\
-        \n  •  **Examples : **`{cmd}button test [google]<buttonurl:https://www.google.com> [Channel]<buttonurl:https://t.me/InfoFlicksUserbot:same> [Support]<buttonurl:https://t.me/FlicksSupport>`\
+        \n  •  **Examples : **`.button test [google]<buttonurl:https://www.google.com> [Channel]<buttonurl:https://t.me/SkylaIND:same> [Support]<buttonurl:https://t.me/skylasupport>`\
     "
     }
 )
