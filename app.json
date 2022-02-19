@@ -48,6 +48,14 @@
       "value": "False",
       "required": true
     },
+    "BOT_TOKEN": {
+      "description": "Jika Sudah Membuat Bot Assistant Dari Skyla Silakan Masukan Bot Tokennya , Kalau Belum Biarkan Saja Tidak Usah Diisi",
+      "required": false
+    },
+    "BOT_USERNAME": {
+      "description": "Jika Sudah Membuat Bot Assistant Dari Skyla Silakan Masukan Bot Usernamenya , Kalau Belum Biarkan Saja Tidak Usah Diisi (Wajib Pake @ )",
+      "required": false
+    },
     "ALIVE_NAME": {
       "description": "Nama untuk menunjukan pesan .alive",
       "required": true
