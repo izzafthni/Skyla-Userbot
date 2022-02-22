@@ -505,7 +505,7 @@ async def bot_start(event):
                         \n**Anda dapat Menghubungi [{OWNER}](tg://user?id={OWNER_ID}) dari sini.**\
                         \n**Jangan Melakukan Spam Atau anda akan di blokir**\
                         \n\n**Powered by** [UserBot](https://github.com/fjgaming212/Flicks-Userbot)"
-                buttons = [
+            buttons = [
                     (
                         Button.url("ɢʀᴏᴜᴘ", f"https://t.me/skylasupport"),
                         Button.inline("ɪɴꜰᴏ", data="infor"),
