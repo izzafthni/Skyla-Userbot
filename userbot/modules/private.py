@@ -509,10 +509,9 @@ async def bot_start(event):
             [
                 Button.url("ɢʀᴏᴜᴘ", f"https://t.me/skylasupport"),
                 Button.url("ᴄʜᴀɴɴᴇʟ", f"https://t.me/SkylaIND"),
-            ],
-            [Button.inline("ɪɴꜰᴏ", data="infor")],
-        ],
-    )
+            ),
+            (   Button.inline("ɪɴꜰᴏ", data="infor")],
+         ]
     else:
         start_msg=f"**Menu ini Hanya Terlihat Oleh [{OWNER}](tg://user?id={OWNER_ID})** ..!"
         buttons=[
