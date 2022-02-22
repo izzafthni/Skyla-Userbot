@@ -505,16 +505,14 @@ async def bot_start(event):
                         \n**Anda dapat Menghubungi [{OWNER}](tg://user?id={OWNER_ID}) dari sini.**\
                         \n**Jangan Melakukan Spam Atau anda akan di blokir**\
                         \n\n**Powered by** [Skyla-Userbot](https://github.com/SkylaIND/Skyla-Userbot)"
-        buttons = [
-            (
+        buttons=[
+            [
                 Button.url("ɢʀᴏᴜᴘ", f"https://t.me/skylasupport"),
-                Button.url(
-                    "ᴄʜᴀɴɴᴇʟ",
-                    f"https://t.me/SkylaIND",
-                (
-                    Button.inline("ɪɴꜰᴏ", data="infor"),
-                )
-            ]
+                Button.url("ᴄʜᴀɴɴᴇʟ", f"https://t.me/SkylaIND"),
+            ],
+            [Button.inline("ɪɴꜰᴏ", data="infor")],
+        ],
+    )
     else:
         start_msg=f"**Menu ini Hanya Terlihat Oleh [{OWNER}](tg://user?id={OWNER_ID})** ..!"
         buttons=[
