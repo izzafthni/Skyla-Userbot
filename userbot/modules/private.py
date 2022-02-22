@@ -511,8 +511,8 @@ async def bot_start(event):
                 )
             ]
     else:
-        start_msg=f"**Menu ini Hanya Terlihat Oleh [{OWNER}](tg://user?id={OWNER_ID})** ..!"
-        buttons=[
+        start_msg = f"**Menu ini Hanya Terlihat Oleh [{OWNER}](tg://user?id={OWNER_ID})** ..!"
+        buttons = [
             (Button.inline("sᴇᴛᴛɪɴɢs ᴠᴀʀ", data="apiset"),),
             (
                 Button.inline("ᴘᴍʙᴏᴛ", data="pmbot"),
@@ -528,9 +528,9 @@ async def bot_start(event):
         await event.client.send_message(
             chat.id,
             start_msg,
-            link_preview = False,
-            buttons = buttons,
-            reply_to = reply_to,
+            link_preview=False,
+            buttons=buttons,
+            reply_to=reply_to,
         )
     except Exception as e:
         if BOTLOG_CHATID:
