@@ -500,11 +500,17 @@ async def bot_start(event):
                 my_mention=my_mention,
             )
         else:
-            start_msg = f"**Users**: {mention}\
-                        \n\n**Bot**: [{OWNER}](tg://user?id={OWNER_ID}) \
-                        \n**Info**: Kamu bisa menghubungi owner bot melalui bot ini\
-                        \n\n**Powered by**: [Skyla-Userbot](https://github.com/SkylaIND/Skyla-Userbot)"
-            buttons = [
+            start_msg = f"**👋 Hai** {mention}**!**\
+                        \n\n**Saya adalah {my_first}** \
+                        \n**Anda dapat Menghubungi [{OWNER}](tg://user?id={OWNER_ID}) dari sini.**\
+                        \n**Jangan Melakukan Spam Atau anda akan di blokir**\
+                        \n\n**Powered by** [Skyla-Userbot](https://github.com/SkylaIND/Skyla-Userbot)"
+        buttons = [
+            (
+                Button.url("ɢʀᴏᴜᴘ", f"https://t.me/skylasupport"),
+                Button.url(
+                    "ᴄʜᴀɴɴᴇʟ",
+                    f"https://t.me/SkylaIND",
                 (
                     Button.inline("ɪɴꜰᴏ", data="infor"),
                 )
