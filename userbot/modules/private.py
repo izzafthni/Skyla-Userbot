@@ -510,11 +510,11 @@ async def bot_start(event):
                 Button.url("ɢʀᴏᴜᴘ", f"https://t.me/skylasupport"),
                 Button.url("ᴄʜᴀɴɴᴇʟ", f"https://t.me/SkylaIND"),
             ),
-            (   Button.inline("ɪɴꜰᴏ", data="infor")],
-         ]
+            (Button.inline("ɪɴꜰᴏ", data="infor")],
+        ]
     else:
-        start_msg=f"**Menu ini Hanya Terlihat Oleh [{OWNER}](tg://user?id={OWNER_ID})** ..!"
-        buttons=[
+        start_msg = f"**Menu ini Hanya Terlihat Oleh [{OWNER}](tg://user?id={OWNER_ID})** ..!"
+        buttons = [
             (Button.inline("sᴇᴛᴛɪɴɢs ᴠᴀʀ", data="apiset"),),
             (
                 Button.inline("ᴘᴍʙᴏᴛ", data="pmbot"),
@@ -547,17 +547,17 @@ async def bot_start(event):
 
 @ callback(data=re.compile(b"uptimebot"))
 async def _(event):
-    uptime=await get_readable_time((time.time() - StartTime))
-    pin=f"⏱ ᴜᴘᴛɪᴍᴇ = {uptime}"
+    uptime = await get_readable_time((time.time() - StartTime))
+    pin = f"⏱ ᴜᴘᴛɪᴍᴇ = {uptime}"
     await event.answer(pin, cache_time=0, alert=True)
 
 
 @ callback(data=re.compile(b"pingbot"))
 async def _(event):
-    start=datetime.now()
-    end=datetime.now()
-    ms=(end - start).microseconds
-    pin=f"🏓 ᴘɪɴɢ = {ms} microseconds"
+    start = datetime.now()
+    end = datetime.now()
+    ms = (end - start).microseconds
+    pin = f"🏓 ᴘɪɴɢ = {ms} microseconds"
     await event.answer(pin, cache_time=0, alert=True)
 
 
