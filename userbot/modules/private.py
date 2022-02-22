@@ -506,12 +506,10 @@ async def bot_start(event):
                         \n**Jangan Melakukan Spam Atau anda akan di blokir**\
                         \n\n**Powered by** [UserBot](https://github.com/fjgaming212/Flicks-Userbot)"
             buttons = [
-                    (
-                        Button.url("ɢʀᴏᴜᴘ", f"https://t.me/skylasupport"),
-                        Button.inline("ɪɴꜰᴏ", data="infor"),
-                    )
-                ],
-            )
+                (
+                    Button.inline("ɪɴꜰᴏ", data="infor"),
+                )
+            ]
     else:
         start_msg=f"**Menu ini Hanya Terlihat Oleh [{OWNER}](tg://user?id={OWNER_ID})** ..!"
         buttons=[
