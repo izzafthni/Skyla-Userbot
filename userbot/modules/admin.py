@@ -31,8 +31,6 @@ from telethon.tl.types import (
 )
 
 from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP
-from userbot.utils import skyla_cmd
-from userbot import CMD_HANDLER as cmd
 from userbot.events import register
 
 # =================== CONSTANT ===================
@@ -79,7 +77,7 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 # ================================================
 
 
-@skyla_cmd(pattern="setgpic$")
+@register(outgoing=True, pattern=r"^\.setgpic$")
 async def set_group_photo(gpic):
     if not gpic.is_group:
         await gpic.edit("`Mohon Lakukan Perintah Ini Di Grup.`")
@@ -115,7 +113,7 @@ async def set_group_photo(gpic):
             await gpic.edit(PP_ERROR)
 
 
-@skyla_cmd(pattern="promote(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.promote(?: |$)(.*)")
 async def promote(promt):
     # Get targeted chat
     chat = await promt.get_chat()
@@ -165,7 +163,7 @@ async def promote(promt):
         )
 
 
-@skyla_cmd(pattern="demote(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.demote(?: |$)(.*)")
 async def demote(dmod):
     # Admin right check
     chat = await dmod.get_chat()
@@ -214,7 +212,7 @@ async def demote(dmod):
         )
 
 
-@skyla_cmd(pattern="ban(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.ban(?: |$)(.*)")
 async def ban(bon):
     # Here laying the sanity check
     chat = await bon.get_chat()
@@ -267,7 +265,7 @@ async def ban(bon):
         )
 
 
-@skyla_cmd(pattern="unban(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.unban(?: |$)(.*)")
 async def nothanos(unbon):
     # Here laying the sanity check
     chat = await unbon.get_chat()
@@ -303,7 +301,7 @@ async def nothanos(unbon):
         await unbon.edit("`Sepertinya Terjadi Kesalahan!`")
 
 
-@register(pattern="mute(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.mute(?: |$)(.*)")
 async def spider(spdr):
     # Check if the function running under SQL mode
     try:
@@ -357,7 +355,7 @@ async def spider(spdr):
             return await spdr.edit("`Terjadi Kesalahan!`")
 
 
-@skyla_cmd(pattern="unmute(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.unmute(?: |$)(.*)")
 async def unmoot(unmot):
     # Admin or creator check
     chat = await unmot.get_chat()
@@ -433,7 +431,7 @@ async def muter(moot):
             await moot.delete()
 
 
-@skyla_cmd(pattern="ungmute(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.ungmute(?: |$)(.*)")
 async def ungmoot(un_gmute):
     # Admin or creator check
     chat = await un_gmute.get_chat()
@@ -475,7 +473,7 @@ async def ungmoot(un_gmute):
             )
 
 
-@skyla_cmd(pattern="gmute(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.gmute(?: |$)(.*)")
 async def gspider(gspdr):
     # Admin or creator check
     chat = await gspdr.get_chat()
@@ -515,7 +513,7 @@ async def gspider(gspdr):
             )
 
 
-@skyla_cmd(pattern="zombies(?: |$)(.*)", groups_only=False)
+@register(outgoing=True, pattern=r"^\.zombies(?: |$)(.*)", groups_only=False)
 async def rm_deletedacc(show):
 
     con = show.pattern_match.group(1).lower()
@@ -583,7 +581,7 @@ async def rm_deletedacc(show):
         )
 
 
-@skyla_cmd(pattern="admins$")
+@register(outgoing=True, pattern=r"^\.admins$")
 async def get_admin(show):
     info = await show.client.get_entity(show.chat_id)
     title = info.title if info.title else "Grup Ini"
@@ -602,7 +600,7 @@ async def get_admin(show):
     await show.edit(mentions, parse_mode="html")
 
 
-@skyla_cmd(pattern="pin(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.pin(?: |$)(.*)")
 async def pin(msg):
     # Admin or creator check
     chat = await msg.get_chat()
@@ -646,7 +644,7 @@ async def pin(msg):
         )
 
 
-@skyla_cmd(pattern="kick(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.kick(?: |$)(.*)")
 async def kick(usr):
     # Admin or creator check
     chat = await usr.get_chat()
@@ -687,7 +685,7 @@ async def kick(usr):
         )
 
 
-@skyla_cmd(pattern="users ?(.*)")
+@register(outgoing=True, pattern=r"^\.users ?(.*)")
 async def get_users(show):
     info = await show.client.get_entity(show.chat_id)
     title = info.title if info.title else "Grup Ini"
@@ -777,7 +775,7 @@ async def get_user_from_id(user, event):
     return user_obj
 
 
-@skyla_cmd(pattern="usersdel ?(.*)")
+@register(outgoing=True, pattern=r"^\.usersdel ?(.*)")
 async def get_usersdel(show):
     info = await show.client.get_entity(show.chat_id)
     title = info.title if info.title else "Grup Ini"
@@ -869,7 +867,7 @@ async def get_userdel_from_id(user, event):
     return user_obj
 
 
-@skyla_cmd(pattern="bots$", groups_only=True)
+@register(outgoing=True, pattern=r"^\.bots$", groups_only=True)
 async def get_bots(show):
     info = await show.client.get_entity(show.chat_id)
     title = info.title if info.title else "Grup Ini"
@@ -907,32 +905,32 @@ async def get_bots(show):
 
 CMD_HELP.update(
     {
-        "admin": f"𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{cmd}promote` <username/balas ke pesan> <nama title (optional)>"
+        "admin": "𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.promote` <username/balas ke pesan> <nama title (optional)>"
         "\n↳ : Mempromosikan member sebagai admin."
-        f"\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{cmd}demote` <username/balas ke pesan>"
+        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.demote` <username/balas ke pesan>"
         "\n↳ : Menurunkan admin sebagai member."
-        f"\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{cmd}ban` <username/balas ke pesan> <alasan (optional)>"
+        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.ban` <username/balas ke pesan> <alasan (optional)>"
         "\n↳ : Memblokir Seseorang."
-        f"\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{cmd}unban <username/reply>`"
+        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.unban <username/reply>`"
         "\n↳ : Menghapus Blokir."
-        f"\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{cmd}mute` <username/balas ke pesan> <alasan (optional)>"
+        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.mute` <username/balas ke pesan> <alasan (optional)>"
         "\n↳ : Membisukan Seseorang Di Grup, Bisa Ke Admin Juga."
-        f"\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{cmd}unmute` <username/balas ke pesan>"
+        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.unmute` <username/balas ke pesan>"
         "\n↳ : Membuka bisu orang yang dibisukan."
-        f"\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{cmd}gmute` <username/balas ke pesan> <alasan (optional)>"
+        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.gmute` <username/balas ke pesan> <alasan (optional)>"
         "\n↳ : Membisukan ke semua grup yang kamu punya sebagai admin."
-        f"\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{cmd}ungmute` <username/reply>"
+        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.ungmute` <username/reply>"
         "\n↳ : Reply someone's message with `.ungmute` to remove them from the gmuted list."
-        f"\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{cmd}zombies`"
+        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.zombies`"
         "\n↳ : Untuk mencari akun terhapus dalam grup."
-        f"Gunakan `{cmd}zombies clean` untuk menghapus Akun Terhapus dari grup."
-        f"\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{cmd}all`"
+        "Gunakan `.zombies clean` untuk menghapus Akun Terhapus dari grup."
+        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.all`"
         "\n↳ : Tag semua member dalam grup."
-        f"\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{cmd}admins`"
+        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.admins`"
         "\n↳ : Melihat daftar admin di grup."
-        f"\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{cmd}bots`"
+        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.bots`"
         "\n↳ : Melihat daftar bot dalam grup."
-        f"\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{cmd}users` Atau >`{cmd}users` <nama member>"
+        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.users` Atau >`.users` <nama member>"
         "\n↳ : Mendapatkan daftar pengguna daam grup."
-        f"\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `{cmd}setgpic` <balas ke gambar>"
+        "\n\n𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.setgpic` <balas ke gambar>"
         "\n↳ : Mengganti foto profil grup."})
