@@ -448,7 +448,7 @@ with bot:
 async def update_restart_msg(chat_id, msg_id):
     DEFAULTUSER = ALIVE_NAME or "Set `ALIVE_NAME` ConfigVar!"
     message = (
-        f"**Skyla-Userbot v{BOT_VER} is back up and running!**\n\n"
+        f"**𝐒𝐊𝐘𝐋𝐀-𝐔𝐒𝐄𝐑𝐁𝐎𝐓 v{BOT_VER} is back up and running!**\n\n"
         f"**Telethon:** {version.__version__}\n"
         f"**Python:** {python_version()}\n"
         f"**User:** {DEFAULTUSER}"
@@ -560,7 +560,7 @@ with bot:
                 current_page_number = int(lockpage)
                 buttons = paginate_help(
                     current_page_number, dugmeler, "helpme")
-                text = f"**☃️ Skyla-Userbot Inline Menu ☃️**\n\n✣ **Owner** [{user.first_name}](tg://user?id={user.id})\n✣ **Jumlah** `{len(dugmeler)}` Modules"
+                text = f"**☃️ 𝐒𝐊𝐘𝐋𝐀-𝐔𝐒𝐄𝐑𝐁𝐎𝐓 ☃️**\n\n✣ **Owner** [{user.first_name}](tg://user?id={user.id})\n✣ **Jumlah** `{len(dugmeler)}` Modules"
                 await event.edit(
                     text,
                     file=roselogo,
@@ -652,7 +652,7 @@ with bot:
                 result = builder.photo(
                     file=roselogo,
                     link_preview=False,
-                    text=f"**☃️ Skyla-Userbot Inline Menu ☃️**\n\n✣ **Owner** [{user.first_name}](tg://user?id={user.id})\n✣ **Jumlah** `{len(dugmeler)}` Modules",
+                    text=f"**☃️ 𝐒𝐊𝐘𝐋𝐀-𝐔𝐒𝐄𝐑𝐁𝐎𝐓 ☃️**\n\n✣ **Owner** [{user.first_name}](tg://user?id={user.id})\n✣ **Jumlah** `{len(dugmeler)}` Modules",
                     buttons=buttons,
                 )
             elif query.startswith("repo"):
@@ -665,7 +665,7 @@ with bot:
                         0,
                         "image/jpeg",
                         []),
-                    text="**Skyla - Userbot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [SkyNot](https://t.me/Zxyune)\n✣ **Support :** @skylasupport\n✣ **Repository :** [Skyla-Userbot](https://github.com/SkylaIND/Skyla-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
+                    text="**☃️ 𝐒𝐊𝐘𝐋𝐀-𝐔𝐒𝐄𝐑𝐁𝐎𝐓 ☃️**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner Repo :** [SkyNot](https://t.me/Zxyune)\n✣ **Support :** @skylasupport\n✣ **Repository :** [Skyla-Userbot](https://github.com/SkylaIND/Skyla-Userbot)\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
                             custom.Button.url(
@@ -712,7 +712,7 @@ with bot:
                 )
             else:
                 result = builder.article(
-                    title="☃️ Skyla-Userbot ☃️",
+                    title="☃️ 𝐒𝐊𝐘𝐋𝐀-𝐔𝐒𝐄𝐑𝐁𝐎𝐓 ☃️",
                     description="Skyla - Userbot | Telethon",
                     url="https://t.me/SkylaIND",
                     thumb=InputWebDocument(
@@ -720,7 +720,7 @@ with bot:
                         0,
                         "image/jpeg",
                         []),
-                    text=f"**Skyla - Userbot**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner:** [{user.first_name}](tg://user?id={user.id})\n✣ **Assistant:** {tgbotusername}\n➖➖➖➖➖➖➖➖➖➖\n**Updates:** @SkylaIND\n➖➖➖➖➖➖➖➖➖➖",
+                    text=f"**☃️ 𝐒𝐊𝐘𝐋𝐀-𝐔𝐒𝐄𝐑𝐁𝐎𝐓 ☃️**\n➖➖➖➖➖➖➖➖➖➖\n✣ **Owner:** [{user.first_name}](tg://user?id={user.id})\n✣ **Assistant:** {tgbotusername}\n➖➖➖➖➖➖➖➖➖➖\n**Updates:** @SkylaIND\n➖➖➖➖➖➖➖➖➖➖",
                     buttons=[
                         [
                             custom.Button.url(
