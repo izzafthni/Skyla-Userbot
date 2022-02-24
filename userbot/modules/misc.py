@@ -110,16 +110,18 @@ async def repeat(rep):
 async def repo_is_here(wannasee):
     """ For .repo command, just returns the repo URL. """
     await wannasee.edit(
-        "**ɪ'ᴀᴍ ʀᴇᴘᴏ**: ☃️sᴋʏʟᴀ-ᴜsᴇʀʙᴏᴛ☃️\n"
-        "┌─────────⋆⋅⋅⋆──────────┐ \n"
-        "❖ **ʀᴇᴘᴏ :** [ɢɪᴛʜᴜʙ](https://github.com/SkylaIND/Skyla-Userbot)\n"
-        "❖ **ᴏᴡɴᴇʀ :** [sᴋʏʟᴀ](t.me/Zxyune)\n"
-        "├┈────────────────────\n"
-        "❖ **ꜱᴜᴘᴘᴏʀᴛ   :** [ꜱᴜᴘᴘᴏʀᴛ](https://t.me/skylasupport)\n"
-        "❖ **ᴄʜᴀɴɴᴇʟ   :** [ᴄʜᴀɴɴᴇʟ](https://t.me/SkylaIND)\n"
-        "└─────────⋆⋅⋅⋆──────────┘\n"
-        "[ᴅᴇᴘʟᴏʏ](https://dashboard.heroku.com/new?template=https://github.com/SkylaIND/Skyla-Userbot) ᴊɪᴋᴀ ɪɴɢɪɴ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ\n"
-        "﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏\n"
+        "✠╼━━━━━━━❖━━━━━━━━✠ \n"
+        "     **ɪ'ᴀᴍ ʀᴇᴘᴏ**\n"
+        "  **☃️sᴋʏʟᴀ-ᴜsᴇʀʙᴏᴛ☃️** \n"
+        "✠╼━━━━━━━❖━━━━━━━━✠ \n"
+        "╭✠╼━━━━━━❖━━━━━━━✠╮\n"
+        "┣|•**ʀᴇᴘᴏ   :** [ɢɪᴛʜᴜʙ](https://github.com/SkylaIND/Skyla-Userbot)\n"
+        "┣|•**ᴏᴡɴᴇʀ  :** [sᴋʏʟᴀ](t.me/Zxyune)\n"
+        "┣|•**ꜱᴜᴘᴘᴏʀᴛ :** [ꜱᴜᴘᴘᴏʀᴛ](https://t.me/skylasupport)\n"
+        "┣|•**ᴄʜᴀɴɴᴇʟ :** [ᴄʜᴀɴɴᴇʟ](https://t.me/SkylaIND)\n"
+        "╰✠╼━━━━━━❖━━━━━━━✠╯\n"
+        "sᴇʟᴀᴍᴀᴛ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ\n"
+        "▰▰▰▰▰▰▰▰▰▰▰▰▰\n"
     )
 
 
