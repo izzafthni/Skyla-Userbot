@@ -111,7 +111,7 @@ async def repo_is_here(wannasee):
     """ For .repo command, just returns the repo URL. """
     await wannasee.edit(
         "✠╼━━━━━━━❖━━━━━━━━✠ \n"
-        "                **ɪ'ᴀᴍ ʀᴇᴘᴏ**\n"
+        "                  **ɪ'ᴀᴍ ʀᴇᴘᴏ**\n"
         "         **☃️sᴋʏʟᴀ-ᴜsᴇʀʙᴏᴛ☃️** \n"
         "✠╼━━━━━━━❖━━━━━━━━✠ \n"
         "╭✠╼━━━━━━❖━━━━━━━✠╮\n"
@@ -280,13 +280,13 @@ CMD_HELP.update({
     \n↳ : Dapatkan item acak dari daftar item.",
     "sleep": "𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.sleep <seconds>`\
     \n↳ : `.sleep`\
-    \n  •  **Function : Biarkan Kayzu-Ubot tidur selama beberapa detik.",
+    \n  •  **Function : Biarkan Skyla-Userbot tidur selama beberapa detik.",
     "shutdown": "𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.shutdown`\
     \n↳ : Mematikan bot",
     "repo": "𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.repo`\
-    \n↳ : Menampilan link Repository Kayzu-Ubot.",
+    \n↳ : Menampilan link Repository Skyla-Userbot.",
     "string": "𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.string`\
-    \n↳: Menampilkan link String Kayzu-Ubot",
+    \n↳: Menampilkan link String Skyla-Userbot",
     "readme": "𝘾𝙤𝙢𝙢𝙖𝙣𝙙 `.readme`\
     \n↳ : Menyediakan tautan untuk mengatur userbot dan modulnya.",
     "repeat": "𝘾𝙤𝙢𝙢𝙖𝙣𝙙: `.repeat <no> <text>`\
