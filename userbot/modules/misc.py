@@ -111,16 +111,16 @@ async def repo_is_here(wannasee):
     """ For .repo command, just returns the repo URL. """
     await wannasee.edit(
         "✠╼━━━━━━━❖━━━━━━━━✠ \n"
-        "     **ɪ'ᴀᴍ ʀᴇᴘᴏ**\n"
-        "  **☃️sᴋʏʟᴀ-ᴜsᴇʀʙᴏᴛ☃️** \n"
+        "         **ɪ'ᴀᴍ ʀᴇᴘᴏ**\n"
+        "      **☃️sᴋʏʟᴀ-ᴜsᴇʀʙᴏᴛ☃️** \n"
         "✠╼━━━━━━━❖━━━━━━━━✠ \n"
         "╭✠╼━━━━━━❖━━━━━━━✠╮\n"
-        "┣|•**ʀᴇᴘᴏ   :** [ɢɪᴛʜᴜʙ](https://github.com/SkylaIND/Skyla-Userbot)\n"
-        "┣|•**ᴏᴡɴᴇʀ  :** [sᴋʏʟᴀ](t.me/Zxyune)\n"
-        "┣|•**ꜱᴜᴘᴘᴏʀᴛ :** [ꜱᴜᴘᴘᴏʀᴛ](https://t.me/skylasupport)\n"
-        "┣|•**ᴄʜᴀɴɴᴇʟ :** [ᴄʜᴀɴɴᴇʟ](https://t.me/SkylaIND)\n"
+        "┣|•**ʀᴇᴘᴏ     :** [ɢɪᴛʜᴜʙ](https://github.com/SkylaIND/Skyla-Userbot)\n"
+        "┣|•**ᴏᴡɴᴇʀ    :** [sᴋʏʟᴀ](t.me/Zxyune)\n"
+        "┣|•**ꜱᴜᴘᴘᴏʀᴛ  :** [ꜱᴜᴘᴘᴏʀᴛ](https://t.me/skylasupport)\n"
+        "┣|•**ᴄʜᴀɴɴᴇʟ  :** [ᴄʜᴀɴɴᴇʟ](https://t.me/SkylaIND)\n"
         "╰✠╼━━━━━━❖━━━━━━━✠╯\n"
-        "sᴇʟᴀᴍᴀᴛ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ\n"
+        "   **sᴇʟᴀᴍᴀᴛ ᴍᴇɴɢɢᴜɴᴀᴋᴀɴ**\n"
         "▰▰▰▰▰▰▰▰▰▰▰▰▰\n"
     )
 
