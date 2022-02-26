@@ -642,19 +642,18 @@ with bot:
                                 f"**ERROR:** Saat menyimpan detail pesan di database\n`{e}`",
                             )
 
-        @ tgbot.on(events.InlineQuery)
+        @tgbot.on(events.InlineQuery)
         async def inline_handler(event):
             builder = event.builder
             result = None
             query = event.text
-            if event.query.user_id == uid and query.startswith(
-                    "@skylasupport"):
-            buttons = paginate_help(0, dugmeler, "helpme")
-            result = builder.photo(
-                file=roselogo,
-                link_preview=False,
-                text=f"**☃️ 𝐒𝐊𝐘𝐋𝐀-𝐔𝐒𝐄𝐑𝐁𝐎𝐓 ☃️**\n\n✣ **Owner** [{user.first_name}](tg://user?id={user.id})\n✣ **Jumlah** `{len(dugmeler)}` Modules",
-                buttons=buttons,
+            if event.query.user_id == uid and query.startswith("@skylasupport"):
+                buttons = paginate_help(0, dugmeler, "helpme")
+                result = builder.photo(
+                    file=roselogo,
+                    link_preview=False,
+                    text=f"**☃️ 𝐒𝐊𝐘𝐋𝐀-𝐔𝐒𝐄𝐑𝐁𝐎𝐓 ☃️**\n\n✣ **Owner** [{user.first_name}](tg://user?id={user.id})\n✣ **Jumlah** `{len(dugmeler)}` Modules",
+                    buttons=buttons,
             )
             elif query.startswith("repo"):
                 result = builder.article(
