@@ -648,13 +648,13 @@ with bot:
             result = None
             query = event.text
             if event.query.user_id == uid and query.startswith("@Zxyune")
-                buttons = paginate_help(0, dugmeler, "helpme")
-                result = builder.photo(
-                    file=roselogo,
-                    link_preview=False,
-                    text=f"**☃️ 𝐒𝐊𝐘𝐋𝐀-𝐔𝐒𝐄𝐑𝐁𝐎𝐓 ☃️**\n\n✣ **Owner** [{user.first_name}](tg://user?id={user.id})\n✣ **Jumlah** `{len(dugmeler)}` Modules",
-                    buttons=buttons,
-                )
+            buttons = paginate_help(0, dugmeler, "helpme")
+            result = builder.photo(
+                file=roselogo,
+                link_preview=False,
+                text=f"**☃️ 𝐒𝐊𝐘𝐋𝐀-𝐔𝐒𝐄𝐑𝐁𝐎𝐓 ☃️**\n\n✣ **Owner** [{user.first_name}](tg://user?id={user.id})\n✣ **Jumlah** `{len(dugmeler)}` Modules",
+                buttons=buttons,
+            )
             elif query.startswith("repo"):
                 result = builder.article(
                     title="Repository",
