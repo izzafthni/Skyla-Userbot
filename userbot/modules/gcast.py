@@ -28,6 +28,10 @@ GCAST_BLACKLIST = [
     -1001752592753,  # Skyzusupport
     -1001716001073,  # skylasupport
     -1001788983303,  # KayzuSupport
+    -1001795125065,  # Bagaskara Support
+    -1001699144606,  # Kasta Support
+    -1001692751821,  # Ram Support
+    -1001687155877,  # Cilik Support
 ]
 
 
