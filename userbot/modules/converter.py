@@ -16,7 +16,7 @@ from PIL import Image
 
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
-from userbot.utils import edit_delete, edit_or_reply, runcmd
+from userbot.utils import edit_delete, edit_or_reply, skyla_cmd, runcmd
 
 
 @skyla_cmd(pattern="convert ?(foto|audio|gif|voice|photo|mp3)? ?(.*)")
