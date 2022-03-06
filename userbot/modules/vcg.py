@@ -85,4 +85,3 @@ CMD_HELP.update(
          \n↳ : Invite semua member yang berada di group."
     }
 )
-©
