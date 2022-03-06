@@ -40,7 +40,7 @@ async def typewriter(typew):
 @register(outgoing=True, pattern='^D(?: |$)(.*)')
 async def typewriter(typew):
     typew.pattern_match.group(1)
-    await typew.edit("BISMILLAH DAPET KAMU..")
+    await typew.edit("BISMILLAH DAPET TES..")
 
 
 CMD_HELP.update({
